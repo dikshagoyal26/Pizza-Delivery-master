@@ -4,21 +4,25 @@ import './App.css';
 
 class App extends Component {
   render() {
+    function ActionLink() {
+    function handleClick(e) {
+      e.preventDefault();
+      console.log('The link was clicked.');
+    }
+  }
     return (
       <div className="App">
         <header className="App-header">
-          <button className="btn">LogIn</button>
-          <h1> LOGO </h1>
+          {/*<button className="btn">LogIn</button>*/}
+          <h1> Logo </h1>
         </header>
-        <nav className="navbar navbar-expand-sm ">
-            <ul className="navbar-nav">
-              <li className="nav-item"><a className="nav-link">Home</a></li>
-              <li className="nav-item"><a className="nav-link">Track Order</a></li>
-              <li className="nav-item"><a className="nav-link">Write Feedback</a></li>
-              <li className="nav-item"><a className="nav-link">Change Password</a></li>
-            </ul>
-            
-        </nav>
+        <div className="topnav" id="myTopnav">
+          <a className="nav-link">Menu</a>
+          <a className="nav-link">Track</a>
+          <a className="nav-link">Feedback</a>
+          <a className="nav-link">Change Password</a> 
+          <a className="icon" onClick={this.handleClick}><i className="fa fa-bars"></i></a>
+        </div>  
       </div>
     );
   }
