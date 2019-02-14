@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
 }
-
 .App-header {
   background-color:#1c96c5;
   color: white;
@@ -39,8 +38,8 @@ header .btn:hover{
 }
 
 .active {
-  background-color: #4CAF50;
-  color: white;
+  /*box-sizing: border-box;
+  border-bottom: 2px solid black*/
 }
 
 .topnav .icon {
@@ -61,7 +60,7 @@ header .btn:hover{
     position: absolute;
     right: 0;
     top: 0;
-   margin:0 50px;
+    margin:0 50px;
   }
   .topnav.responsive a {
     float: none;
