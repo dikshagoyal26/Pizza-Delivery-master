@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/header';
+import Header from './components/Header';
 import List from './components/List';
 import {BrowserRouter,Route,Link} from 'react-router-dom';
 
