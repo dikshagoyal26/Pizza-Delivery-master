@@ -1,6 +1,6 @@
 const sampleData = [
     {
-        id: 1,
+        id: "1",
         name: "Lorem ipsum",
         price: "100",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
@@ -9,7 +9,7 @@ const sampleData = [
 
     },
     {
-        id: 2,
+        id: "2",
         name: "Lorem ipsum",
         price: "100",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
@@ -17,7 +17,7 @@ const sampleData = [
         imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
     },
     {
-        id: 3,
+        id: "3",
         name: "Lorem ipsum",
         price: "100",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
@@ -25,7 +25,7 @@ const sampleData = [
         imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
     },
     {
-        id: 4,
+        id: "4",
         name: "Lorem ipsum",
         price: "100",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
@@ -33,7 +33,7 @@ const sampleData = [
         imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
     },
     {
-        id: 5,
+        id: "5",
         name: "Lorem ipsum",
         price: "100",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
@@ -41,7 +41,7 @@ const sampleData = [
         imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
     },
     {
-        id: 6,
+        id: "6",
         name: "Lorem ipsum",
         price: "100",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",

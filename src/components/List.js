@@ -5,7 +5,8 @@ import sampledata from '../sampledata';
 class List extends React.Component {
   render(){
    let ItemComponents = sampledata.map((item) => {
-      return <Item  key = { item.id } 
+      return <Item  key = { item.id }
+                    id = { item.id } 
                     name= {item.name} 
                     ingredients={item.ingredients} 
                     price = {item.price}
