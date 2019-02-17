@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import React from 'react';
 
 class Header extends React.Component {
-  render(){
-    function handleClick() {
+  constructor(){
+      super()
+      this.handleClick = this.handleClick.bind(this);
+    }
+  handleClick() {
       var x = document.getElementById("Topnav");
       if (x.className === "topnav") {
           x.className += " responsive";
@@ -11,7 +13,8 @@ class Header extends React.Component {
       else {
             x.className = "topnav";
           }
-      }
+    }
+  render(){
     return(
         <div>
         <header className="App-header">
@@ -20,11 +23,11 @@ class Header extends React.Component {
 
         <div className = "topnav" id = "Topnav">
           <a href="/list">Menu</a>
-          <a href="">Cart</a>
-          <a href="">Track</a>
-          <a href="">Feedback</a>
-          <a href="">Change Password</a> 
-          <a className ="icon" onClick = {handleClick}><i className="fa fa-bars"></i></a>
+          <a href=" ">Cart</a>
+          <a href=" ">Track</a>
+          <a href=" ">Feedback</a>
+          <a href=" ">Change Password</a> 
+          <a className ="icon" onClick = {this.handleClick}><i className="fa fa-bars"></i></a>
         </div>  
         </div>
       )

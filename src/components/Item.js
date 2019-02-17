@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 class Item extends React.Component{
 	render(){
 		return(
 				<div>
 					<div className="item-card">
-						<img src={this.props.imgUrl} />
+						<img alt="" src={this.props.imgUrl} />
 						<h4 className="name">{this.props.name}</h4>
 						<p className="price">Rs.{this.props.price}</p>
 						<p className="ingredients">Ingredients: {this.props.ingredients}</p>
