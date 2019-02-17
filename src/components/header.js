@@ -2,7 +2,7 @@ import React from 'react';
 
 class Header extends React.Component {
   constructor(){
-      super()
+      super();
       this.handleClick = this.handleClick.bind(this);
     }
   handleClick() {
