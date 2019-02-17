@@ -5,8 +5,9 @@ class Item extends React.Component{
 				<div>
 					<div className="item-card">
 						<img src={this.props.imgUrl} />
-						<p>Price : {this.props.price}</p>
-						<p>Ingredients: {this.props.ingredients}</p>
+						<h4 className="name">{this.props.name}</h4>
+						<p className="price">Rs.{this.props.price}</p>
+						<p className="ingredients">Ingredients: {this.props.ingredients}</p>
 						<button className="btn btn-info">Details</button>
 						<button className="btn btn-danger">Buy Now</button>
 					</div>	
