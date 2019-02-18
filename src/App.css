@@ -14,23 +14,26 @@ header .btn{
   background-color: #ffe066 ;
 }
 header .btn:hover{
-  background-color: #70c1b3; 
+  background-color: ; 
 }
 .topnav {
   overflow: hidden;
   background-color: #ffe066;
   padding: 0 50px;
+  font-size: 18px;
+}
+.topnav .btn{
+  color: white
 }
 .topnav a {
   float: left;
   display: block;
   color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+  padding: 10px 10px;
 }
-
+.topnav .cart-link{
+  float: right;
+}
 .topnav a:link, a:visited{
   text-decoration:  none;
 }
@@ -89,4 +92,22 @@ header .btn:hover{
   text-align: center;
   font-family: arial;
   background: white;
-  cursor: pointer;}
+  cursor: pointer;
+}
+.details-container{
+  padding:20px 10%;
+  font-size: 20px;
+  text-align: center;
+}
+.details-container img{
+  height: 300px;
+}
+.details-container .para{
+  padding: 10px; 
+}
+.details-container .price{
+  font-weight: bolder;
+}
+.name{
+  text-align: center;
+}

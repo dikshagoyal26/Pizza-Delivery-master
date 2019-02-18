@@ -3,7 +3,8 @@ import './App.css';
 import Header from './components/Header';
 import List from './components/List';
 import Details from './components/Details';
-import {BrowserRouter,Route } from 'react-router-dom';
+import {BrowserRouter,Route,Switch } from 'react-router-dom';
+import Cart from './components/Cart';
 
 
 class App extends Component {
@@ -12,14 +13,15 @@ class App extends Component {
      <BrowserRouter>
       <div className="App">
         <Header/>
-        <Route path="/list" component={List}/>
-        <Route path="/details:id" component={Details}/>
+        <Switch>
+          <Route exact path="/" component={List}/>
+          <Route exact path="/details/:id" component={Details}/>
+          <Route exact path="/cart" component={Cart}/>
+        </Switch>
       </div>
     </BrowserRouter>
     );
   }
 }
-const list = () =>(
-  <List/>
-);
+
 export default App;

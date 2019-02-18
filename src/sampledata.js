@@ -5,49 +5,50 @@ const sampleData = [
         price: "100",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
+        imgUrl:"https://content.mycutegraphics.com/graphics/food/whole-pizza.png"
 
     },
     {
         id: "2",
         name: "Lorem ipsum",
-        price: "100",
+        price: "200",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
+        imgUrl:"https://content.mycutegraphics.com/graphics/food/pizza-pie.png"
     },
     {
         id: "3",
         name: "Lorem ipsum",
-        price: "100",
+        price: "270",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
+        imgUrl:"https://content.mycutegraphics.com/graphics/food/pepperoni-pizza.png"
     },
     {
         id: "4",
         name: "Lorem ipsum",
-        price: "100",
+        price: "211",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
+        imgUrl:"https://webstockreview.net/images250_/clipart-pizza-4.png"
     },
     {
         id: "5",
         name: "Lorem ipsum",
-        price: "100",
+        price: "270",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
+        imgUrl:"https://content.mycutegraphics.com/graphics/food/pepperoni-pizza.png"
     },
     {
         id: "6",
         name: "Lorem ipsum",
-        price: "100",
+        price: "200",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-        imgUrl:"https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
-    }
+        imgUrl:"https://content.mycutegraphics.com/graphics/food/pizza-pie.png"
+    },
+    
 ]
 
 export default sampleData
