@@ -4,7 +4,7 @@ import Header from './components/Header';
 import List from './components/List';
 import Details from './components/Details';
 import {BrowserRouter,Route,Switch } from 'react-router-dom';
-import Cart from './components/Cart';
+import Cart from './components/cart/Cart';
 
 
 class App extends Component {
