@@ -1,4 +1,4 @@
-const sampleData = [
+export const sampleData = [
     {
         id: "1",
         name: "Lorem ipsum",
@@ -51,4 +51,4 @@ const sampleData = [
     
 ]
 
-export default sampleData
+export default sampleData;

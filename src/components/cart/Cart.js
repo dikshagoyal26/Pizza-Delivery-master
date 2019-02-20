@@ -15,6 +15,5 @@ class Cart extends React.Component{
 				</div>
 			)
 	}
-
 }
 export default Cart;

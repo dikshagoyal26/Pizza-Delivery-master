@@ -1,5 +1,7 @@
 import React from 'react';
 import sampledata from '../sampledata';
+import { connect } from 'react-redux';
+//import { addToCart } from './cartactions'
 
 class Details extends React.Component {
 	render(){
@@ -16,11 +18,28 @@ class Details extends React.Component {
 						<p className="ingredients">Ingredients: {Item.ingredients}</p>
 						<p>{Item.description}</p>
 						<p className="price">Price: Rs.{Item.price}</p>
-						<button className="btn btn-info">Order Now</button>
+						<button className="btn btn-info" onClick={(e) => this.props.addToCart(Item.id,e)}>Add to Cart</button>
+						<button className="btn btn-danger">Order Now</button>
 					</div>
-					</div>
+				</div>
 			</div>
 			)
 	}
 }
-export default Details;
+
+const mapStateToProps = ( state ) =>{
+	return {
+		//id: this.props.id
+	}
+}
+
+const mapDispatchToProps= (dispatch)=>{
+    return{
+        addToCart: (id) => dispatch({
+								        type: 'ADD_TO_CART',
+								        id
+								    })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Details);

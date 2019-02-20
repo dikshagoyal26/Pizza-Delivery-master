@@ -28,7 +28,7 @@ class Header extends React.Component {
           <a href=" ">Feedback</a>
           <a href=" ">Change Password</a> 
           <a className ="icon" onClick = {this.handleClick}><i className="fa fa-bars"></i></a>
-          <a href="/cart" className="cart-link"><i className="fas fa-shopping-cart"></i> Cart</a>
+          <a className="cart-link"><i className="fas fa-shopping-cart"></i> Cart</a>
           
         </div>  
         </div>

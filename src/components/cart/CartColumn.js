@@ -16,6 +16,9 @@ class CartColumn extends React.Component{
 							<h6 className="text-uppercase">Price</h6>
 						</div>	
 						<div className="col-10 mx-auto col-lg-2">
+							<h6 className="text-uppercase">Topppings</h6>
+						</div>	
+						<div className="col-10 mx-auto col-lg-2">
 							<h6 className="text-uppercase">Quantity</h6>
 						</div>	
 						<div className="col-10 mx-auto col-lg-2">
