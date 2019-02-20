@@ -1,7 +1,6 @@
 import React from 'react';
 import sampledata from '../sampledata';
 import { connect } from 'react-redux';
-//import { addToCart } from './cartactions'
 
 class Details extends React.Component {
 	render(){
@@ -11,7 +10,7 @@ class Details extends React.Component {
    			})
 		return(	
 			<div>
-				<h1 className="name">{Item.name} {Item.id}</h1>
+				<h1 className="name">{Item.name} {Item.id} {this.props.harshi} {console.log(this.props)}</h1>
 				<div className="details-container">
 					<img alt="" src={Item.imgUrl} />
 					<div className="para">
@@ -29,7 +28,7 @@ class Details extends React.Component {
 
 const mapStateToProps = ( state ) =>{
 	return {
-		//id: this.props.id
+		harshi : state.id
 	}
 }
 

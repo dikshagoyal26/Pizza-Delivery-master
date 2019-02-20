@@ -10,6 +10,8 @@ import cartReducer from './components/reducer'
 
 const store = createStore(cartReducer);
 
-ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+store.subscribe(()=>{console.log("[Subscription]", store.getState())});
+
+ReactDOM.render(<Provider store = {store}><App /></Provider>, document.getElementById('root'));
 
 serviceWorker.unregister();

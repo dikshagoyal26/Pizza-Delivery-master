@@ -4,20 +4,29 @@ import { connect } from 'react-redux'
 
 class CartList extends React.Component{
 	render(){
-		return (
-			   <div>
-				   console.log("abcd"+this.props.items)
-				</div>
-			)
+		 let CartComponents = this.props.items.length ?
+				(
+					this.props.items.map((item) => {
+		 			     return (< CartItem key = { item.id }
+		 			   		                id = { item.id } 
+		 			     	                name= {item.name} 
+		 			     	                price = {item.price}
+		 			     	                imgUrl = {item.imgUrl}
+		 			     	                ingredients = {item.ingredients}/>
+		 			     	      )})
+				) : ( <p> YOUR CART IS EMPTY </p> )	
+		return(<div>
+			{CartComponents}
+		   </div>
+		  )
 	}			
 }
 
 const mapStateToProps = (state)=>{
     return{
-    	items: state.addedItems
+    	items:state.addedItems
     }
 }
-
 const mapDispatchToProps = (dispatch)=>{
     return{
     }
