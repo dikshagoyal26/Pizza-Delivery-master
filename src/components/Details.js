@@ -10,7 +10,7 @@ class Details extends React.Component {
    			})
 		return(	
 			<div>
-				<h1 className="name">{Item.name} {Item.id} {this.props.harshi} {console.log(this.props)}</h1>
+				<h1 className="name">{Item.name} {Item.id}{/* {this.props.count}*/}</h1>
 				<div className="details-container">
 					<img alt="" src={Item.imgUrl} />
 					<div className="para">
@@ -28,7 +28,7 @@ class Details extends React.Component {
 
 const mapStateToProps = ( state ) =>{
 	return {
-		harshi : state.id
+		count : state.count
 	}
 }
 

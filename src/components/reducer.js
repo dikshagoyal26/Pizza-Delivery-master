@@ -1,7 +1,7 @@
 import {sampleData} from '../sampledata';
 
 const initialState = {
-    id:1,
+    count:1,
     addedItems : [{
         id: "2",
         name: "Lorem ipsum",
@@ -19,9 +19,11 @@ const cartReducer = (state = initialState , action)=>{
                                        { return item }
                                      })       
         return { ...state,
-                    addedItems : [...state.addedItems, addedItem]
+                    addedItems : [...state.addedItems, addedItem],
+                    count:state.count+1
                 };
     }
+
     return state;
   }
 export default cartReducer;
