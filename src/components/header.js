@@ -1,36 +1,48 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-
 class Header extends React.Component {
-  constructor(){
-      super();
-      this.handleClick = this.handleClick.bind(this);
-    }
-  handleClick() {
-      var x = document.getElementById("Topnav");
-      if (x.className === "topnav") {
-          x.className += " responsive";
-        } 
-      else {
-            x.className = "topnav";
-          }
-    }
   render(){
     return(
         <div>
         <header className="App-header">
-          <h1> Logo </h1>
-        </header>
+          <nav className="navbar navbar-expand-md navbar-dark navbar-default">
+            <a className="navbar-brand" href=" "> Logo </a>
+            
+            <button className="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> 
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            
+            <div className="collapse navbar-collapse" id="navbarCollapse" >
+              <ul className="navbar-nav mr-auto"> 
+                <li className="nav-item active">   
+                  <a href="/" className="nav-link" >Menu</a>
+                </li>
+                <li className="nav-item">   
+                  <a href="/track" className="nav-link">Track</a>
+                </li>
+                <li className="nav-item">   
+                  <a href="/feedback" className="nav-link">Feedback</a>
+                </li>
+                <li className="nav-item">   
+                  <a href="/cart" className="nav-link"><i className="fas fa-shopping-cart"></i> Cart</a>
+                </li>
+              </ul>
+             
+              <div className="dropdown">
+                
+                <a className="dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false" >
+                <i className="fas fa-user-circle fa-2x"></i></a>
+              
+                <div style={{width:'100%'}} className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a href="/profile" className="dropdown-item">Profile</a>
+                  <a href="/changepassword" className="dropdown-item">Change Password</a>
+                  <div className="dropdown-divider"></div>
+                  <a href="/" className="dropdown-item">Logout</a>
+                </div> 
 
-        <div className = "topnav" id = "Topnav">
-          <a href="/">Menu</a>
-          <a href=" ">Track</a>
-          <a href=" ">Feedback</a>
-          <a href=" ">Change Password</a> 
-          <a className ="icon" onClick = {this.handleClick}><i className="fa fa-bars"></i></a>
-          <a href="/cart" className="cart-link"><i className="fas fa-shopping-cart"></i> Cart</a>
-          
-        </div>  
+              </div>
+          </div>
+        </nav>
+        </header>
         </div>
       )
   }
