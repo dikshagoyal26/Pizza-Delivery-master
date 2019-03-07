@@ -4,7 +4,8 @@ class EditProfile extends React.Component{
 		return(
 				<div>
 					<p>EditProfile</p>
-					<button className="btn btn-success">Save</button>
+					<button className="btn btn-success"><a href="/dashboard" style={{color:'white', textDecoration:'none'}}>Save</a></button>
+
 				</div>
 			)
 	}

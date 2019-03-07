@@ -5,7 +5,7 @@ class Header extends React.Component {
         <div>
         <header className="App-header">
           <nav className="navbar navbar-expand-md navbar-dark navbar-default">
-            <a className="navbar-brand" href=" "> Logo </a>
+            <a className="navbar-brand" href="/"> Logo </a>
             
             <button className="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> 
               <span className="navbar-toggler-icon"></span>
@@ -17,10 +17,10 @@ class Header extends React.Component {
                   <a href="/" className="nav-link" >Menu</a>
                 </li>
                 <li className="nav-item">   
-                  <a href="/track" className="nav-link">Track</a>
+                  <a href="/track" className="nav-link">Track Order</a>
                 </li>
                 <li className="nav-item">   
-                  <a href="/feedback" className="nav-link">Feedback</a>
+                  <a href="/feedback" className="nav-link">Write Feedback</a>
                 </li>
                 <li className="nav-item">   
                   <a href="/cart" className="nav-link"><i className="fas fa-shopping-cart"></i> Cart</a>
@@ -33,7 +33,7 @@ class Header extends React.Component {
                 <i className="fas fa-user-circle fa-2x"></i></a>
               
                 <div style={{width:'100%'}} className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a href="/profile" className="dropdown-item">Profile</a>
+                  <a href="/dashboard" className="dropdown-item">My Dashboard</a>
                   <a href="/changepassword" className="dropdown-item">Change Password</a>
                   <div className="dropdown-divider"></div>
                   <a href="/" className="dropdown-item">Logout</a>

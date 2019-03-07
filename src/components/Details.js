@@ -13,13 +13,13 @@ class Details extends React.Component {
 				<h1 className="name">{Item.name} {Item.id}{/* {this.props.count}*/}</h1>
 				<div className="details-container">
 					<img alt="" src={Item.imgUrl} />
-					<div className="para">
-						<p className="ingredients">Ingredients: {Item.ingredients}</p>
-						<p>{Item.description}</p>
 						<p className="price">Price: Rs.{Item.price}</p>
-						<button className="btn btn-info" onClick={(e) => this.props.addToCart(Item.id,e)}>Add to Cart</button>
-						<button className="btn btn-danger">Order Now</button>
-					</div>
+						<p>Category: {Item.ingredients}</p>
+						<p>Ingredients: {Item.ingredients}</p>
+						<p>Toppings: {Item.ingredients}</p>
+						<p>description: {Item.description}</p>
+						<button className="btn btn-info" onClick={(e) => this.props.addToCart(Item.id,e)}><a href="/cart" style={{color:'white', textDecoration:'none'}}>Add to Cart</a></button>
+						<button className="btn btn-danger"><a href="/order" style={{color:'white'}}>Order Now</a></button>
 				</div>
 			</div>
 			)
