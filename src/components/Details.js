@@ -19,7 +19,7 @@ class Details extends React.Component {
 						<p>Toppings: {Item.ingredients}</p>
 						<p>description: {Item.description}</p>
 						<button className="btn btn-info" onClick={(e) => this.props.addToCart(Item.id,e)}><a href="/cart" style={{color:'white', textDecoration:'none'}}>Add to Cart</a></button>
-						<button className="btn btn-danger"><a href="/order" style={{color:'white'}}>Order Now</a></button>
+						<a href="/order" style={{color:'white'}}><button className="btn btn-danger">Order Now</button></a>
 				</div>
 			</div>
 			)
