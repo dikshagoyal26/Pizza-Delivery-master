@@ -44,7 +44,7 @@ class ChangePassword extends React.Component{
 								handleChange={this.onChangePassword}/>
 
 						<div className="text-center">
-							<a><button className="btn btn-danger" type="submit">Submit</button></a>
+							<a href=" "><button className="btn btn-danger" type="submit">Submit</button></a>
 						</div>
 					</form>
 					
