@@ -64,7 +64,7 @@ class EditProfile extends React.Component{
 	onSubmit = (e) =>{
 		const isValid= this.validate();
 		if(isValid){
-			console.log("Valid")
+			console.log("Valid", this.state)
 			//Do the work ie.Submit
 		}
 		e.preventDefault();
