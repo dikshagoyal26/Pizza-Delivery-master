@@ -6,6 +6,7 @@ const Select = (props) =>{
 			<select name={props.name}
 					onChange={props.handleChange}
 					className='form-control'
+					value={props.value}
 			>
 				<option value="" disabled>{props.placeholder}</option>
 				{props.options.map(option => {

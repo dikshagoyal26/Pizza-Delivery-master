@@ -24,7 +24,7 @@ class CartList extends React.Component{
 
 const mapStateToProps = (state)=>{
     return{
-    	items:state.addedItems
+    	items:state.cr.addedItems
     }
 }
 const mapDispatchToProps = (dispatch)=>{
