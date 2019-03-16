@@ -18,7 +18,7 @@ class CartList extends React.Component{
 				) : ( <p> YOUR CART IS EMPTY </p> )	
 		return(<div>
 			{CartComponents}
-			{/*<p className="text-right mr-5 font-weight-bold">Total Price: {this.props.total_price}</p>*/}
+			<p className="text-right mr-5 font-weight-bold">Total Price: {this.props.total_price}</p>
 		   </div>
 		  )
 	}			
