@@ -4,11 +4,15 @@ class CartItem extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			counter:1,
-			total:this.props.price
+			counter:this.props.quantity,
+			total:this.props.price*this.props.quantity
 		}
 	}
 	onMinus = () =>{
+		this.props.dispatch({
+			type:'DEC_QUANTITY',
+			id:this.props.id
+		})
 		this.setState({
 			counter : this.state.counter-1,
 			total: (this.state.counter-1)*this.props.price
@@ -19,6 +23,10 @@ class CartItem extends React.Component{
 	}
 
 	onPlus = () =>{
+		this.props.dispatch({
+			type:'INC_QUANTITY',
+			id:this.props.id
+		})
 		this.setState({
 			counter : this.state.counter+1,
 			total: (this.state.counter+1)*this.props.price

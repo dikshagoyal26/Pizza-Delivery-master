@@ -10,6 +10,7 @@ class CartList extends React.Component{
 		 			     return (< CartItem key = { item.id }
 		 			   		                id = { item.id } 
 		 			     	                name= {item.name}
+		 			     	                quantity={item.quantity}
 		 			     	                price = {item.price}
 		 			     	                imgUrl = {item.imgUrl}
 		 			     	                ingredients = {item.ingredients}/>
@@ -17,6 +18,7 @@ class CartList extends React.Component{
 				) : ( <p> YOUR CART IS EMPTY </p> )	
 		return(<div>
 			{CartComponents}
+			{/*<p className="text-right mr-5 font-weight-bold">Total Price: {this.props.total_price}</p>*/}
 		   </div>
 		  )
 	}			
@@ -24,7 +26,8 @@ class CartList extends React.Component{
 
 const mapStateToProps = (state) =>{
     return{
-    	cartitems: state.cr.addedItems
+    	cartitems: state.cr.addedItems,
+    	total_price:state.cr.total_price
     }
 }
 
