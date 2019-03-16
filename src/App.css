@@ -1,0 +1,60 @@
+.App {
+  margin: 0;
+}
+.App-header {
+  background-color:#1c96c5;
+  color: white;
+  text-align: center;
+  padding: 1px 50px; 
+}
+.dropdown{
+  cursor: pointer;
+}
+.buttonLink{
+  color: white;
+  text-decoration: none;
+}
+.menuList {
+  text-align: center;
+  margin:0 50px;
+}
+.item-card img{
+  width: 100%;
+}
+.item-card .price{
+  font-size: 22px ;
+}
+.item-card{
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
+  max-width: 250px;
+  padding: 1%;
+  float: left;
+  margin: 1%;
+  text-align: center;
+  font-family: arial;
+  background: white;
+  cursor: pointer;
+}
+.details-container{
+  padding:20px 10%;
+  font-size: 20px;
+  text-align: center;
+}
+.details-container img{
+  height: 300px;
+}
+.details-container .para{
+  padding: 10px; 
+}
+.details-container .price{
+  font-weight: bolder;
+}
+.name{
+  text-align: center;
+}
+.editform{
+  margin:25px auto;
+  width: 500px;
+  padding: 2.5%;
+  border-radius: 10px;
+}
