@@ -1,7 +1,7 @@
 export const sampleData = [
     {
         id: "1",
-        name: "Lorem ipsum",
+        name: "Pizza 1",
         price: "100",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -10,7 +10,7 @@ export const sampleData = [
     },
     {
         id: "2",
-        name: "Lorem ipsum",
+        name: "Pizza 2",
         price: "200",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -18,7 +18,7 @@ export const sampleData = [
     },
     {
         id: "3",
-        name: "Lorem ipsum",
+        name: "Pizza 3",
         price: "270",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -26,7 +26,7 @@ export const sampleData = [
     },
     {
         id: "4",
-        name: "Lorem ipsum",
+        name: "Pizza 4",
         price: "211",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -34,7 +34,7 @@ export const sampleData = [
     },
     {
         id: "5",
-        name: "Lorem ipsum",
+        name: "Pizza 5",
         price: "270",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
@@ -42,7 +42,7 @@ export const sampleData = [
     },
     {
         id: "6",
-        name: "Lorem ipsum",
+        name: "Pizza 6",
         price: "200",
         ingredients: "Lorem ipsum, Lorem ipsum, Lorem ipsum",
         description: "Lorem ipsumLorem ipsum Lorem ipsum Lorem ipsumLoremLorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",

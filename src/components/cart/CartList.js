@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 
 class CartList extends React.Component{
 	render(){
-		 let CartComponents = this.props.items.length ?
+		 let CartComponents = this.props.cartitems.length ?
 				(
-					this.props.items.map((item) => {
+					this.props.cartitems.map((item) => {
 		 			     return (< CartItem key = { item.id }
 		 			   		                id = { item.id } 
-		 			     	                name= {item.name} 
+		 			     	                name= {item.name}
 		 			     	                price = {item.price}
 		 			     	                imgUrl = {item.imgUrl}
 		 			     	                ingredients = {item.ingredients}/>
@@ -22,14 +22,10 @@ class CartList extends React.Component{
 	}			
 }
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) =>{
     return{
-    	items:state.cr.addedItems
-    }
-}
-const mapDispatchToProps = (dispatch)=>{
-    return{
+    	cartitems: state.cr.addedItems
     }
 }
 
-export default  connect(mapStateToProps,mapDispatchToProps)(CartList);
+export default  connect(mapStateToProps)(CartList);

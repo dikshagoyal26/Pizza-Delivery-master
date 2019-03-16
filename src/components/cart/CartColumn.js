@@ -6,8 +6,7 @@ class CartColumn extends React.Component{
 		return(
 				<div className="container-fluid d-none text-center d-lg-block">
 					<div className="row">
-					{/*<img src="">*/}
-						
+
 						<div className="col-10 mx-auto col-lg-2">
 							<h6 className="text-uppercase">Name</h6>
 						</div>	

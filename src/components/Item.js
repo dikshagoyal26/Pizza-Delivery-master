@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-//import Details from './Details';
 class Item extends React.Component{
 	render(){
 		return(
