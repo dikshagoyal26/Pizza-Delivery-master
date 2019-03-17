@@ -7,7 +7,7 @@ class Profile extends React.Component{
 					<h3 className="text-center">PROFILE</h3>
 					<div>
 					<h6 className="p-2">First name: {this.props.profile.firstname}</h6>
-					<h6 className="p-2">Last name: {this.props.profile.laststname}</h6>
+					<h6 className="p-2">Last name: {this.props.profile.lastname}</h6>
 					<h6 className="p-2">Email: {this.props.profile.email}</h6>
 					<h6 className="p-2">Phone: {this.props.profile.phone}</h6>
 					<h6 className="p-2">Gender: {this.props.profile.gender}</h6>
@@ -22,7 +22,7 @@ class Profile extends React.Component{
 }
 const mapStateToProps = (state) =>{
 	return{
-		profile : state.profile
+		profile : state.pr.profile
 		}
 }
 export default connect(mapStateToProps)(Profile);
