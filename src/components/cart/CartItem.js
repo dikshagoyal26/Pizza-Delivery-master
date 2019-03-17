@@ -57,7 +57,7 @@ class CartItem extends React.Component{
 						<div className="col-10 mx-auto col-lg-2">
 							<div className="row ">
 								<div className="col">
-									<button onClick = {this.onMinus}>
+									<button className="btn-primary" onClick = {this.onMinus}>
 										<i className="fas fa-minus"></i>
 									</button>
 								</div>	
@@ -65,7 +65,7 @@ class CartItem extends React.Component{
 									<p> {this.state.counter} </p>
 								</div>	
 								<div className="col">
-									<button onClick = {this.onPlus}>
+									<button  className="btn-primary" onClick = {this.onPlus}>
 										<i className="fas fa-plus"></i>
 									</button>
 								</div>	

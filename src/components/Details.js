@@ -29,7 +29,7 @@ class Details extends React.Component {
 							Add to Cart
 						</button>
 						
-						<a href="/order" style={{color:'white'}}><button className="btn btn-danger">Order Now</button></a>
+						{/*<a href="/order" onClick = {() => this.handleClick(Item.id)} style={{color:'white'}}><button className="btn btn-danger">Order Now</button></a>*/}
 				</div>
 			</div>
 			)

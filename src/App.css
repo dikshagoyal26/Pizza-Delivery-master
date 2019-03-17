@@ -52,9 +52,13 @@
 .name{
   text-align: center;
 }
-.editform{
+.editform,.cart_price_details{
   margin:25px auto;
   width: 500px;
   padding: 2.5%;
   border-radius: 10px;
+  text-align:left;
+}
+.align-right{
+  float: right;
 }

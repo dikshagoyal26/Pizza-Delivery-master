@@ -2,8 +2,9 @@ import {sampleData} from '../sampledata';
 
 const initialState = {
     items: sampleData,
-    total_price: 0,
+    total_price: 0,//cart item sub total
     addedItems : [],
+    order_price:0, //Price after tax, discount, etc
 }
 
 const cartReducer = (state = initialState , action)=>{
@@ -88,6 +89,12 @@ const cartReducer = (state = initialState , action)=>{
                     addedItems:Items,
                     total_price : state.total_price-temp_item.price
                     }        
+        }
+        case 'ORDER_TOTAL_PRICE':{
+            return{
+                ...state,
+                order_price:action.price
+            }
         }
     }
     return state;

@@ -1,5 +1,6 @@
 import React from 'react';
 import CartItem from './CartItem';
+import PriceDetails from './PriceDetails';
 import { connect } from 'react-redux'
 
 class CartList extends React.Component{
@@ -18,7 +19,12 @@ class CartList extends React.Component{
 				) : ( <p> YOUR CART IS EMPTY </p> )	
 		return(<div>
 			{CartComponents}
-			<p className="text-right mr-5 font-weight-bold">Total Price: {this.props.total_price}</p>
+			{this.props.cartitems.length ? (
+				<div>
+					<p className="text-right mr-5 font-weight-bold">Sub Total: {this.props.total_price}</p> 
+					<PriceDetails />
+				</div>) : null}
+
 		   </div>
 		  )
 	}			
