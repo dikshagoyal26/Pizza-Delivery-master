@@ -28,13 +28,13 @@ class PriceDetails extends React.Component{
 					{ this.props.purpose ? 
 
 						(<div className="text-center">
-						 	<a href="/payment">
+						 	<a href="/checkout/payment">
 						 		<button className="btn btn-primary">Continue Order</button>
 						 	</a>
 						 </div>) : 
 
 						(<div className="text-center">
-						 	<a href="/order">
+						 	<a href="/checkout/order">
 						 		<button className="btn btn-primary">Order</button>
 						 	</a>
 						 </div>)
