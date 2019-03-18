@@ -65,3 +65,27 @@
 .align-left{
   float: left;
 }
+.payment .nav a{
+  background-color: #F5F5F5;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+}
+.payment .nav .active a{
+  background:#cfecf7;
+  border-left: 5px solid  #1c96c5;
+  color : black;
+}
+
+.paymentmode{
+  background-color: white;
+}
+.payment .col-3,.payment .col-9{
+  margin: 0;
+  padding: 0
+}
+.payment .row{
+  background: #F5F5F5;
+  border-radius: 5px;
+  padding: 0px;
+}

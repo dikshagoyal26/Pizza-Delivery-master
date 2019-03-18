@@ -9,7 +9,12 @@ class Order extends React.Component{
 				<div className="mx-5">
 					<h5 className="text-uppercase text-center font-weight-bold">Order</h5>
 						<span className="align-left mr-5"><Address /></span>
-						<span className="align-right"><PriceDetails purpose="Order" /></span>
+						<span className="align-right"><PriceDetails purpose="Order" />
+							<div className="text-center">
+						 	<a href="/checkout/payment">
+						 		<button className="btn btn-primary">Continue Order</button>
+						 	</a>
+						 </div></span>
 				</div>
 			)
 	}
