@@ -2,7 +2,7 @@ import React from 'react';
 const Select = (props) =>{
 	return(
 		<div>
-			<label htmlFor={props.name}>{props.title}</label>
+			<label htmlFor={props.name} className=" mt-1 mb-0">{props.title}</label>
 			<select name={props.name}
 					onChange={props.handleChange}
 					className='form-control'

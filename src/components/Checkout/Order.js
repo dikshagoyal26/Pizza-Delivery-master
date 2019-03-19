@@ -8,13 +8,19 @@ class Order extends React.Component{
 		return(
 				<div className="mx-5">
 					<h5 className="text-uppercase text-center font-weight-bold">Order</h5>
-						<span className="align-left mr-5"><Address /></span>
-						<span className="align-right"><PriceDetails purpose="Order" />
+					<div className="row">
+						<div className="col-md-6 col-sm-12">
+							<Address />
+						</div>
+						<div className=" col-md-6 col-sm-12">
+							<PriceDetails purpose="Order" />
 							<div className="text-center">
-						 	<a href="/checkout/payment">
-						 		<button className="btn btn-primary">Continue Order</button>
-						 	</a>
-						 </div></span>
+						 		<a href="/checkout/payment">
+						 			<button className="btn btn-primary">Continue Order</button>
+						 		</a>
+							</div>
+						</div>
+					</div>	
 				</div>
 			)
 	}

@@ -22,7 +22,9 @@ class CartList extends React.Component{
 			{this.props.cartitems.length ? (
 				<div>
 					<p className="text-right mr-5 font-weight-bold">Sub Total: {this.props.total_price}</p> 
-					<PriceDetails />
+					<div className="col-md-6 m-auto">
+						<PriceDetails />
+					</div>	
 				</div>) : null}
 
 		   </div>
