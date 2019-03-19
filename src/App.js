@@ -11,7 +11,9 @@ import Dashboard from './components/Dashboard/Dashboard';
 import ChangePassword from './components/ChangePassword';
 import Track from './components/Track';
 import Feedback from './components/Feedback';
-import Order from './components/Order';
+import Order from './components/Checkout/Order';
+import Payment from './components/Checkout/Payment';
+
 
 
 class App extends Component {
@@ -29,7 +31,8 @@ class App extends Component {
           <Route exact path="/editprofile" component={EditProfile}/>
           <Route exact path="/changepassword" component={ChangePassword}/>
           <Route exact path="/track" component={Track}/>
-          <Route exact path="/order" component={Order}/>
+          <Route exact path="/checkout/order" component={Order}/>
+          <Route exact path="/checkout/payment" component={Payment}/>
           <Route exact path="/feedback" component={Feedback}/>
 
         </Switch>

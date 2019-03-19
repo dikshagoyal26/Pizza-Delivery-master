@@ -52,13 +52,39 @@
 .name{
   text-align: center;
 }
-.editform,.cart_price_details{
+.editform, .cart_price_details{
   margin:25px auto;
-  width: 500px;
   padding: 2.5%;
   border-radius: 10px;
   text-align:left;
 }
 .align-right{
   float: right;
+}
+.align-left{
+  float: left;
+}
+.payment .nav a{
+  background-color: #F5F5F5;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  border-bottom: 0.5px solid lightgrey;
+  padding: 15px;
+}
+.payment .nav /*.active */a:hover{
+  background:#cfecf7;
+  border-left: 5px solid  #1c96c5;
+  color : black;
+}
+
+.paymentmode{
+
+}
+.payment .col-3{
+  margin: 0;
+  padding:0;
+}
+.payment .row{
+  background: #F5F5F5;
 }

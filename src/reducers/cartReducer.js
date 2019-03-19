@@ -5,6 +5,8 @@ const initialState = {
     total_price: 0,//cart item sub total
     addedItems : [],
     order_price:0, //Price after tax, discount, etc
+    order_id:0,
+    order_history:[],
 }
 
 const cartReducer = (state = initialState , action)=>{
@@ -96,8 +98,15 @@ const cartReducer = (state = initialState , action)=>{
                 order_price:action.price
             }
         }
+        case 'ORDER_ID':{
+                return{
+                    ...state,
+                    order_id: action.order_id,
+                    addedItems: [],
+                    order_history: [...state.order_history, {order_id:action.order_id,order_items:[...state.addedItems]}]
+                }
+        }
     }
     return state;
-
   }
 export default cartReducer;

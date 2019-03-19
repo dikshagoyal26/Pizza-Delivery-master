@@ -25,11 +25,17 @@ class PriceDetails extends React.Component{
 								   	 + this.props.total_price*0.12
 								   	 + 100  ).toFixed(2)} </span></p>	
 					
-					<div className="text-center">
-						<a href="/order">
-							<button onClick={this.handleClick} className="btn btn-primary">Order Now</button>
-						</a>
-					</div>
+					{ this.props.purpose ? 
+
+						null : 
+
+						(<div className="text-center">
+						 	<a href="/checkout/order">
+						 		<button className="btn btn-primary">Order</button>
+						 	</a>
+						 </div>)
+					}	 
+					
 
 		   		</div>
 		  )
