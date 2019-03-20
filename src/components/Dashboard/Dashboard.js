@@ -5,7 +5,9 @@ class Dashboard extends React.Component{
 		return(
 				<div>
 					<h1 className="text-center text-dark p-1">My Dashboard</h1>
-					<Profile />
+					<div className="col-md-6 m-auto">
+						<Profile />
+					</div>	
 				</div>
 			)
 	}

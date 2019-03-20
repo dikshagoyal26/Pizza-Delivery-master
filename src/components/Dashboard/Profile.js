@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 class Profile extends React.Component{
 	render(){
 		return(
-				<div className="editform bg-light border rounded-lg">
+				<div className="bg-light border rounded-lg p-3">
 					<h3 className="text-center">PROFILE</h3>
 					<div>
 					<h6 className="p-2">First name: {this.props.profile.firstname}</h6>

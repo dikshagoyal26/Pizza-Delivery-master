@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 class Header extends React.Component {
   render(){
     return(
         <div>
         <header className="App-header">
-          <nav className="navbar navbar-expand-md navbar-dark navbar-default">
-            <a className="navbar-brand" href="/"> Logo </a>
+          <nav className="navbar navbar-expand-md navbar-dark mx-5">
+            <a className="navbar-brand" href="/menu"> Logo </a>
             
             <button className="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"> 
               <span className="navbar-toggler-icon"></span>
@@ -14,7 +16,7 @@ class Header extends React.Component {
             <div className="collapse navbar-collapse" id="navbarCollapse" >
               <ul className="navbar-nav mr-auto"> 
                 <li className="nav-item active">   
-                  <a href="/" className="nav-link" >Menu</a>
+                  <a href="/menu" className="nav-link" >Menu</a>
                 </li>
                 <li className="nav-item">   
                   <a href="/track" className="nav-link">Track Order</a>
@@ -36,15 +38,18 @@ class Header extends React.Component {
                   <a href="/dashboard" className="dropdown-item">My Dashboard</a>
                   <a href="/changepassword" className="dropdown-item">Change Password</a>
                   <div className="dropdown-divider"></div>
-                  <a href="/" className="dropdown-item">Logout</a>
+                  <a href="/" className="dropdown-item" onClick={()=>this.props.dispatch({type:'LOGOUT'})}>Logout</a>
                 </div> 
 
               </div>
-          </div>
-        </nav>
+            </div>
+          </nav>
         </header>
         </div>
       )
   }
 }
-export default Header;
+
+
+
+export default connect()(Header);

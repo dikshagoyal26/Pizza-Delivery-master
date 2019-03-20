@@ -4,8 +4,6 @@
 .App-header {
   background-color:#1c96c5;
   color: white;
-  text-align: center;
-  padding: 1px 50px; 
 }
 .dropdown{
   cursor: pointer;
@@ -26,7 +24,6 @@
 }
 .item-card{
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
-  max-width: 250px;
   padding: 1%;
   float: left;
   margin: 1%;
@@ -87,4 +84,7 @@
 }
 .payment .row{
   background: #F5F5F5;
+}
+.login_page img{
+  width: 100%
 }

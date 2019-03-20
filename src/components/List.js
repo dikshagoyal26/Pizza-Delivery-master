@@ -15,7 +15,9 @@ class List extends React.Component {
     return(
       <div className="menuList">
         <h2>Menu</h2>
-        {ItemComponents}
+        <div className="row">
+          {ItemComponents}
+        </div>  
       </div>
       )
   }

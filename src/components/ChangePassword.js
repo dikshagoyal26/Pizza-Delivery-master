@@ -25,7 +25,7 @@ class ChangePassword extends React.Component{
 	}
 	render(){
 		return(
-				<div className="editform bg-light">
+				<div className="bg-light  border rounded-lg col-md-6 my-3 mx-auto p-3">
 					<h2 className="text-center text-danger">CHANGE PASSWORD</h2>
 					<form onSubmit={this.onSubmit} className="formGroup">
 						<Input  name="oldpassword" 
@@ -44,7 +44,8 @@ class ChangePassword extends React.Component{
 								handleChange={this.onChangePassword}/>
 
 						<div className="text-center">
-							<a href=" "><button className="btn btn-danger" type="submit">Submit</button></a>
+							<a href=" ">
+								<button className="btn btn-danger mt-3" type="submit">Submit</button></a>
 						</div>
 					</form>
 					
