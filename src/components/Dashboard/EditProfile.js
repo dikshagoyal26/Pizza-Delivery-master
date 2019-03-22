@@ -80,8 +80,9 @@ class EditProfile extends React.Component{
 							gender:this.state.gender,
 							birthday:this.state.birthday
 						}
-					})}
-		 this.props.history.push("/dashboard");			
+					})
+		 	this.props.history.push("/dashboard");
+		 }
 	}
 
 	render(){
