@@ -88,3 +88,6 @@
 .login_page img{
   width: 100%
 }
+#LoginForm .modal-content{
+  background: #F5F5F5;
+}
