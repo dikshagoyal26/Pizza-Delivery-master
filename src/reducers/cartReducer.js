@@ -7,7 +7,7 @@ const initialState = {
     order_price:0, //Price after tax, discount, etc
     order_id:0,
     order_history:[],
-    login:true,
+    login:false,
 }
 
 const cartReducer = (state = initialState , action)=>{

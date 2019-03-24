@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import Header from './components/Header';
+import Navbar from './components/Navbar';
 import List from './components/List';
 import Details from './components/Details';
 import {BrowserRouter,Route,Switch } from 'react-router-dom';
@@ -22,7 +22,7 @@ class App extends Component {
      <BrowserRouter>
       <div className="App">
         
-        {this.props.login == true? (<Header/>):(<Login />)}
+        {this.props.login == true? (<Navbar/>):(<Login />)}
        {this.props.login ==true ? ( <Switch>
                  <Route exact path="/menu" component={List}/>
                  <Route exact path="/details/:id" component={Details}/>

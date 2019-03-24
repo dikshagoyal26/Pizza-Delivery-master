@@ -25,12 +25,14 @@ class List extends React.Component {
     console.log(e.target.name +"="+e.target.value)
     this.setState({[e.target.name]:e.target.value})
   }
+  
   onSubmitForm = () =>{
   this.validate();
   this.state.display_form == 'login' ? this.props.dispatch({type:'LOGIN'}) : this.props.dispatch({type:'SIGNUP'})
   }
+
   validate = () =>{
-    /*console.log(this.state);
+    console.log(this.state);
     let emailError='';
     let passwordError='';
 
@@ -45,9 +47,8 @@ class List extends React.Component {
                   password:passwordError
                     }})
     
-    //if(emailError||phoneError||firstnameError||lastnameError) return false;
       
-    return true; */ 
+    return true;  
   }
   render(){
     return(
