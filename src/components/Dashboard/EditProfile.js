@@ -80,14 +80,15 @@ class EditProfile extends React.Component{
 							gender:this.state.gender,
 							birthday:this.state.birthday
 						}
-					})}
-		 this.props.history.push("/dashboard");			
+					})
+		 	this.props.history.push("/dashboard");
+		 }
 	}
 
 	render(){
 		return(
-				<div>
-					<div className="editform p-3 bg-light">
+				<div className="col-md-6 my-3 mx-auto p-3 bg-light border rounded-lg">
+					<div>
 						<h2 className="text-center text-danger">EDIT PROFILE</h2>
 						<form onSubmit={this.onSubmit} className="formGroup">
 							
@@ -155,7 +156,7 @@ class EditProfile extends React.Component{
 								   value={this.state.birthday}
 								   handleChange={this.onEditProfile} />
 
-			     		    <div className="text-center">		     		    		
+			     		    <div className="text-center mt-3">		     		    		
 			     		    	<button type="submit" className="btn btn-danger">Save</button>
 							</div>
 						</form>

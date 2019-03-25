@@ -7,6 +7,7 @@ const initialState = {
     order_price:0, //Price after tax, discount, etc
     order_id:0,
     order_history:[],
+    login:false,
 }
 
 const cartReducer = (state = initialState , action)=>{
@@ -105,6 +106,18 @@ const cartReducer = (state = initialState , action)=>{
                     addedItems: [],
                     order_history: [...state.order_history, {order_id:action.order_id,order_items:[...state.addedItems]}]
                 }
+        }
+        case 'LOGIN':{
+            return{
+                ...state,
+                login: true
+            }
+        }
+         case 'LOGOUT':{
+            return{
+                ...state,
+                login: false
+            }
         }
     }
     return state;
