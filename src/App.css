@@ -5,6 +5,7 @@
   background-color:#1c96c5;
   color: white;
 }
+
 .dropdown{
   cursor: pointer;
 }
@@ -88,8 +89,8 @@
   background: #F5F5F5;
 }
 #added_popup .modal-content{
-  background: #061826 ;
-  color: white;
+  background: #F5F5F5;
+  color: black;
   padding: 0px;
   margin: 0px;
   height: 150px;

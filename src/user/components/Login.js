@@ -34,12 +34,11 @@ class List extends React.Component {
     if(isValid){
       console.log("valid form");
       this.state.display_form == 'login' ? this.props.dispatch({type:'LOGIN'}) : this.props.dispatch({type:'SIGNUP'})
-      this.props.history.push("/");
-      //window.location.reload(); 
+      this.props.history.push("/menu");
+      window.location.reload(); 
       console.log(this.props);
 
     }
-  //this.state.display_form == 'login' ? this.props.dispatch({type:'LOGIN'}) : this.props.dispatch({type:'SIGNUP'})
   }
 
   validate = () =>{ 
