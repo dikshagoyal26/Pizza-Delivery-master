@@ -33,9 +33,7 @@
   cursor: pointer;
 }
 .details-container{
-  padding:20px 10%;
   font-size: 20px;
-  text-align: center;
 }
 .details-container img{
   height: 300px;
@@ -46,9 +44,7 @@
 .details-container .price{
   font-weight: bolder;
 }
-.name{
-  text-align: center;
-}
+
 .editform, .cart_price_details{
   margin:25px auto;
   padding: 2.5%;
@@ -90,4 +86,12 @@
 }
 #LoginForm .modal-content{
   background: #F5F5F5;
+}
+#added_popup .modal-content{
+  background: #061826 ;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+  height: 150px;
+  padding-top: 50px
 }

@@ -7,6 +7,7 @@ class Item extends React.Component{
 			type:'ADD_TO_CART',
 			id:this.props.id
 		})
+	
 	}
 	render(){
 		return(
@@ -20,7 +21,19 @@ class Item extends React.Component{
 								<button className="btn btn-info" >Details</button>
 						</Link>
 						<div className="btn-group m-2">
-								<button onClick={this.add_to_cart} className="btn btn-info mr-2" ><i className="fas fa-shopping-cart"></i> Add to Cart</button>
+							<button onClick={this.add_to_cart} className="btn btn-info mr-2" data-toggle="modal" data-target="#added_popup"><i className="fas fa-cart-plus"></i> Add to Cart</button>
+							
+							<div className="modal fade" id="added_popup" role="dialog">
+							    <div className="modal-dialog">
+							      <div className="modal-content">
+							        <div className="modal-body">
+							          <p>{this.props.name} added to Cart</p>
+							        </div>
+							      
+							      </div>
+							    </div>
+							  </div>
+
 							<Link to='/cart'>
 								<button onClick={this.add_to_cart} className="btn btn-info" >Buy Now</button>
 							</Link>	

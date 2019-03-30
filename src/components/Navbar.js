@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {NavLink} from 'react-router-dom';
 
 class Navbar extends React.Component {
   render(){
@@ -15,17 +16,18 @@ class Navbar extends React.Component {
             
             <div className="collapse navbar-collapse" id="navbarCollapse" >
               <ul className="navbar-nav mr-auto"> 
-                <li className="nav-item active">   
-                  <a href="/menu" className="nav-link" >Menu</a>
+                <li className="nav-item ">   
+                  <NavLink to="/menu" className="nav-link" exact>Menu</NavLink>
                 </li>
                 <li className="nav-item">   
-                  <a href="/track" className="nav-link">Track Order</a>
+                  <NavLink to="/feedback" className="nav-link">Write Feedback</NavLink>
                 </li>
                 <li className="nav-item">   
-                  <a href="/feedback" className="nav-link">Write Feedback</a>
+                  <NavLink to="/track" className="nav-link">Track Order</NavLink>
                 </li>
+                
                 <li className="nav-item">   
-                  <a href="/cart" className="nav-link"><i className="fas fa-shopping-cart"></i> Cart</a>
+                  <NavLink to="/cart" className="nav-link"><i className="fas fa-shopping-cart"></i> Cart</NavLink>
                 </li>
               </ul>
              

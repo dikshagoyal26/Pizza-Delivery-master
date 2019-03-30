@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import List from './components/List';
 import Details from './components/Details';
-import {BrowserRouter,Route,Switch } from 'react-router-dom';
+import {BrowserRouter,Route,Switch, withRouter,Redirect} from 'react-router-dom';
 import Cart from './components/cart/Cart';
 import Profile from './components/Dashboard/Profile';
 import EditProfile from './components/Dashboard/EditProfile';
@@ -21,22 +21,25 @@ class App extends Component {
     return (
      <BrowserRouter>
       <div className="App">
-        
-        {this.props.login == true? (<Navbar/>):(<Login />)}
-       {this.props.login ==true ? ( <Switch>
-                 <Route exact path="/menu" component={List}/>
-                 <Route exact path="/details/:id" component={Details}/>
-                 <Route exact path="/cart" component={Cart}/>
-                 <Route exact path="/dashboard" component={Dashboard}/>
-                 <Route exact path="/profile" component={Profile}/>
-                 <Route exact path="/editprofile" component={EditProfile}/>
-                 <Route exact path="/changepassword" component={ChangePassword}/>
-                 <Route exact path="/track" component={Track}/>
-                 <Route exact path="/checkout/order" component={Order}/>
-                 <Route exact path="/checkout/payment" component={Payment}/>
-                 <Route exact path="/feedback" component={Feedback}/>
-       
-               </Switch>):null}
+        {this.props.login === true? (<Navbar/>):(<Login/>)}
+       {this.props.login === true? 
+              ( <Switch> 
+                                      <Route exact path="/menu" component={withRouter(List)}/>
+                                      <Route exact path="/" >
+                                         <Redirect to="/menu" />
+                                      </Route>
+                                      <Route exact path="/details/:id" component={Details}/>
+                                      <Route exact path="/cart" component={Cart}/>
+                                      <Route exact path="/dashboard" component={Dashboard}/>
+                                      <Route exact path="/profile" component={Profile}/>
+                                      <Route exact path="/editprofile" component={EditProfile}/>
+                                      <Route exact path="/changepassword" component={ChangePassword}/>
+                                      <Route exact path="/track" component={Track}/>
+                                      <Route exact path="/checkout/order" component={Order}/>
+                                      <Route exact path="/checkout/payment" component={Payment}/>
+                                      <Route exact path="/feedback" component={Feedback}/>
+                             </Switch>):null}
+
       </div>
     </BrowserRouter>
     );
