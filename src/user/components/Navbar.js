@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import {NavLink,Link} from 'react-router-dom';
 
 class Navbar extends React.Component {
   render(){
     return(
         <div>
-        <header className="App-header">
+        <header className="App-header text-center">
           <nav className="navbar navbar-expand-md navbar-dark mx-5">
             <a className="navbar-brand" href="/menu"> Logo </a>
             
@@ -15,17 +16,18 @@ class Navbar extends React.Component {
             
             <div className="collapse navbar-collapse" id="navbarCollapse" >
               <ul className="navbar-nav mr-auto"> 
-                <li className="nav-item active">   
-                  <a href="/menu" className="nav-link" >Menu</a>
+                <li className="nav-item ">   
+                  <Link to="/menu" className="nav-link" >Menu</Link>
                 </li>
                 <li className="nav-item">   
-                  <a href="/track" className="nav-link">Track Order</a>
+                  <Link to="/feedback" className="nav-link">Write Feedback</Link>
                 </li>
                 <li className="nav-item">   
-                  <a href="/feedback" className="nav-link">Write Feedback</a>
+                  <Link to="/track" className="nav-link">Track Order</Link>
                 </li>
+                
                 <li className="nav-item">   
-                  <a href="/cart" className="nav-link"><i className="fas fa-shopping-cart"></i> Cart</a>
+                  <Link to="/cart" className="nav-link"><i className="fas fa-shopping-cart"></i> Cart</Link>
                 </li>
               </ul>
              

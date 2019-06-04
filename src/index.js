@@ -8,8 +8,8 @@ import 'jquery/dist/jquery.min.js'
 import 'bootstrap/dist/js/bootstrap.js';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
-import cartReducer from './reducers/cartReducer'
-import ProfileReducer from './reducers/profileReducer';
+import cartReducer from './user/reducers/cartReducer'
+import ProfileReducer from './user/reducers/profileReducer';
 
 function saveToLocalStorage(state) {
   try {

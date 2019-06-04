@@ -6,6 +6,10 @@ const initialState = {
         phone:'9999988888',
         gender:'Female',
         birthday:'1998-01-01',
+        address: {
+            type:'',
+            
+        },
     }
 }
 

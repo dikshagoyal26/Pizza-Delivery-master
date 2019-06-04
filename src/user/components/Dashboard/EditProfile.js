@@ -158,6 +158,9 @@ class EditProfile extends React.Component{
 
 			     		    <div className="text-center mt-3">		     		    		
 			     		    	<button type="submit" className="btn btn-danger">Save</button>
+
+			     		    	
+
 							</div>
 						</form>
 					</div>

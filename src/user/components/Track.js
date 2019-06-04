@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 class Track extends React.Component{
 	handleClick = () =>{
 		console.log(this.props.order_history)
+		
 	}
 	render(){
 		return(
