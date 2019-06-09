@@ -1,48 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'jquery/dist/jquery.min.js'
-import 'bootstrap/dist/js/bootstrap.js';
-import { Provider } from 'react-redux';
-import { createStore, combineReducers } from 'redux';
-import cartReducer from './user/reducers/cartReducer'
-import ProfileReducer from './user/reducers/profileReducer';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
-function saveToLocalStorage(state) {
-  try {
-    const serializedState = JSON.stringify(state)
-    sessionStorage.setItem('state', serializedState)
-  } catch(e) {
-    console.log(e)
-  }
-}
+import "bootstrap/dist/css/bootstrap.css";
+import "jquery/dist/jquery.min.js";
+import "bootstrap/dist/js/bootstrap.js";
+import { Provider } from "react-redux";
+import store from "./store";
 
-function loadFromLocalStorage() {
-  try {
-    const serializedState = sessionStorage.getItem('state')
-    if (serializedState === null) return undefined
-    return JSON.parse(serializedState)
-  } catch(e) {
-    console.log(e)
-    return undefined
-  }
-}
-
-const reducer = combineReducers(
-{
-	pr:ProfileReducer,
-	cr:cartReducer
-})
-
-const persistedState = loadFromLocalStorage()
-
-const store = createStore(reducer,persistedState);
-
-store.subscribe(()=>saveToLocalStorage(store.getState()));
-
-ReactDOM.render(<Provider store = {store}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
 
 serviceWorker.unregister();
