@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import Navbar from "./user/components/Navbar";
-import List from "./user/components/MenuList/List";
-import Home from "./user/components/Home";
-import Details from "./user/components/Details";
+import Navbar from "./user/components/layout/Navbar";
+import List from "./user/components/menu_list/List";
+import Home from "./user/components/layout/Home";
+import Details from "./user/components/menu_list/Details";
 import {
   BrowserRouter,
   Route,
@@ -20,7 +20,7 @@ import Track from "./user/components/Track";
 import Feedback from "./user/components/Feedback";
 import Order from "./user/components/Checkout/Order";
 import Payment from "./user/components/Checkout/Payment";
-import Login from "./user/components/Login";
+import Login from "./user/components/layout/Login";
 import { connect } from "react-redux";
 import Add from "./admin/components/Add";
 import Edit from "./admin/components/Edit";

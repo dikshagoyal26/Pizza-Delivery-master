@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
-import Input from './Input/Input';
+import Input from '../Input/Input';
 
 class List extends React.Component {
   constructor(props){

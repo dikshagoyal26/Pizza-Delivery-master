@@ -1,6 +1,11 @@
-import { PRODUCT_LOADING, GET_PRODUCTS } from "../actions/types";
+import {
+  PRODUCT_LOADING,
+  GET_PRODUCTS,
+  GET_PRODUCT_BY_ID
+} from "../actions/types";
 const initialState = {
   products: null,
+  product: null,
   loading: false,
   message: null
 };
@@ -16,6 +21,13 @@ const ProductReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload.list,
+        loading: false,
+        message: action.payload.msg
+      };
+    case GET_PRODUCT_BY_ID:
+      return {
+        ...state,
+        product: action.payload.product,
         loading: false,
         message: action.payload.msg
       };

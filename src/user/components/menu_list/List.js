@@ -11,7 +11,7 @@ class List extends React.Component {
   render() {
     let ItemComponents;
     if (this.props.products == null || this.props.loading) {
-      ItemComponents = <Spinner />;
+      ItemComponents = <p>Loading...</p>;
     } else {
       if (this.props.products.length > 0) {
         ItemComponents = this.props.products.map(item => {
@@ -43,7 +43,6 @@ class List extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    items: state.cr.items,
     products: state.prod_r.products,
     loading: state.prod_r.loading
   };
