@@ -1,8 +1,7 @@
 import React from "react";
 import Item from "./Item";
 import { connect } from "react-redux";
-import { getAllProducts } from "../../actions/productActions";
-import Spinner from "../Input/Spinner";
+import { getAllProducts } from "../../../actions/productActions";
 
 class List extends React.Component {
   componentDidMount() {

@@ -20,6 +20,7 @@ class List extends React.Component {
   }
   handleClick = () =>{
     this.state.display_form == 'login' ? this.setState({display_form:'signup',email:'',password:'',confirmpassword:'',formErrors:{email:'',password:'',confirmpassword:''}}) : this.setState({display_form:'login',email:'',password:'',confirmpassword:'',formErrors:{email:'',password:'',confirmpassword:''}})
+    
   }
   handleChange =(e) =>{
     console.log(e.target.name +"="+e.target.value)
@@ -34,10 +35,10 @@ class List extends React.Component {
     if(isValid){
       console.log("valid form");
       this.state.display_form == 'login' ? this.props.dispatch({type:'LOGIN'}) : this.props.dispatch({type:'SIGNUP'})
-      this.props.history.push("/menu");
+      
       window.location.reload(); 
       console.log(this.props);
-
+      
     }
   }
 
@@ -74,7 +75,6 @@ class List extends React.Component {
            <a>  <button data-toggle="modal" data-target="#LoginForm" className="btn btn-danger">Login</button></a>
           </nav>
         </header>
-        <img src="https://images6.alphacoders.com/412/412086.jpg"></img>
         <div className="modal fade" id="LoginForm" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div className="modal-dialog " role="document">
                     <div className="modal-content"> 
@@ -190,4 +190,10 @@ class List extends React.Component {
   }
 }
 
-export default withRouter(connect()(List));
+const mapStateToProps = (state) =>{
+  return {
+    is_admin: state.cr.is_admin
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(List));
