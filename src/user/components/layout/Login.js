@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Link, withRouter} from 'react-router-dom';
-import Input from './Input/Input';
+import Input from '../Input/Input';
 
 class List extends React.Component {
   constructor(props){
@@ -78,8 +78,9 @@ class List extends React.Component {
         <div className="modal fade" id="LoginForm" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div className="modal-dialog " role="document">
                     <div className="modal-content"> 
-                        { this.state.display_form == "login" ? ( <div className="login">
-                                                                    <div className="modal-body">
+                        { this.state.display_form == "login" ? ( 
+                        <div className="login">
+                          <div className="modal-body">
                                                                       <h4 className="text-center">Log in</h4>
                                                                     <form  onSubmit={this.onSubmitForm}>  
                                                                       <div className="form-group">   
