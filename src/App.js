@@ -4,6 +4,7 @@ import NotFoundPage from "./components/NotFoundPage";
 import HomePage from "./components/HomePage";
 
 import Navbar from "./components/user/layout/Navbar";
+import Footer from "./components/user/layout/Footer";
 import List from "./components/user/menu_list/List";
 import Details from "./components/user/menu_list/Details";
 import {
@@ -58,12 +59,15 @@ class App extends Component {
             <Route exact path="/admin/feedback" component={ViewFeedback} />
             <Route exact path="/admin/add" component={Add} />
             <Route exact path="/admin/edit" component={Edit} />
-            <Route exact path="/admin/view" component={ViewList} />
+            <Route exact path="/admin/list" component={ViewList} />
             <Route exact path="/admin/sales" component={ViewSales} />
             <Route exact path="/admin/order" component={ViewOrder} />
+            <Route exact path="/admin/order/update" component={UpdateOrder} />
+            <Route exact path="/admin/feedback" component={ViewFeedback} />
             <Route exact path="/admin/updateorder" component={UpdateOrder} />
             <Route component={NotFoundPage} />
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     );

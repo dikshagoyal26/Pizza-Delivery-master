@@ -118,22 +118,22 @@ class Navbar extends React.Component {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                   <ul className="navbar-nav mr-auto">
                     <li className="nav-item ">
-                      <Link to="/admin" className="nav-link">
-                        Menu
+                      <Link to="/admin/list" className="nav-link">
+                        Product List
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/admin" className="nav-link">
+                      <Link to="/admin/feedback" className="nav-link">
                         View Feedback
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/admin" className="nav-link">
+                      <Link to="/admin/order" className="nav-link">
                         View Order
                       </Link>
                     </li>
                     <li className="nav-item">
-                      <Link to="/admin" className="nav-link">
+                      <Link to="/admin/sales" className="nav-link">
                         View Sales
                       </Link>
                     </li>
