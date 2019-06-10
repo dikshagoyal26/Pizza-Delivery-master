@@ -1,4 +1,5 @@
 import React from "react";
+import Input from "../../user/Input/Input";
 class Add extends React.Component {
   render() {
     return (
@@ -9,9 +10,8 @@ class Add extends React.Component {
           <form>
             <div className="input-group">
               <label>Product ID:</label>
-              <input
-                type="number"
-                className="form-control ml-2"
+              <Input
+                type="text"
                 name="productid"
                 required
                 placeholder="Enter Product ID"
@@ -20,7 +20,7 @@ class Add extends React.Component {
 
             <div className="input-group">
               <label>Name:</label>
-              <input
+              <Input
                 type="text"
                 className="form-control ml-2"
                 name="name"
@@ -31,7 +31,7 @@ class Add extends React.Component {
 
             <div className="input-group">
               <label>Price:</label>
-              <input
+              <Input
                 type="text"
                 className="form-control ml-2"
                 name="price"
@@ -41,7 +41,7 @@ class Add extends React.Component {
             </div>
             <div className="input-group">
               <label>Ingredients:</label>
-              <input
+              <Input
                 type="text"
                 className="form-control ml-2"
                 name="ingredients"
@@ -51,7 +51,7 @@ class Add extends React.Component {
             </div>
             <div className="input-group">
               <label>Category (veg/non veg):</label>
-              <input
+              <Input
                 type="text"
                 className="form-control ml-2"
                 name="category"
@@ -61,7 +61,7 @@ class Add extends React.Component {
             </div>
             <div className="input-group">
               <label>Toppings :</label>
-              <input
+              <Input
                 type="text"
                 className="form-control ml-2"
                 name="toppings"
@@ -71,7 +71,7 @@ class Add extends React.Component {
             </div>
             <div className="input-group">
               <label>Description :</label>
-              <input
+              <Input
                 type="text"
                 className="form-control ml-2"
                 name="description"

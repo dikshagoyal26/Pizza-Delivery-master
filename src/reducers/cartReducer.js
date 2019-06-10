@@ -1,4 +1,5 @@
 import { sampleData } from "../sampledata";
+import { LOGIN, SIGNUP, LOGOUT, ADMINLOGIN } from "../actions/types";
 
 const initialState = {
   items: sampleData,
@@ -115,13 +116,21 @@ const cartReducer = (state = initialState, action) => {
         ]
       };
     }
-    case "LOGIN": {
+    case LOGIN: {
       return {
         ...state,
-        login: true
+        login: true,
+        is_admin: false
       };
     }
-    case "LOGOUT": {
+    case ADMINLOGIN: {
+      return {
+        ...state,
+        login: true,
+        is_admin: true
+      };
+    }
+    case LOGOUT: {
       return {
         ...state,
         login: false

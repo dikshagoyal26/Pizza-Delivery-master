@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class Admin extends React.Component {
+class AdminDasboard extends React.Component {
   render() {
     return (
       <div>
         <div className="container-fluid text-center">
-          <h1>Admin Pizza</h1>
+          <h1>Admin Dashboard</h1>
           <Link to="/admin/add">
             <button className="btn btn-primary m-3">Add Product</button>
           </Link>
@@ -22,4 +22,4 @@ class Admin extends React.Component {
     );
   }
 }
-export default Admin;
+export default AdminDasboard;

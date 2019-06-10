@@ -32,9 +32,10 @@ import Edit from "./components/admin/create-product/Edit";
 import ViewFeedback from "./components/admin/ViewFeedback";
 import ViewList from "./components/admin/ViewList";
 import ViewSales from "./components/admin/ViewSales";
+import Admins from "./components/admin/Admins";
 import ViewOrder from "./components/admin/Order/ViewOrder";
 import UpdateOrder from "./components/admin/Order/UpdateOrder";
-import Admin from "./components/admin/layout/Admin";
+import AdminDashboard from "./components/admin/layout/AdminDashboard";
 
 class App extends Component {
   render() {
@@ -52,10 +53,12 @@ class App extends Component {
             <Route exact path="/editprofile" component={EditProfile} />
             <Route exact path="/changepassword" component={ChangePassword} />
             <Route exact path="/track" component={Track} />
+            <Route exact path="/feedback" component={Feedback} />
             <Route exact path="/checkout/order" component={Order} />
             <Route exact path="/checkout/payment" component={Payment} />
 
-            <Route exact path="/admin" component={Admin} />
+            <Route exact path="/admin/dashboard" component={AdminDashboard} />
+            <Route exact path="/admin/admins" component={Admins} />
             <Route exact path="/admin/feedback" component={ViewFeedback} />
             <Route exact path="/admin/add" component={Add} />
             <Route exact path="/admin/edit" component={Edit} />

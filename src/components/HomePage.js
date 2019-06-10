@@ -17,7 +17,7 @@ class HomePage extends Component {
       if (!this.props.is_admin) {
         this.props.history.push("/menu");
       } else {
-        this.props.history.push("/admin");
+        this.props.history.push("/admin/dashboard");
       }
     }
     return <div>{Img}</div>;

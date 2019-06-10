@@ -4,6 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 import Login from "./Login";
 
 class Navbar extends React.Component {
+  handleClick = () => this.props.dispatch({ type: "LOGOUT" });
   render() {
     let Navbar = <p>Some error occured. Please try again later</p>;
     if (!this.props.is_login) {
@@ -82,7 +83,7 @@ class Navbar extends React.Component {
                       <a
                         href="/"
                         className="dropdown-item"
-                        onClick={() => this.props.dispatch({ type: "LOGOUT" })}
+                        onClick={this.handleClick}
                       >
                         Logout
                       </a>
@@ -98,7 +99,7 @@ class Navbar extends React.Component {
           <div>
             <header className="App-header text-center">
               <nav className="navbar navbar-expand-md navbar-dark mx-5">
-                <a className="navbar-brand" href="/admin">
+                <a className="navbar-brand" href="/admin/dashboard">
                   {" "}
                   Logo{" "}
                 </a>
@@ -118,8 +119,18 @@ class Navbar extends React.Component {
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                   <ul className="navbar-nav mr-auto">
                     <li className="nav-item ">
+                      <Link to="/admin/dashboard" className="nav-link">
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li className="nav-item ">
                       <Link to="/admin/list" className="nav-link">
                         Product List
+                      </Link>
+                    </li>
+                    <li className="nav-item ">
+                      <Link to="/admin/admins" className="nav-link">
+                        Admins
                       </Link>
                     </li>
                     <li className="nav-item">
@@ -155,9 +166,6 @@ class Navbar extends React.Component {
                       className="dropdown-menu dropdown-menu-right"
                       aria-labelledby="navbarDropdown"
                     >
-                      <a href="/dashboard" className="dropdown-item">
-                        My Dashboard
-                      </a>
                       <a href="/changepassword" className="dropdown-item">
                         Change Password
                       </a>
@@ -165,7 +173,7 @@ class Navbar extends React.Component {
                       <a
                         href="/"
                         className="dropdown-item"
-                        onClick={() => this.props.dispatch({ type: "LOGOUT" })}
+                        onClick={this.handleClick}
                       >
                         Logout
                       </a>
