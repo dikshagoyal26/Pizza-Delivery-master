@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from "redux-thunk";
-import cartReducer from "./user/reducers/cartReducer";
-import ProfileReducer from "./user/reducers/profileReducer";
-import ProductReducer from "./user/reducers/productReducer";
+import cartReducer from "./reducers/cartReducer";
+import ProfileReducer from "./reducers/profileReducer";
+import ProductReducer from "./reducers/productReducer";
 
 function saveToLocalStorage(state) {
   try {

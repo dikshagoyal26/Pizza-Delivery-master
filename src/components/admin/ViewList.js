@@ -1,10 +1,10 @@
 import React from "react";
-import Item from "./Item";
+import ListItem from "./ListItem";
 import { connect } from "react-redux";
 import { getAllProducts } from "../../actions/productActions";
-import Spinner from "../Input/Spinner";
+import { Link } from "react-router-dom";
 
-class List extends React.Component {
+class ViewList extends React.Component {
   componentDidMount() {
     this.props.getAllProducts();
   }
@@ -16,7 +16,7 @@ class List extends React.Component {
       if (this.props.products.length > 0) {
         ItemComponents = this.props.products.map(item => {
           return (
-            <Item
+            <ListItem
               key={item._id}
               id={item.productid}
               name={item.name}
@@ -34,8 +34,15 @@ class List extends React.Component {
     }
 
     return (
-      <div className="menuList">
+      <div className="menuList py-3">
+        <h4>Admin Portal </h4>
         <h2>Menu</h2>
+        <Link to="/admin/add">
+          <button className="btn btn-primary m-3">Add Product</button>
+        </Link>
+
+        <button className="btn btn-primary m-3">Delete All Product</button>
+
         <div className="row">{ItemComponents}</div>
       </div>
     );
@@ -50,4 +57,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { getAllProducts }
-)(List);
+)(ViewList);

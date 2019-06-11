@@ -1,7 +1,7 @@
 import React from "react";
-import sampleData from "../../sampledata";
+//import sampleData from "../../sampledata";
 import { connect } from "react-redux";
-import { getProductByID } from "../../actions/productActions";
+import { getProductByID } from "../../../actions/productActions";
 
 class Details extends React.Component {
   componentDidMount() {
@@ -38,7 +38,7 @@ class Details extends React.Component {
             <p className="price">Price: Rs.{Item.price}</p>
             <p>
               Category:{" "}
-              {Item.category == "veg" ? (
+              {Item.category === "veg" ? (
                 <span className="text-success">
                   <i class="fas fa-circle" /> veg
                 </span>
