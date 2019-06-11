@@ -7,13 +7,7 @@ import Navbar from "./components/user/layout/Navbar";
 import Footer from "./components/user/layout/Footer";
 import List from "./components/user/menu_list/List";
 import Details from "./components/user/menu_list/Details";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  withRouter,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import Cart from "./components/user/cart/Cart";
 import Profile from "./components/user/Dashboard/Profile";
 import EditProfile from "./components/user/Dashboard/EditProfile";
@@ -23,7 +17,6 @@ import Track from "./components/user/Track";
 import Feedback from "./components/user/Feedback";
 import Order from "./components/user/Checkout/Order";
 import Payment from "./components/user/Checkout/Payment";
-import Login from "./components/user/layout/Login";
 
 import { connect } from "react-redux";
 
@@ -61,7 +54,7 @@ class App extends Component {
             <Route exact path="/admin/admins" component={Admins} />
             <Route exact path="/admin/feedback" component={ViewFeedback} />
             <Route exact path="/admin/add" component={Add} />
-            <Route exact path="/admin/edit" component={Edit} />
+            <Route exact path="/admin/edit/:id" component={Edit} />
             <Route exact path="/admin/list" component={ViewList} />
             <Route exact path="/admin/sales" component={ViewSales} />
             <Route exact path="/admin/order" component={ViewOrder} />

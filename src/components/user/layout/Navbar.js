@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Login from "./Login";
 
 class Navbar extends React.Component {
@@ -136,16 +136,6 @@ class Navbar extends React.Component {
                     <li className="nav-item">
                       <Link to="/admin/feedback" className="nav-link">
                         View Feedback
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link to="/admin/order" className="nav-link">
-                        View Order
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link to="/admin/sales" className="nav-link">
-                        View Sales
                       </Link>
                     </li>
                   </ul>

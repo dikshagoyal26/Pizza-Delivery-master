@@ -10,13 +10,12 @@ class AdminDasboard extends React.Component {
           <Link to="/admin/add">
             <button className="btn btn-primary m-3">Add Product</button>
           </Link>
-          <Link to="/admin/viewlist">
-            <button className="btn btn-primary m-3">Edit Product</button>
+          <Link to="/admin/order">
+            <button className="btn btn-primary m-3">View Orders</button>
           </Link>
-
-          <button className="btn btn-primary m-3">Delete Product</button>
-
-          <button className="btn btn-primary m-3">Update Product</button>
+          <Link to="/admin/sales">
+            <button className="btn btn-primary m-3">View Sales</button>
+          </Link>
         </div>
       </div>
     );

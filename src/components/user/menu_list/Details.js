@@ -1,5 +1,4 @@
 import React from "react";
-//import sampleData from "../../sampledata";
 import { connect } from "react-redux";
 import { getProductByID } from "../../../actions/productActions";
 
@@ -40,11 +39,11 @@ class Details extends React.Component {
               Category:{" "}
               {Item.category === "veg" ? (
                 <span className="text-success">
-                  <i class="fas fa-circle" /> veg
+                  <i className="fas fa-circle" /> veg
                 </span>
               ) : (
                 <span className="text-danger">
-                  <i class="fas fa-circle" /> non veg
+                  <i className="fas fa-circle" /> non veg
                 </span>
               )}
             </p>

@@ -1,4 +1,4 @@
-import { GET_PRODUCTS, GET_PRODUCT_BY_ID } from "./types";
+import { GET_PRODUCTS, GET_PRODUCT_BY_ID, GET_ERRORS } from "./types";
 import axios from "axios";
 
 //Get all the product list
@@ -38,3 +38,50 @@ export const getProductByID = id => dispatch => {
       console.log(err);
     });
 };
+
+//Post product
+export const addProduct = (productData, history) => dispatch => {
+  axios
+    .post("http://localhost:5000/product/add", productData)
+    .then(res => {
+      alert("Product Added");
+      history.push("/admin/list");
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
+//Update product
+//Put request
+export const updateProduct = (productData, history) => dispatch => {
+  axios
+    .put("http://localhost:5000/product/update", productData)
+    .then(res => {
+      alert("Product Updated");
+      history.push("/admin/list");
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
+
+//Delete product
+export const deleteProduct = id => dispatch => {
+  axios
+    .delete("http://localhost:5000/product/delete", { productid: id })
+    .then(res => {
+      console.log("Product deleted" + res.data.msg);
+    })
+    .catch(err => {
+      console.log("errrrrror " + err);
+    });
+};
+
+//
