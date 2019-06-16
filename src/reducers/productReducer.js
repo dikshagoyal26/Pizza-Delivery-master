@@ -18,19 +18,23 @@ const ProductReducer = (state = initialState, action) => {
         loading: true
       };
     case GET_PRODUCTS:
-      return {
-        ...state,
-        products: action.payload.list,
-        loading: false,
-        message: action.payload.msg
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          products: action.payload.list,
+          loading: false,
+          message: action.payload.msg
+        };
+      }
     case GET_PRODUCT_BY_ID:
-      return {
-        ...state,
-        product: action.payload.product,
-        loading: false,
-        message: action.payload.msg
-      };
+      if (action.payload) {
+        return {
+          ...state,
+          product: action.payload.product,
+          loading: false,
+          message: action.payload.msg
+        };
+      }
     default:
       return state;
   }

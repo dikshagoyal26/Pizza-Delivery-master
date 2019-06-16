@@ -7,8 +7,8 @@ const Input = props => {
         <label className="mr-2">{props.label}</label>
 
         {props.title ? (
-          <div class="input-group-prepend">
-            <span class="input-group-text">{props.title}</span>
+          <div className="input-group-prepend">
+            <span className="input-group-text">{props.title}</span>
           </div>
         ) : null}
         <input

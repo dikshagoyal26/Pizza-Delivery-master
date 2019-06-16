@@ -10,7 +10,7 @@ class ViewList extends React.Component {
   }
   render() {
     let ItemComponents;
-    if (this.props.products == null || this.props.loading) {
+    if (this.props.products == null) {
       ItemComponents = <p>Loading...</p>;
     } else {
       if (this.props.products.length > 0) {

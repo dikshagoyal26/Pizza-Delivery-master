@@ -22,13 +22,29 @@ import { connect } from "react-redux";
 
 import Add from "./components/admin/create-product/Add";
 import Edit from "./components/admin/create-product/Edit";
-import ViewFeedback from "./components/admin/ViewFeedback";
+import ViewFeedback from "./components/admin/feedback/ViewFeedback";
 import ViewList from "./components/admin/ViewList";
 import ViewSales from "./components/admin/ViewSales";
-import Admins from "./components/admin/Admins";
+import Admins from "./components/admin/admins/Admins";
 import ViewOrder from "./components/admin/Order/ViewOrder";
 import UpdateOrder from "./components/admin/Order/UpdateOrder";
 import AdminDashboard from "./components/admin/layout/AdminDashboard";
+import axios from "axios";
+// You can use any cookie library or whatever
+// library to access your client storage.
+
+// axios.interceptors.request.use(
+//   function(config) {
+//     const token = localStorage.getItem("jwtToken");
+//     if (token != null) {
+//       config.headers["auth-token"] = token;
+//     }
+//     return config;
+//   },
+//   function(err) {
+//     return Promise.reject(err);
+//   }
+// );
 
 class App extends Component {
   render() {

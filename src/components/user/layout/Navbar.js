@@ -182,8 +182,8 @@ class Navbar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    is_login: state.cr.login,
-    is_admin: state.cr.is_admin
+    is_login: state.auth_r.login,
+    is_admin: state.auth_r.is_admin
   };
 };
 

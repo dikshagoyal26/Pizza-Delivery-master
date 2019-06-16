@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getProductByID } from "../../../actions/productActions";
+import { addToCart } from "../../../actions/cartActions";
 
 class Details extends React.Component {
   componentDidMount() {
@@ -8,8 +9,8 @@ class Details extends React.Component {
   }
 
   handleClick = id => {
-    this.props.dispatch({ type: "ADD_TO_CART", id: id });
-    this.props.history.push("/cart");
+    this.props.addToCart(this.props.product[0]);
+    // this.props.history.push("/cart");
   };
   render() {
     if (!this.props.product) {
@@ -71,5 +72,5 @@ const mapStateToProps = state => {
 };
 export default connect(
   mapStateToProps,
-  { getProductByID }
+  { getProductByID, addToCart }
 )(Details);

@@ -9,7 +9,11 @@ class ListItem extends React.Component {
     this.deleteProduct = this.deleteProduct.bind(this);
   }
   deleteProduct = () => {
-    this.props.deleteProduct(this.props.productid, this.props.history);
+    const productData = {
+      productid: this.props.productid,
+      name: this.props.name
+    };
+    this.props.deleteProduct(productData, this.props.history);
   };
 
   render() {
