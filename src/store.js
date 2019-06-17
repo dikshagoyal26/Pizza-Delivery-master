@@ -3,6 +3,12 @@ import thunk from "redux-thunk";
 import cartReducer from "./reducers/cartReducer";
 import ProfileReducer from "./reducers/profileReducer";
 import ProductReducer from "./reducers/productReducer";
+import errorReducer from "./reducers/errorReducer";
+import adminReducer from "./reducers/adminReducer";
+import authReducer from "./reducers/authReducer";
+import orderReducer from "./reducers/orderReducer";
+import feedbackReducer from "./reducers/feedbackReducer";
+import userReducer from "./reducers/userReducer";
 
 function saveToLocalStorage(state) {
   try {
@@ -29,7 +35,13 @@ const middleware = [thunk];
 const reducer = combineReducers({
   pr: ProfileReducer,
   cr: cartReducer,
-  prod_r: ProductReducer
+  prod_r: ProductReducer,
+  er: errorReducer,
+  ar: adminReducer,
+  auth_r: authReducer,
+  order_r: orderReducer,
+  feedback_r: feedbackReducer,
+  user_r: userReducer
 });
 
 const persistedState = loadFromLocalStorage();

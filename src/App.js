@@ -7,13 +7,7 @@ import Navbar from "./components/user/layout/Navbar";
 import Footer from "./components/user/layout/Footer";
 import List from "./components/user/menu_list/List";
 import Details from "./components/user/menu_list/Details";
-import {
-  BrowserRouter,
-  Route,
-  Switch,
-  withRouter,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
 import Cart from "./components/user/cart/Cart";
 import Profile from "./components/user/Dashboard/Profile";
 import EditProfile from "./components/user/Dashboard/EditProfile";
@@ -23,19 +17,34 @@ import Track from "./components/user/Track";
 import Feedback from "./components/user/Feedback";
 import Order from "./components/user/Checkout/Order";
 import Payment from "./components/user/Checkout/Payment";
-import Login from "./components/user/layout/Login";
 
 import { connect } from "react-redux";
 
 import Add from "./components/admin/create-product/Add";
 import Edit from "./components/admin/create-product/Edit";
-import ViewFeedback from "./components/admin/ViewFeedback";
+import ViewFeedback from "./components/admin/feedback/ViewFeedback";
 import ViewList from "./components/admin/ViewList";
 import ViewSales from "./components/admin/ViewSales";
-import Admins from "./components/admin/Admins";
+import Admins from "./components/admin/admins/Admins";
 import ViewOrder from "./components/admin/Order/ViewOrder";
 import UpdateOrder from "./components/admin/Order/UpdateOrder";
 import AdminDashboard from "./components/admin/layout/AdminDashboard";
+import axios from "axios";
+// You can use any cookie library or whatever
+// library to access your client storage.
+
+// axios.interceptors.request.use(
+//   function(config) {
+//     const token = localStorage.getItem("jwtToken");
+//     if (token != null) {
+//       config.headers["auth-token"] = token;
+//     }
+//     return config;
+//   },
+//   function(err) {
+//     return Promise.reject(err);
+//   }
+// );
 
 class App extends Component {
   render() {
@@ -61,7 +70,7 @@ class App extends Component {
             <Route exact path="/admin/admins" component={Admins} />
             <Route exact path="/admin/feedback" component={ViewFeedback} />
             <Route exact path="/admin/add" component={Add} />
-            <Route exact path="/admin/edit" component={Edit} />
+            <Route exact path="/admin/edit/:id" component={Edit} />
             <Route exact path="/admin/list" component={ViewList} />
             <Route exact path="/admin/sales" component={ViewSales} />
             <Route exact path="/admin/order" component={ViewOrder} />

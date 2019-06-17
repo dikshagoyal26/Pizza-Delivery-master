@@ -1,8 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Input from "../Input/Input";
 import { LOGIN, ADMINLOGIN, SIGNUP } from "../../../actions/types";
+import { loginAdmin, loginUser } from "../../../actions/authActions";
 
 class List extends React.Component {
   constructor(props) {
@@ -53,25 +54,30 @@ class List extends React.Component {
   onClick_ForgotPwd = () => {};
 
   handleChange = e => {
-    console.log(e.target.name + "=" + e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   };
 
   onSubmitForm = e => {
     e.preventDefault();
     let isValid = this.validate();
-    console.log(" status: Valid form + state: " + JSON.stringify(this.state));
     if (isValid) {
       if (this.state.display_form == "login") {
-        this.props.dispatch({ type: LOGIN });
+        const userData = {
+          userid: this.state.email,
+          password: this.state.password
+        };
+        this.props.loginUser(userData, this.props.history);
       } else if (this.state.display_form == "signup") {
         this.props.dispatch({ type: SIGNUP });
       } else if (this.state.display_form == "admin") {
-        this.props.dispatch({ type: ADMINLOGIN });
+        const AdminData = {
+          adminid: this.state.email,
+          password: this.state.password
+        };
+        this.props.loginAdmin(AdminData, this.props.history);
       }
 
-      window.location.reload();
-      console.log(this.props);
+      //window.location.reload();
     }
   };
 
@@ -429,8 +435,13 @@ class List extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    is_admin: state.cr.is_admin
+    is_admin: state.auth_r.is_admin
   };
 };
 
-export default withRouter(connect(mapStateToProps)(List));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { loginAdmin, loginUser }
+  )(List)
+);

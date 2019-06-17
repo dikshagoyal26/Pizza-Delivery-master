@@ -10,7 +10,7 @@ class ViewList extends React.Component {
   }
   render() {
     let ItemComponents;
-    if (this.props.products == null || this.props.loading) {
+    if (this.props.products == null) {
       ItemComponents = <p>Loading...</p>;
     } else {
       if (this.props.products.length > 0) {
@@ -25,6 +25,7 @@ class ViewList extends React.Component {
               imgUrl="https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
               category={item.category}
               toppings={item.toppings}
+              description={item.description}
             />
           );
         });

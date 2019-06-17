@@ -12,7 +12,6 @@ class HomePage extends Component {
           alt="CoverPage"
         />
       );
-      console.log("not login");
     } else {
       if (!this.props.is_admin) {
         this.props.history.push("/menu");
@@ -26,8 +25,8 @@ class HomePage extends Component {
 
 const mapStateToProps = state => {
   return {
-    is_login: state.cr.login,
-    is_admin: state.cr.is_admin
+    is_login: state.auth_r.login,
+    is_admin: state.auth_r.is_admin
   };
 };
 

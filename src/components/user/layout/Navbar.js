@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Login from "./Login";
 
 class Navbar extends React.Component {
@@ -138,16 +138,6 @@ class Navbar extends React.Component {
                         View Feedback
                       </Link>
                     </li>
-                    <li className="nav-item">
-                      <Link to="/admin/order" className="nav-link">
-                        View Order
-                      </Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link to="/admin/sales" className="nav-link">
-                        View Sales
-                      </Link>
-                    </li>
                   </ul>
 
                   <div className="dropdown">
@@ -192,8 +182,8 @@ class Navbar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    is_login: state.cr.login,
-    is_admin: state.cr.is_admin
+    is_login: state.auth_r.login,
+    is_admin: state.auth_r.is_admin
   };
 };
 
