@@ -3,41 +3,56 @@ import CartColumn from "./CartColumn";
 import CartItem from "./CartItem";
 import PriceDetails from "./PriceDetails";
 import { connect } from "react-redux";
-import { getCart } from "../../../actions/cartActions";
+import { getCart, deleteAllCart } from "../../../actions/cartActions";
+import { Link } from "react-router-dom";
 
 class Cart extends React.Component {
   componentDidMount() {
     this.props.getCart();
   }
+
+  emptyCart = () => {
+    this.props.deleteAllCart();
+  };
+
   render() {
     let Cart = null;
     if (this.props.cart_items == null) {
       Cart = <p> YOUR CART IS EMPTY </p>;
     } else {
-      let CartComponents = this.props.cart_items.map(item => {
+      let CartComponents = this.props.cart_items.products.map(item => {
         return (
           <CartItem
-            key={item.id}
-            id={item.id}
+            key={item.productid}
+            id={item.productid}
             name={item.name}
-            quantity={item.quantity}
+            qty={item.qty}
             price={item.price}
             imgUrl={item.imgUrl}
+            total={item.total}
             ingredients={item.ingredients}
           />
         );
       });
       Cart = (
         <div>
+          <button className="btn btn-danger mb-3" onClick={this.emptyCart}>
+            Empty Cart
+          </button>
           <CartColumn />
           {CartComponents}
           <div>
-            <p className="text-right mr-5 font-weight-bold">
+            <Link to="/checkout/order">
+              {" "}
+              <button className="btn btn-success my-5">Order</button>
+            </Link>
+
+            {/* <p className="text-right mr-5 font-weight-bold">
               Sub Total: {this.props.total_price}
             </p>
             <div className="col-md-6 m-auto">
               <PriceDetails />
-            </div>
+            </div> */}
           </div>
         </div>
       );
@@ -54,12 +69,12 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cart_items: state.cr.cart_items,
-    total_price: state.cr.total_price
+    cart_items: state.cr.cart
+    //total_price: state.cr.total_price
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getCart }
+  { getCart, deleteAllCart }
 )(Cart);

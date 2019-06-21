@@ -50,49 +50,45 @@ export const getUserFeedbacks = () => dispatch => {
 export const addFeedback = (feedback, history) => dispatch => {
   console.log(feedback);
   const feedbackData = {
-    description: feedback,
+    description: feedback.description,
     userid: store.getState().user_r.user.userid
   };
 
   axios
     .post("http://localhost:5000/feedback/add", feedbackData)
-    .then(res => {})
+    .then(res => {
+      window.location.reload();
+    })
     .catch(err => {
-      // dispatch({
-      //   type: GET_ERRORS,
-      //   payload: err.response.data
-      // });
+      console.log(err.response.message);
     });
 };
 
-// //Update admin
-// //Put request
-// export const updateAdmin = (adminData, history) => dispatch => {
-//   console.log(adminData);
-//   axios
-//     .put("http://localhost:5000/admin/admins/update", adminData)
-//     .then(res => {
-//       console.log("Admin Updated");
-//       window.location.reload();
-//     })
-//     .catch(err => {
-//       console.log("Error" + err);
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data
-//       });
-//     });
-// };
+//Update Feedback
+//Put request
+export const updateFeedback = (feedbackData, history) => dispatch => {
+  console.log(feedbackData);
+  axios
+    .put("http://localhost:5000/feedback/update", feedbackData)
+    .then(res => {
+      console.log(res.data.message);
+      window.location.reload();
+    })
+    .catch(err => {
+      console.log("Error" + err.response.message);
+    });
+};
 
-//Delete admin
+//Delete feedback
 export const deleteFeedback = id => dispatch => {
   axios
-    .delete("http://localhost:5000/feedback/delete", {
-      feedbackid: id,
+    .post("http://localhost:5000/feedback/delete", {
+      _id: id,
       userid: store.getState().user_r.user.userid
     })
     .then(res => {
       console.log(res.data.message);
+      window.location.reload();
     })
     .catch(err => {
       console.log("Error " + err.response.message);

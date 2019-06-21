@@ -68,9 +68,11 @@ export const updateAdmin = (adminData, history) => dispatch => {
 export const deleteAdmin = adminData => dispatch => {
   console.log(adminData);
   axios
-    .delete("http://localhost:5000/admin/admins/delete", adminData)
-    .then(res => {})
+    .post("http://localhost:5000/admin/admins/delete", adminData)
+    .then(res => {
+      window.location.reload();
+    })
     .catch(err => {
-      console.log("Error " + err.response.message);
+      console.log("Error " + err);
     });
 };

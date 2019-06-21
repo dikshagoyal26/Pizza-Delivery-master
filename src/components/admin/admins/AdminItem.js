@@ -20,12 +20,15 @@ class AdminItem extends React.Component {
   }
 
   componentWillReceiveProps = nextProps => {
-    this.setState({ name: nextProps.name, adminid: nextProps.adminid });
+    this.setState({
+      name: nextProps.name,
+      adminid: nextProps.adminid,
+      oldadminid: nextProps.adminid
+    });
   };
 
   handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-    this.setState({ is_changed: true });
+    this.setState({ [e.target.name]: e.target.value, is_changed: true });
   };
 
   deleteAdmin = () => {
@@ -40,8 +43,8 @@ class AdminItem extends React.Component {
     if (this.state.is_edit_mode && this.state.is_changed) {
       const adminData = {
         name: this.state.name,
-        adminid: this.state.adminid,
-        oldadminid: this.state.oldadminid
+        newadminid: this.state.adminid,
+        adminid: this.state.oldadminid
       };
       this.props.updateAdmin(adminData, this.props.history);
     }

@@ -7,12 +7,15 @@ class Item extends React.Component {
   add_to_cart = () => {
     const cartData = {
       productid: this.props.id,
+      name: this.props.name,
       price: this.props.price,
       toppings: this.props.toppings,
-      qty: "1"
+      qty: 1,
+      operation: "+1"
     };
     this.props.addToCart(cartData);
   };
+
   render() {
     return (
       <div className="col-lg-3 col-sm-6 col-md-4 mt-3">

@@ -10,7 +10,7 @@ class Edit extends React.Component {
     this.state = {
       productid: "",
       name: "",
-      price: "",
+      price: 0,
       ingredients: "",
       category: "",
       toppings: "",
@@ -92,7 +92,7 @@ class Edit extends React.Component {
             />
 
             <Input
-              type="text"
+              type="number"
               className="form-control ml-2"
               name="price"
               label="Price: "
