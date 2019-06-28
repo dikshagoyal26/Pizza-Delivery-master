@@ -10,7 +10,7 @@ export const getAllFeedbacks = () => dispatch => {
       console.log(res.data);
       dispatch({
         type: GET_FEEDBACKS,
-        payload: res.data //adminlist
+        payload: res.data.record
       });
     })
     .catch(err => {
@@ -57,7 +57,7 @@ export const addFeedback = (feedback, history) => dispatch => {
   axios
     .post("http://localhost:5000/feedback/add", feedbackData)
     .then(res => {
-      window.location.reload();
+      dispatch(getUserFeedbacks());
     })
     .catch(err => {
       console.log(err.response.message);
@@ -72,7 +72,7 @@ export const updateFeedback = (feedbackData, history) => dispatch => {
     .put("http://localhost:5000/feedback/update", feedbackData)
     .then(res => {
       console.log(res.data.message);
-      window.location.reload();
+      dispatch(getUserFeedbacks());
     })
     .catch(err => {
       console.log("Error" + err.response.message);
@@ -88,7 +88,7 @@ export const deleteFeedback = id => dispatch => {
     })
     .then(res => {
       console.log(res.data.message);
-      window.location.reload();
+      dispatch(getUserFeedbacks());
     })
     .catch(err => {
       console.log("Error " + err.response.message);

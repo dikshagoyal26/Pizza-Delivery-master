@@ -48,7 +48,6 @@ export const loginUser = (userData, history) => dispatch => {
   });
 
   //   localStorage.setItem("jwtToken", res.data.token);
-  //   history.push("/admin/dashboard");
   // })
   // .catch(err => {
   //   console.log("errrrr" + err);

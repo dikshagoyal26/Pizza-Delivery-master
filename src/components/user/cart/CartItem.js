@@ -35,7 +35,15 @@ class CartItem extends React.Component {
   };
 
   onDelete = () => {
-    this.props.deleteCartProduct(this.props.id);
+    const cartData = {
+      productid: this.props.id,
+      name: this.props.name,
+      price: this.props.price,
+      toppings: this.props.toppings,
+      qty: 1,
+      operation: "+1"
+    };
+    this.props.deleteCartProduct(cartData);
   };
 
   render() {

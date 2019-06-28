@@ -8,15 +8,10 @@ const initialState = {
 const OrderReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_FEEDBACKS: {
-      if (action.payload) {
-        return {
-          ...state,
-          feedbacks: action.payload.record,
-          message: action.payload.msg
-        };
-      } else {
-        return { ...state };
-      }
+      return {
+        ...state,
+        feedbacks: action.payload
+      };
     }
     case GET_USER_FEEDBACKS: {
       if (action.payload) {

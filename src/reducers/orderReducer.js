@@ -1,7 +1,14 @@
-import { GET_ORDERS } from "../actions/types";
+import {
+  GET_ORDERS,
+  SAVE_ORDER_ADDRESS,
+  GET_USER_ORDERS
+} from "../actions/types";
 
 const initialState = {
-  orders: null
+  orders: null,
+  order_id: 0,
+  order_history: [],
+  order_address: {}
 };
 
 const OrderReducer = (state = initialState, action) => {
@@ -17,6 +24,10 @@ const OrderReducer = (state = initialState, action) => {
         return { ...state };
       }
     }
+    case SAVE_ORDER_ADDRESS: {
+      return { ...state, order_address: action.payload };
+    }
+
     default:
       return state;
   }

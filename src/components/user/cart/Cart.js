@@ -4,6 +4,7 @@ import CartItem from "./CartItem";
 import PriceDetails from "./PriceDetails";
 import { connect } from "react-redux";
 import { getCart, deleteAllCart } from "../../../actions/cartActions";
+import { addOrder } from "../../../actions/orderActions";
 import { Link } from "react-router-dom";
 
 class Cart extends React.Component {
@@ -17,7 +18,11 @@ class Cart extends React.Component {
 
   render() {
     let Cart = null;
-    if (this.props.cart_items == null) {
+    if (
+      this.props.cart_items == null ||
+      this.props.cart_items.products.length <= 0 ||
+      this.props.cart_items.products == null
+    ) {
       Cart = <p> YOUR CART IS EMPTY </p>;
     } else {
       let CartComponents = this.props.cart_items.products.map(item => {
@@ -42,17 +47,16 @@ class Cart extends React.Component {
           <CartColumn />
           {CartComponents}
           <div>
-            <Link to="/checkout/order">
-              {" "}
-              <button className="btn btn-success my-5">Order</button>
-            </Link>
-
-            {/* <p className="text-right mr-5 font-weight-bold">
+            <p className="text-right mr-5 font-weight-bold">
               Sub Total: {this.props.total_price}
             </p>
             <div className="col-md-6 m-auto">
               <PriceDetails />
-            </div> */}
+            </div>
+            <Link to="/checkout/order">
+              {" "}
+              <button className="btn btn-primary">Order</button>
+            </Link>
           </div>
         </div>
       );
@@ -69,12 +73,12 @@ class Cart extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    cart_items: state.cr.cart
-    //total_price: state.cr.total_price
+    cart_items: state.cr.cart,
+    total_price: state.cr.total_price
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getCart, deleteAllCart }
+  { getCart, deleteAllCart, addOrder }
 )(Cart);

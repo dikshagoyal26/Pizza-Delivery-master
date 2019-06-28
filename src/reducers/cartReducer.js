@@ -6,15 +6,17 @@ import {
   INC_QUANTITY,
   ORDER_TOTAL_PRICE,
   ORDER_ID,
-  GET_CART
+  GET_CART,
+  GET_PRICE
 } from "../actions/types";
 
 const initialState = {
   total_price: 0, //cart item sub total
   cart: null,
-  order_price: 0, //Price after tax, discount, etc
-  order_id: 0,
-  order_history: []
+  discount: 0.2,
+  tax: 0.12,
+  delivery_charges: 100,
+  order_price: 0 //Price after tax, discount, etc
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -23,6 +25,24 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cart: action.payload
+      };
+    }
+
+    case GET_PRICE: {
+      let total = 0;
+      for (var i = 0; i < state.cart.products.length; i++) {
+        total += state.cart.products[i].price * state.cart.products[i].qty;
+      }
+      const order_price = parseFloat(
+        state.total_price -
+          state.total_price * state.discount +
+          state.total_price * state.tax +
+          state.delivery_charges
+      ).toFixed(2);
+      return {
+        ...state,
+        total_price: total,
+        order_price: order_price
       };
     }
 

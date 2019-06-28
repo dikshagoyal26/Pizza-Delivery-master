@@ -35,19 +35,22 @@ class Feedback extends React.Component {
 
   handleClick = e => {
     e.preventDefault();
+
     const feedbackData = {
       _id: this.state._id,
       description: this.state.feedback
     };
+
     if (this.state.feedback && this.state.edit_mode == false) {
       this.props.addFeedback(feedbackData, this.props.history);
     } else {
       this.props.updateFeedback(feedbackData, this.props.history);
       this.setState({ edit_mode: false });
     }
+    this.setState({ feedback: "" });
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getUserFeedbacks();
   }
 
@@ -82,7 +85,7 @@ class Feedback extends React.Component {
       });
     }
     return (
-      <div className="container mx-5 my-2">
+      <div className="container px-5 py-2">
         <form onSubmit={this.handleClick}>
           <label>Feedback: </label>
           <textarea
@@ -93,7 +96,9 @@ class Feedback extends React.Component {
             value={this.state.feedback}
             rows="5"
           />
-          <button className="btn btn-success mt-2">Submit</button>
+          <div className="text-center">
+            <button className="btn btn-success mt-2">Submit</button>
+          </div>
         </form>
         <div className="text-center">
           <h3 className="mt-3">Previous Feedbacks:</h3>

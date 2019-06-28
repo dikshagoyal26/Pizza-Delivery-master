@@ -34,8 +34,7 @@ export const addAdmin = (adminData, history) => dispatch => {
     .post("http://localhost:5000/admin/admins/add", adminData)
     .then(res => {
       console.log("New Admin Added");
-      history.push("/admin/admins");
-      window.location.reload();
+      dispatch(getAllAdmins());
     })
     .catch(err => {
       dispatch({
@@ -53,7 +52,7 @@ export const updateAdmin = (adminData, history) => dispatch => {
     .put("http://localhost:5000/admin/admins/update", adminData)
     .then(res => {
       console.log("Admin Updated");
-      window.location.reload();
+      dispatch(getAllAdmins());
     })
     .catch(err => {
       console.log("Error" + err);
@@ -70,7 +69,7 @@ export const deleteAdmin = adminData => dispatch => {
   axios
     .post("http://localhost:5000/admin/admins/delete", adminData)
     .then(res => {
-      window.location.reload();
+      dispatch(getAllAdmins());
     })
     .catch(err => {
       console.log("Error " + err);

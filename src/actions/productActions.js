@@ -80,6 +80,7 @@ export const deleteProduct = (productData, history) => dispatch => {
     .post("http://localhost:5000/product/delete", productData)
     .then(res => {
       console.log(res.data.message);
+      dispatch(getAllProducts());
     })
     .catch(err => {
       console.log("ERROR" + err);

@@ -54,7 +54,7 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/" component={HomePage} />
-            <Route exact path="/menu" component={withRouter(List)} />
+            <Route exact path="/menu" component={List} />
             <Route exact path="/details/:id" component={Details} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/dashboard" component={Dashboard} />

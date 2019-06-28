@@ -3,6 +3,8 @@ import PriceDetails from '../cart/PriceDetails';
 import Input from '../Input/Input';
 import Select from '../Input/Select';
 import { connect } from 'react-redux'; 
+import { addOrder } from "../../../actions/orderActions";
+import {Link } from 'react-router-dom';
 
 class Order extends React.Component{
 	constructor(){
@@ -11,20 +13,17 @@ class Order extends React.Component{
 			paymentmode:'card'
 		}
 	}
+
 	handleClick = (e) =>{
 		this.setState({
 				paymentmode: e.target.name
 			})
 	}
+
 	onPayment = (e) =>	{
-		let num= parseInt(Math.random()*100000000000);
-		alert("Order confirmed . Your order Id is: "+ num);
-		this.props.dispatch({
-			type:'ORDER_ID',
-			order_id: num
-		})
-		this.props.history.push('/track')
+		this.props.addOrder(this.state.paymentmode,this.props.history);
 	}
+
 	render(){
 		return(
 			<div className="payment container-fluid px-5">
@@ -134,7 +133,10 @@ class Order extends React.Component{
 								case 'netbanking': return(<div className="paymentmode">
 																<h5 className="text-center mt-1">NET BANKING</h5>
 																<div className="text-center my-3">
+																	<Link to= "/track">
 																		<button onClick={this.onPayment} className="btn btn-primary btn-block btn-lg">Confirm Order</button>
+																		</Link>
+																		
 																</div>
 															</div>)}
 
@@ -154,4 +156,4 @@ class Order extends React.Component{
 	}
 }
 
-export default connect()(Order);
+export default connect(null, {addOrder})(Order);
