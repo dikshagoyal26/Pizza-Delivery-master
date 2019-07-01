@@ -27,7 +27,6 @@ import ViewList from "./components/admin/ViewList";
 import ViewSales from "./components/admin/ViewSales";
 import Admins from "./components/admin/admins/Admins";
 import ViewOrder from "./components/admin/Order/ViewOrder";
-import UpdateOrder from "./components/admin/Order/UpdateOrder";
 import AdminDashboard from "./components/admin/layout/AdminDashboard";
 import axios from "axios";
 // You can use any cookie library or whatever
@@ -74,9 +73,7 @@ class App extends Component {
             <Route exact path="/admin/list" component={ViewList} />
             <Route exact path="/admin/sales" component={ViewSales} />
             <Route exact path="/admin/order" component={ViewOrder} />
-            <Route exact path="/admin/order/update" component={UpdateOrder} />
             <Route exact path="/admin/feedback" component={ViewFeedback} />
-            <Route exact path="/admin/updateorder" component={UpdateOrder} />
             <Route component={NotFoundPage} />
           </Switch>
           <Footer />

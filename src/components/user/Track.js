@@ -23,6 +23,9 @@ class Track extends React.Component {
               <b>User:</b> {order.userid}
             </p>
             <p>
+              <b>Order ID:</b> {order.orderid}
+            </p>
+            <p>
               <b>Name:</b> {order.name}
             </p>
             <p>

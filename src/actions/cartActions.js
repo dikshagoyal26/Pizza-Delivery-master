@@ -12,13 +12,14 @@ import axios from "axios";
 
 export const addToCart = (cartData, history) => dispatch => {
   const cart_items = store.getState().cr.cart;
+  console.log(cartData);
   let should_update = true;
-
   if (cart_items != null) {
     cart_items.products.forEach(product => {
       if (product.productid == cartData.productid) {
         if (cartData.operation == "+1") {
           cartData.qty = product.qty + 1;
+          console.log(cartData);
         } else if (cartData.operation == "-1") {
           if (product.qty <= 1) {
             dispatch(deleteCartProduct(cartData));
@@ -46,6 +47,8 @@ export const addToCart = (cartData, history) => dispatch => {
         }
       ]
     };
+    console.log(cart);
+
     axios
       .post("http://localhost:5000/cart/add", cart)
       .then(res => {
@@ -73,7 +76,13 @@ export const getCart = cartData => dispatch => {
       });
       dispatch(getPriceDetails());
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log("ERROR:" + err);
+      dispatch({
+        type: GET_CART,
+        payload: null //cartList
+      });
+    });
 };
 
 export const getPriceDetails = productid => dispatch => {

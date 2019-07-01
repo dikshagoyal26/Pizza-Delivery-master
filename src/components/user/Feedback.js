@@ -12,7 +12,7 @@ class Feedback extends React.Component {
     super(props);
     this.state = {
       feedback: "",
-      _id: null,
+      feedbackid: null,
       edit_mode: false
     };
     this.onChange = this.onChange.bind(this);
@@ -22,11 +22,11 @@ class Feedback extends React.Component {
     this.setState({
       feedback: feedback.description,
       edit_mode: true,
-      _id: feedback._id
+      feedbackid: feedback.feedbackid
     });
   };
-  onDelete = id => {
-    this.props.deleteFeedback(id);
+  onDelete = feedbackid => {
+    this.props.deleteFeedback(feedbackid);
   };
 
   onChange = e => {
@@ -36,15 +36,19 @@ class Feedback extends React.Component {
   handleClick = e => {
     e.preventDefault();
 
-    const feedbackData = {
-      _id: this.state._id,
-      description: this.state.feedback
-    };
-
     if (this.state.feedback && this.state.edit_mode == false) {
-      this.props.addFeedback(feedbackData, this.props.history);
+      const feedbackData = {
+        description: this.state.feedback
+      };
+
+      this.props.addFeedback(feedbackData);
     } else {
-      this.props.updateFeedback(feedbackData, this.props.history);
+      const feedbackData = {
+        description: this.state.feedback,
+        feedbackid: this.state.feedbackid
+      };
+
+      this.props.updateFeedback(feedbackData);
       this.setState({ edit_mode: false });
     }
     this.setState({ feedback: "" });
@@ -73,7 +77,7 @@ class Feedback extends React.Component {
 
                 <button
                   className="btn btn-outline-danger ml-3"
-                  onClick={() => this.onDelete(feedback._id)}
+                  onClick={() => this.onDelete(feedback.feedbackid)}
                 >
                   {" "}
                   <i className="fas fa-trash-alt" />

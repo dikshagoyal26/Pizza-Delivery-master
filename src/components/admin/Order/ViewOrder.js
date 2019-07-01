@@ -44,7 +44,7 @@ class ViewOrder extends React.Component {
             <p>
               <b>Status:</b> {order.status}
             </p>
-            {order.status != "Delivered" ? (
+            {order.status == "Pending" ? (
               <button
                 className="btn btn-success"
                 onClick={() => this.onClickDelivered(order)}

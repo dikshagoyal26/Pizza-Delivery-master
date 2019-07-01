@@ -47,8 +47,7 @@ export const getUserFeedbacks = () => dispatch => {
 };
 
 ///Post feedback
-export const addFeedback = (feedback, history) => dispatch => {
-  console.log(feedback);
+export const addFeedback = feedback => dispatch => {
   const feedbackData = {
     description: feedback.description,
     userid: store.getState().user_r.user.userid
@@ -66,8 +65,9 @@ export const addFeedback = (feedback, history) => dispatch => {
 
 //Update Feedback
 //Put request
-export const updateFeedback = (feedbackData, history) => dispatch => {
+export const updateFeedback = feedbackData => dispatch => {
   console.log(feedbackData);
+
   axios
     .put("http://localhost:5000/feedback/update", feedbackData)
     .then(res => {
@@ -80,11 +80,10 @@ export const updateFeedback = (feedbackData, history) => dispatch => {
 };
 
 //Delete feedback
-export const deleteFeedback = id => dispatch => {
+export const deleteFeedback = feedbackid => dispatch => {
   axios
     .post("http://localhost:5000/feedback/delete", {
-      _id: id,
-      userid: store.getState().user_r.user.userid
+      feedbackid: feedbackid
     })
     .then(res => {
       console.log(res.data.message);
