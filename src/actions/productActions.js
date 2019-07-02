@@ -58,6 +58,7 @@ export const addProduct = (productData, history) => dispatch => {
 //Update product
 //Put request
 export const updateProduct = (productData, history) => dispatch => {
+  console.log(productData);
   axios
     .put("http://localhost:5000/product/update", productData)
     .then(res => {
@@ -73,13 +74,15 @@ export const updateProduct = (productData, history) => dispatch => {
 };
 
 //Delete product
-export const deleteProduct = productData => dispatch => {
+export const deleteProduct = (productData, history) => dispatch => {
+  console.log({ productid: productData.productid });
   axios
-    .delete("http://localhost:5000/product/delete", productData)
+    .post("http://localhost:5000/product/delete", productData)
     .then(res => {
-      console.log("Product deleted" + res.data.msg);
+      console.log(res.data.message);
+      dispatch(getAllProducts());
     })
     .catch(err => {
-      console.log("errrrrror " + err);
+      console.log("ERROR" + err);
     });
 };

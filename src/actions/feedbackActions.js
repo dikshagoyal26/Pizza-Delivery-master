@@ -10,7 +10,7 @@ export const getAllFeedbacks = () => dispatch => {
       console.log(res.data);
       dispatch({
         type: GET_FEEDBACKS,
-        payload: res.data //adminlist
+        payload: res.data.record
       });
     })
     .catch(err => {
@@ -47,52 +47,47 @@ export const getUserFeedbacks = () => dispatch => {
 };
 
 ///Post feedback
-export const addFeedback = (feedback, history) => dispatch => {
-  console.log(feedback);
+export const addFeedback = feedback => dispatch => {
   const feedbackData = {
-    description: feedback,
+    description: feedback.description,
     userid: store.getState().user_r.user.userid
   };
 
   axios
     .post("http://localhost:5000/feedback/add", feedbackData)
-    .then(res => {})
+    .then(res => {
+      dispatch(getUserFeedbacks());
+    })
     .catch(err => {
-      // dispatch({
-      //   type: GET_ERRORS,
-      //   payload: err.response.data
-      // });
+      console.log(err.response.message);
     });
 };
 
-// //Update admin
-// //Put request
-// export const updateAdmin = (adminData, history) => dispatch => {
-//   console.log(adminData);
-//   axios
-//     .put("http://localhost:5000/admin/admins/update", adminData)
-//     .then(res => {
-//       console.log("Admin Updated");
-//       window.location.reload();
-//     })
-//     .catch(err => {
-//       console.log("Error" + err);
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data
-//       });
-//     });
-// };
+//Update Feedback
+//Put request
+export const updateFeedback = feedbackData => dispatch => {
+  console.log(feedbackData);
 
-//Delete admin
-export const deleteFeedback = id => dispatch => {
   axios
-    .delete("http://localhost:5000/feedback/delete", {
-      feedbackid: id,
-      userid: store.getState().user_r.user.userid
+    .put("http://localhost:5000/feedback/update", feedbackData)
+    .then(res => {
+      console.log(res.data.message);
+      dispatch(getUserFeedbacks());
+    })
+    .catch(err => {
+      console.log("Error" + err.response.message);
+    });
+};
+
+//Delete feedback
+export const deleteFeedback = feedbackid => dispatch => {
+  axios
+    .post("http://localhost:5000/feedback/delete", {
+      feedbackid: feedbackid
     })
     .then(res => {
       console.log(res.data.message);
+      dispatch(getUserFeedbacks());
     })
     .catch(err => {
       console.log("Error " + err.response.message);

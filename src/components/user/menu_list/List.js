@@ -1,15 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import Item from "./Item";
 import { connect } from "react-redux";
 import { getAllProducts } from "../../../actions/productActions";
+import { withRouter } from "react-router-dom";
 
-class List extends React.Component {
+class List extends Component {
   componentDidMount() {
     this.props.getAllProducts();
   }
   render() {
     let ItemComponents;
-    if (this.props.products == null || this.props.loading) {
+    if (this.props.products == null) {
       ItemComponents = <p>Loading...</p>;
     } else {
       if (this.props.products.length > 0) {
@@ -42,11 +43,12 @@ class List extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    products: state.prod_r.products,
-    loading: state.prod_r.loading
+    products: state.prod_r.products
   };
 };
-export default connect(
-  mapStateToProps,
-  { getAllProducts }
-)(List);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getAllProducts }
+  )(List)
+);

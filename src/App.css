@@ -73,7 +73,7 @@
 
 .editform,
 .cart_price_details {
-  margin: 25px auto;
+  margin: 5px auto;
   padding: 2.5%;
   border-radius: 10px;
   text-align: left;
@@ -124,4 +124,22 @@
 
 .product_form {
   margin: 0 25%;
+}
+.FeedbackItem {
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  margin: 1%;
+  font-family: arial;
+  background: white;
+  cursor: pointer;
+}
+
+.OrderItem {
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  margin: 1%;
+  font-family: arial;
+  background: white;
+  cursor: pointer;
+  overflow: hidden;
 }

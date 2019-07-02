@@ -41,7 +41,7 @@ class ListItem extends React.Component {
               <b>Description:</b> {this.props.description}
             </p>
             <div className="text-center">
-              <Link to={"/admin/edit/" + this.props.id}>
+              <Link to={"/admin/edit/" + this.props.productid}>
                 <button className="btn btn-info">
                   <i className="fas fa-edit" />
                   Edit

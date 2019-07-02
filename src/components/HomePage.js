@@ -1,25 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect, withRouter } from "react-router-dom";
 
 class HomePage extends Component {
   render() {
-    let Img = null;
-    if (!this.props.is_login) {
-      Img = (
-        <img
-          width="100%"
-          src="https://images6.alphacoders.com/412/412086.jpg"
-          alt="CoverPage"
-        />
-      );
-    } else {
+    if (this.props.is_login) {
       if (!this.props.is_admin) {
-        this.props.history.push("/menu");
+        return <Redirect to="/menu" />;
       } else {
-        this.props.history.push("/admin/dashboard");
+        return <Redirect to="/admin/dashboard" />;
       }
+    } else {
+      return (
+        <div>
+          <img
+            width="100%"
+            src="https://images6.alphacoders.com/412/412086.jpg"
+            alt="CoverPage"
+          />
+        </div>
+      );
     }
-    return <div>{Img}</div>;
   }
 }
 
@@ -30,4 +31,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(HomePage);
+export default withRouter(connect(mapStateToProps)(HomePage));

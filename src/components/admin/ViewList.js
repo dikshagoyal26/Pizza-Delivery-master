@@ -18,7 +18,7 @@ class ViewList extends React.Component {
           return (
             <ListItem
               key={item._id}
-              id={item.productid}
+              productid={item.productid}
               name={item.name}
               ingredients={item.ingredients}
               price={item.price}
