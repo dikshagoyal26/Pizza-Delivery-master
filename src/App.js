@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import "./App.css";
 import NotFoundPage from "./components/NotFoundPage";
 import HomePage from "./components/HomePage";
-
 import Navbar from "./components/user/layout/Navbar";
 import Footer from "./components/user/layout/Footer";
 import List from "./components/user/menu_list/List";
 import Details from "./components/user/menu_list/Details";
-import { BrowserRouter, Route, Switch, withRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Cart from "./components/user/cart/Cart";
 import Profile from "./components/user/Dashboard/Profile";
 import EditProfile from "./components/user/Dashboard/EditProfile";
@@ -28,7 +27,7 @@ import ViewSales from "./components/admin/ViewSales";
 import Admins from "./components/admin/admins/Admins";
 import ViewOrder from "./components/admin/Order/ViewOrder";
 import AdminDashboard from "./components/admin/layout/AdminDashboard";
-import axios from "axios";
+
 // You can use any cookie library or whatever
 // library to access your client storage.
 

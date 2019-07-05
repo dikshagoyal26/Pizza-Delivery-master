@@ -3,24 +3,30 @@ import { connect } from "react-redux";
 import { Redirect, withRouter } from "react-router-dom";
 
 class HomePage extends Component {
+  componentWillReceiveProps = nextProps => {
+    console.log("Home component received Props" + nextProps.is_login);
+  };
+
+  componentWillUnmount() {
+    console.log("Component Unmounted");
+  }
+
   render() {
+    let HomeDisplay = (
+      <img
+        width="100%"
+        src="https://images6.alphacoders.com/412/412086.jpg"
+        alt="CoverPage"
+      />
+    );
     if (this.props.is_login) {
       if (!this.props.is_admin) {
-        return <Redirect to="/menu" />;
+        HomeDisplay = <Redirect to="/menu" />;
       } else {
-        return <Redirect to="/admin/dashboard" />;
+        HomeDisplay = <Redirect to="/admin/dashboard" />;
       }
-    } else {
-      return (
-        <div>
-          <img
-            width="100%"
-            src="https://images6.alphacoders.com/412/412086.jpg"
-            alt="CoverPage"
-          />
-        </div>
-      );
     }
+    return <div>{HomeDisplay};</div>;
   }
 }
 

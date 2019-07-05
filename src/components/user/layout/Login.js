@@ -1,9 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import Input from "../Input/Input";
 import { LOGIN, ADMINLOGIN, SIGNUP } from "../../../actions/types";
-import { loginAdmin, loginUser } from "../../../actions/authActions";
+import {
+  loginAdmin,
+  loginUser,
+  resetPwd,
+  regUser
+} from "../../../actions/authActions";
 
 class List extends React.Component {
   constructor(props) {
@@ -13,10 +18,14 @@ class List extends React.Component {
       email: "",
       password: "",
       confirmpassword: "",
+      firstname: "",
+      lastname: "",
       formErrors: {
         email: "",
         password: "",
-        confirmpassword: ""
+        confirmpassword: "",
+        firstname: "",
+        lastname: ""
       }
     };
   }
@@ -27,7 +36,15 @@ class List extends React.Component {
       email: "",
       password: "",
       confirmpassword: "",
-      formErrors: { email: "", password: "", confirmpassword: "" }
+      firstname: "",
+      lastname: "",
+      formErrors: {
+        email: "",
+        password: "",
+        confirmpassword: "",
+        firstname: "",
+        lastname: ""
+      }
     });
   };
 
@@ -37,7 +54,15 @@ class List extends React.Component {
       email: "",
       password: "",
       confirmpassword: "",
-      formErrors: { email: "", password: "", confirmpassword: "" }
+      firstname: "",
+      lastname: "",
+      formErrors: {
+        email: "",
+        password: "",
+        confirmpassword: "",
+        firstname: "",
+        lastname: ""
+      }
     });
   };
 
@@ -47,11 +72,54 @@ class List extends React.Component {
       email: "",
       password: "",
       confirmpassword: "",
-      formErrors: { email: "", password: "", confirmpassword: "" }
+      firstname: "",
+      lastname: "",
+      formErrors: {
+        email: "",
+        password: "",
+        confirmpassword: "",
+        firstname: "",
+        lastname: ""
+      }
     });
   };
 
-  onClick_ForgotPwd = () => {};
+  onClick_ForgotPwd = () => {
+    this.setState({
+      display_form: "forgetpwd",
+      email: "",
+      password: "",
+      confirmpassword: "",
+      firstname: "",
+      lastname: "",
+      formErrors: {
+        email: "",
+        password: "",
+        confirmpassword: "",
+        firstname: "",
+        lastname: ""
+      }
+    });
+  };
+
+  onClickCancel = () => {
+    this.props.history.push(-1);
+    this.setState({
+      display_form: "login",
+      email: "",
+      password: "",
+      confirmpassword: "",
+      firstname: "",
+      lastname: "",
+      formErrors: {
+        email: "",
+        password: "",
+        firstname: "",
+        lastname: "",
+        confirmpassword: ""
+      }
+    });
+  };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -68,16 +136,23 @@ class List extends React.Component {
         };
         this.props.loginUser(userData, this.props.history);
       } else if (this.state.display_form == "signup") {
-        this.props.dispatch({ type: SIGNUP });
+        const userData = {
+          firstname: this.state.firstname,
+          lastname: this.state.lastname,
+          userid: this.state.email,
+          password: this.state.password
+        };
+        this.props.regUser(userData, this.props.history);
       } else if (this.state.display_form == "admin") {
         const AdminData = {
           adminid: this.state.email,
           password: this.state.password
         };
         this.props.loginAdmin(AdminData, this.props.history);
+      } else if (this.state.display_form == "forgetpwd") {
+        this.props.resetPwd(this.state.email);
       }
-
-      //window.location.reload();
+      this.onClickCancel();
     }
   };
 
@@ -150,6 +225,7 @@ class List extends React.Component {
                         placeholder="Enter your password"
                         title=<i className="fas fa-lock prefix" />
                         handleChange={this.handleChange}
+                        value={this.state.password}
                       />
                       {this.state.formErrors.password ? (
                         <p className="text-danger">
@@ -192,7 +268,7 @@ class List extends React.Component {
                   <p>
                     Forgot
                     <a
-                      href="#"
+                      href="#forgetpwd"
                       className="blue-text"
                       onClick={this.onClick_ForgotPwd}
                     >
@@ -204,6 +280,7 @@ class List extends React.Component {
                   type="button"
                   className="btn btn-outline-info waves-effect ml-auto"
                   data-dismiss="modal"
+                  onClick={this.onClickCancel}
                 >
                   Close
                 </button>
@@ -222,11 +299,44 @@ class List extends React.Component {
                 <form onSubmit={this.onSubmitForm}>
                   <div className="md-form form-sm mb-3">
                     <Input
+                      type="text"
+                      name="firstname"
+                      placeholder="Enter your firstname"
+                      title=<i className="fas fa-envelope" />
+                      handleChange={this.handleChange}
+                      value={this.state.firstname}
+                    />
+                    {this.state.formErrors.firstname ? (
+                      <p className="text-danger">
+                        <i className="fas fa-exclamation-triangle"> </i>
+                        {this.state.formErrors.firstname}
+                      </p>
+                    ) : null}
+                  </div>
+                  <div className="md-form form-sm mb-3">
+                    <Input
+                      type="text"
+                      name="lastname"
+                      placeholder="Enter your lastname"
+                      title=<i className="fas fa-envelope" />
+                      handleChange={this.handleChange}
+                      value={this.state.lastname}
+                    />
+                    {this.state.formErrors.lastname ? (
+                      <p className="text-danger">
+                        <i className="fas fa-exclamation-triangle"> </i>
+                        {this.state.formErrors.lastname}
+                      </p>
+                    ) : null}
+                  </div>
+                  <div className="md-form form-sm mb-3">
+                    <Input
                       type="email"
                       name="email"
                       placeholder="Enter a valid Email"
                       title=<i className="fas fa-envelope" />
                       handleChange={this.handleChange}
+                      value={this.state.email}
                     />
                     {this.state.formErrors.email ? (
                       <p className="text-danger">
@@ -242,6 +352,7 @@ class List extends React.Component {
                       placeholder="Enter Password"
                       title=<i className="fas fa-lock prefix" />
                       handleChange={this.handleChange}
+                      value={this.state.password}
                     />
                     {this.state.formErrors.password ? (
                       <p className="text-danger">
@@ -287,11 +398,11 @@ class List extends React.Component {
                   <p>
                     Login as{"  "}
                     <a
-                      href="#adminlogin"
+                      href="#login"
                       className="blue-text"
-                      onClick={this.onClick_Admin}
+                      onClick={this.onClick_Login}
                     >
-                      Admin
+                      User
                     </a>
                   </p>
                 </div>
@@ -299,6 +410,7 @@ class List extends React.Component {
                   type="button"
                   className="btn btn-outline-info waves-effect ml-auto"
                   data-dismiss="modal"
+                  onClick={this.onClickCancel}
                 >
                   Close
                 </button>
@@ -339,6 +451,7 @@ class List extends React.Component {
                         placeholder="Enter your password"
                         title=<i className="fas fa-lock prefix" />
                         handleChange={this.handleChange}
+                        value={this.state.password}
                       />
                       {this.state.formErrors.password ? (
                         <p className="text-danger">
@@ -383,6 +496,62 @@ class List extends React.Component {
                   type="button"
                   className="btn btn-outline-info waves-effect ml-auto"
                   data-dismiss="modal"
+                  onClick={this.onClickCancel}
+                >
+                  Close
+                </button>
+              </div>
+            </div>{" "}
+          </div>
+        </div>
+      );
+    } else if (this.state.display_form == "forgetpwd") {
+      Form = (
+        <div>
+          <div className="forgetpwd">
+            <div className="modal-body">
+              <div className="tab-pane " id="forgetpwd">
+                <h4 className="text-center">Enter you Userid</h4>
+                <p className="text-center">
+                  A mail will be sent to your userid
+                </p>
+                <form onSubmit={this.onSubmitForm}>
+                  <div className="form-group">
+                    <div className="md-form form-sm mb-3">
+                      <Input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your Email"
+                        title=<i className="fas fa-envelope" />
+                        handleChange={this.handleChange}
+                        value={this.state.email}
+                      />
+                      {this.state.formErrors.email ? (
+                        <p className="text-danger">
+                          <i className="fas fa-exclamation-triangle"> </i>\
+                          {this.state.formErrors.email}
+                        </p>
+                      ) : null}
+                    </div>
+                  </div>
+                  <div className="text-center">
+                    <button
+                      className="btn btn-danger"
+                      type="submit"
+                      onClick={this.onClickSendpwd}
+                    >
+                      Send email
+                      <i className="fas fa-sign-in ml-1" />
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-outline-info waves-effect ml-auto"
+                  data-dismiss="modal"
+                  onClick={this.onClickCancel}
                 >
                   Close
                 </button>
@@ -392,7 +561,6 @@ class List extends React.Component {
         </div>
       );
     }
-
     return (
       <div className="col-12 p-0 login_page">
         {/* Navbar when user is not logged in */}
@@ -442,6 +610,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { loginAdmin, loginUser }
+    { loginAdmin, loginUser, resetPwd, regUser }
   )(List)
 );

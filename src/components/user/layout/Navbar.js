@@ -5,6 +5,14 @@ import Login from "./Login";
 
 class Navbar extends React.Component {
   handleClick = () => this.props.dispatch({ type: "LOGOUT" });
+  componentWillUnmount() {
+    console.log("Navbar Component Unmounted");
+  }
+
+  componentWillMount() {
+    console.log("Navbar Component Mounted");
+  }
+
   render() {
     let Navbar = <p>Some error occured. Please try again later</p>;
     if (!this.props.is_login) {

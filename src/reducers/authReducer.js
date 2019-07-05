@@ -2,8 +2,7 @@ import { LOGIN, SIGNUP, LOGOUT, ADMINLOGIN, USERLOGIN } from "../actions/types";
 const initialState = {
   login: false,
   is_admin: false,
-  token: null,
-  message: null
+  token: null
 };
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -18,18 +17,16 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         login: true,
-        is_admin: true
-        //token: action.payload.token,
-        //message: action.payload.message
+        is_admin: true,
+        token: action.payload.token
       };
     }
     case USERLOGIN: {
       return {
         ...state,
         login: true,
-        is_admin: false
-        //token: action.payload.token,
-        //message: action.payload.message
+        is_admin: false,
+        token: action.payload.token
       };
     }
     case LOGOUT: {
