@@ -22,7 +22,7 @@ class HomePage extends Component {
           src="https://www.dominos.co.in/assets/header_bg.png"
           alt="CoverPage"
         />
-        <div className="home_bacground_over animated bounce">
+        <div className="home_bacground_over ">
           <p className="text-center ">
             Domino's online ordering Yummy <br />
             pizza delivered fast & fresh
