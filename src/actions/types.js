@@ -9,6 +9,7 @@ export const USERLOGIN = "USERLOGIN";
 
 export const GET_ERRORS = "GET_ERRORS";
 
+export const SET_FIRST_TYM = "SET_FIRST_TYM";
 export const GET_ADMIN_BY_ID = "GET_ADMIN_BY_ID";
 export const GET_ADMIN = "GET_ADMIN";
 export const GET_ADMINS = "GET_ADMINS";

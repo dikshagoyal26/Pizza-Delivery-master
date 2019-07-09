@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 class AdminDashboard extends React.Component {
+  componentWillMount() {
+    console.log("AdminDasboard Component Mounted");
+  }
+  componentWillUnmount() {
+    console.log("AdminDasboard Component UnMounted");
+  }
   render() {
     return (
       <div>

@@ -12,6 +12,7 @@ export const getAllProducts = () => dispatch => {
       });
     })
     .catch(err => {
+      //console.log(err.response);
       dispatch({
         type: GET_PRODUCTS,
         payload: null

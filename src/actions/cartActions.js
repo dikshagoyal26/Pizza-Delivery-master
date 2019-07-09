@@ -1,12 +1,4 @@
-import {
-  ADD_TO_CART,
-  DELETE_ITEM,
-  DEC_QUANTITY,
-  INC_QUANTITY,
-  ORDER_TOTAL_PRICE,
-  ORDER_ID,
-  GET_CART
-} from "../actions/types";
+import { GET_CART } from "../actions/types";
 import store from "../store";
 import axios from "axios";
 
@@ -16,11 +8,11 @@ export const addToCart = (cartData, history) => dispatch => {
   let should_update = true;
   if (cart_items != null) {
     cart_items.products.forEach(product => {
-      if (product.productid == cartData.productid) {
-        if (cartData.operation == "+1") {
+      if (product.productid === cartData.productid) {
+        if (cartData.operation === "+1") {
           cartData.qty = product.qty + 1;
           console.log(cartData);
-        } else if (cartData.operation == "-1") {
+        } else if (cartData.operation === "-1") {
           if (product.qty <= 1) {
             dispatch(deleteCartProduct(cartData));
             should_update = false;

@@ -8,11 +8,11 @@ class AdminItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: this.props.name,
-      adminid: this.props.adminid,
+      name: this.props.admin.name,
+      adminid: this.props.admin.adminid,
       is_edit_mode: false,
       is_changed: false,
-      oldadminid: this.props.adminid
+      oldadminid: this.props.admin.adminid
     };
     this.deleteAdmin = this.deleteAdmin.bind(this);
     this.onClickEdit = this.onClickEdit.bind(this);
@@ -21,9 +21,9 @@ class AdminItem extends React.Component {
 
   componentWillReceiveProps = nextProps => {
     this.setState({
-      name: nextProps.name,
-      adminid: nextProps.adminid,
-      oldadminid: nextProps.adminid
+      name: nextProps.admin.name,
+      adminid: nextProps.admin.adminid,
+      oldadminid: nextProps.admin.adminid
     });
   };
 
@@ -96,27 +96,32 @@ class AdminItem extends React.Component {
       Item = (
         <div>
           {" "}
-          <h4 className="font-weight-bold ">{this.props.name}</h4>
+          <h4 className="font-weight-bold ">{this.props.admin.name}</h4>
           <div className="row">
-            <p className="col-lg-10 col-md-9">{this.props.adminid}</p>
-            <div className=" col-lg-2 col-md-3">
-              <button className="btn btn-secondary" onClick={this.onClickEdit}>
-                <i className="fas fa-user-edit" />
-              </button>
+            <p className="col-lg-10 col-md-9">{this.props.admin.adminid}</p>
+            {this.props.admin.isFirstTym ? (
+              <div className=" col-lg-2 col-md-3">
+                <button
+                  className="btn btn-secondary"
+                  onClick={this.onClickEdit}
+                >
+                  <i className="fas fa-user-edit" />
+                </button>
 
-              <button
-                className="btn btn-danger ml-3"
-                onClick={this.deleteAdmin}
-              >
-                {" "}
-                <i className="fas fa-user-minus" />
-              </button>
-            </div>
+                <button
+                  className="btn btn-danger ml-3"
+                  onClick={this.deleteAdmin}
+                >
+                  {" "}
+                  <i className="fas fa-user-minus" />
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
       );
     }
-
+    console.log(this.props.admin);
     return (
       <div className="col-12 text-sm-center">
         <div className="admin-item m-1 py-2 px-4">{Item}</div>

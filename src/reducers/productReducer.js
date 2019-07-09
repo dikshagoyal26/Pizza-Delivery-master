@@ -17,6 +17,7 @@ const ProductReducer = (state = initialState, action) => {
         ...state,
         loading: true
       };
+
     case GET_PRODUCTS:
       if (action.payload) {
         return {
@@ -26,6 +27,7 @@ const ProductReducer = (state = initialState, action) => {
           message: action.payload.msg
         };
       }
+      break;
     case GET_PRODUCT_BY_ID:
       if (action.payload) {
         return {
@@ -35,6 +37,7 @@ const ProductReducer = (state = initialState, action) => {
           message: action.payload.msg
         };
       }
+      break;
     default:
       return state;
   }

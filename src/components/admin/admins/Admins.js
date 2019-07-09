@@ -42,14 +42,7 @@ class Admins extends Component {
     } else {
       if (this.props.admins.length > 0) {
         AdminComponents = this.props.admins.map(admin => {
-          return (
-            <AdminItem
-              key={admin._id}
-              adminid={admin.adminid}
-              name={admin.name}
-              onClickEdit={this.onClickEdit}
-            />
-          );
+          return <AdminItem key={admin.adminid} admin={admin} />;
         });
       } else {
         AdminComponents = <h4>No Admin Found</h4>;
