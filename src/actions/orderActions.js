@@ -1,4 +1,4 @@
-import { GET_ORDERS, SAVE_ORDER_ADDRESS, GET_USER_ORDERS } from "./types";
+import { GET_ORDERS, SAVE_ORDER_ADDRESS } from "./types";
 import axios from "axios";
 import { deleteAllCart } from "./cartActions";
 import store from "../store";

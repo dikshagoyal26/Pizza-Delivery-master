@@ -1,14 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Input from "../Input/Input";
-import { LOGIN, ADMINLOGIN, SIGNUP } from "../../../actions/types";
+import pizza_logo from "../../../img/pizza_logo.png";
+
 import {
   loginAdmin,
   loginUser,
   resetPwd,
-  regUser
+  registerUser,
+  loginWithGoogle
 } from "../../../actions/authActions";
+
+// const UserLoginForm = props => {};
+
+// const SignupForm = props => {};
+
+// const AdminLoginForm = props => {};
+
+// const ForgetPwdForm = props => {};
 
 class List extends React.Component {
   constructor(props) {
@@ -26,13 +36,13 @@ class List extends React.Component {
         confirmpassword: "",
         firstname: "",
         lastname: ""
-      }
+      },
+      isValid: false
     };
   }
 
-  onClick_Login = () => {
+  initState = () => {
     this.setState({
-      display_form: "login",
       email: "",
       password: "",
       confirmpassword: "",
@@ -45,149 +55,200 @@ class List extends React.Component {
         firstname: "",
         lastname: ""
       }
+    });
+  };
+
+  onClick_Login = () => {
+    this.setState({
+      display_form: "login"
     });
   };
 
   onClick_SignUp = () => {
     this.setState({
-      display_form: "signup",
-      email: "",
-      password: "",
-      confirmpassword: "",
-      firstname: "",
-      lastname: "",
-      formErrors: {
-        email: "",
-        password: "",
-        confirmpassword: "",
-        firstname: "",
-        lastname: ""
-      }
+      display_form: "signup"
     });
+    this.initState();
   };
 
   onClick_Admin = () => {
     this.setState({
-      display_form: "admin",
-      email: "",
-      password: "",
-      confirmpassword: "",
-      firstname: "",
-      lastname: "",
-      formErrors: {
-        email: "",
-        password: "",
-        confirmpassword: "",
-        firstname: "",
-        lastname: ""
-      }
+      display_form: "admin"
     });
+    this.initState();
   };
 
   onClick_ForgotPwd = () => {
     this.setState({
-      display_form: "forgetpwd",
-      email: "",
-      password: "",
-      confirmpassword: "",
-      firstname: "",
-      lastname: "",
-      formErrors: {
-        email: "",
-        password: "",
-        confirmpassword: "",
-        firstname: "",
-        lastname: ""
-      }
+      display_form: "forgetpwd"
     });
+    this.initState();
   };
 
   onClickCancel = () => {
     this.props.history.push(-1);
-    this.setState({
-      display_form: "login",
-      email: "",
-      password: "",
-      confirmpassword: "",
-      firstname: "",
-      lastname: "",
-      formErrors: {
-        email: "",
-        password: "",
-        firstname: "",
-        lastname: "",
-        confirmpassword: ""
-      }
-    });
+    this.onClick_Login();
   };
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmitForm = e => {
-    e.preventDefault();
-    let isValid = this.validate();
-    if (isValid) {
-      if (this.state.display_form == "login") {
-        const userData = {
-          userid: this.state.email,
-          password: this.state.password
-        };
-        this.props.loginUser(userData, this.props.history);
-      } else if (this.state.display_form == "signup") {
-        const userData = {
-          firstname: this.state.firstname,
-          lastname: this.state.lastname,
-          userid: this.state.email,
-          password: this.state.password
-        };
-        this.props.regUser(userData, this.props.history);
-      } else if (this.state.display_form == "admin") {
-        const AdminData = {
-          adminid: this.state.email,
-          password: this.state.password
-        };
-        this.props.loginAdmin(AdminData, this.props.history);
-      } else if (this.state.display_form == "forgetpwd") {
-        this.props.resetPwd(this.state.email);
-      }
-      this.onClickCancel();
-    }
+  loginWithGoogle = () => {
+    this.props.loginWithGoogle();
   };
 
+  onSubmitForm = e => {
+    e.preventDefault();
+
+    let isValid = this.validate();
+    this.setState({ isValid: isValid });
+
+    if (isValid) {
+      switch (this.state.display_form) {
+        case "login": {
+          const userData = {
+            userid: this.state.email,
+            password: this.state.password
+          };
+          this.props.loginUser(userData, this.props.history);
+          break;
+        }
+
+        case "signup": {
+          const userData = {
+            firstname: this.state.firstname,
+            lastname: this.state.lastname,
+            userid: this.state.email,
+            password: this.state.password
+          };
+          this.props.registerUser(userData, this.props.history);
+          break;
+        }
+
+        case "admin": {
+          const AdminData = {
+            adminid: this.state.email,
+            password: this.state.password
+          };
+          this.props.loginAdmin(AdminData, this.props.history);
+          break;
+        }
+
+        case "forgetpwd": {
+          this.props.resetPwd(this.state.email, this.props.history);
+          this.onClickCancel();
+          break;
+        }
+      }
+      this.setState({
+        formErrors: {
+          email: "",
+          password: "",
+          confirmpassword: "",
+          firstname: "",
+          lastname: ""
+        }
+      });
+    }
+  };
   validate = () => {
-    // let emailError = "";
-    // let passwordError = "";
-    // let confirm_password_Error = "";
-    // if (!this.state.email) {
-    //   emailError = "Required email";
-    // }
-    // if (this.state.password.length < 6) {
-    //   if (!this.state.password) passwordError = "Required Password";
-    //   else passwordError = "Min length of password should be 6";
-    // }
-    // if (this.state.password != this.state.confirmpassword) {
-    //   if (!this.state.confirmpassword)
-    //     confirm_password_Error = "Please confirm the password";
-    //   else confirm_password_Error = "Password dont match!";
-    // }
-    // this.setState({
-    //   formErrors: {
-    //     email: emailError,
-    //     password: passwordError,
-    //     confirmpassword: confirm_password_Error
-    //   }
-    // });
-    // if (this.state.display_form == "login" && (emailError || passwordError))
-    //   return false;
-    // else if (
-    //   this.state.display_form == "signup" &&
-    //   (emailError || passwordError || confirm_password_Error)
-    // )
-    //   return false;
-    // else
-    return true;
+    //Validation error message variables
+    let emailError = "";
+    let passwordError = "";
+    let confirmPwdError = "";
+    let firstnameError = "";
+    let lastnameError = "";
+
+    //Validations
+    if (!this.state.firstname) {
+      firstnameError = "Required Firstname!";
+    }
+
+    if (!this.state.lastname) {
+      lastnameError = "Required Lastname!";
+    }
+
+    if (!this.state.email) {
+      emailError = "Required email";
+    }
+
+    if (this.state.password.length < 6) {
+      if (!this.state.password) passwordError = "Required Password";
+      else passwordError = "Min length of password should be 6";
+    }
+
+    if (
+      this.state.password != this.state.confirmpassword ||
+      !this.state.confirmpassword
+    ) {
+      if (!this.state.confirmpassword)
+        confirmPwdError = "Please confirm the password";
+      else confirmPwdError = "Password dont match!";
+    }
+
+    //Set Error according to display form
+    if (this.state.display_form == "login") {
+      if (emailError || passwordError) {
+        this.setState({
+          formErrors: {
+            email: emailError,
+            password: passwordError
+          }
+        });
+        return false;
+      } else return true;
+    }
+    //
+    else if (this.state.display_form == "signup") {
+      if (
+        emailError ||
+        passwordError ||
+        confirmPwdError ||
+        lastnameError ||
+        firstnameError
+      ) {
+        this.setState({
+          formErrors: {
+            email: emailError,
+            password: passwordError,
+            confirmpassword: confirmPwdError,
+            firstname: firstnameError,
+            lastname: lastnameError
+          }
+        });
+        return false;
+      } else {
+        return true;
+      }
+    }
+    //
+    else if (this.state.display_form == "admin") {
+      if (emailError || passwordError) {
+        this.setState({
+          formErrors: {
+            email: emailError,
+            password: passwordError
+          }
+        });
+        return false;
+      } else {
+        return true;
+      }
+    }
+    //
+    else if (this.state.display_form == "forgetpwd") {
+      if (emailError) {
+        this.setState({
+          formErrors: {
+            email: emailError
+          }
+        });
+        return false;
+      }
+    } else {
+      return true;
+    }
   };
 
   render() {
@@ -200,6 +261,14 @@ class List extends React.Component {
             <div className="modal-body">
               <div className="tab-pane " id="login">
                 <h4 className="text-center">Log in</h4>
+
+                {/* {this.props.errors ? (
+                  <p className="text-danger text-center">
+                    <i className="fas fa-exclamation-triangle" />
+                    {this.props.errors}
+                  </p>
+                ) : null} */}
+
                 <form onSubmit={this.onSubmitForm}>
                   <div className="form-group">
                     <div className="md-form form-sm mb-3">
@@ -242,6 +311,13 @@ class List extends React.Component {
                     </button>
                   </div>
                 </form>
+                <button
+                  className="btn btn-danger"
+                  onClick={this.loginWithGoogle}
+                >
+                  Log in with Google
+                  <i className="fas fa-sign-in ml-1" />
+                </button>
               </div>
               <div className="modal-footer">
                 <div>
@@ -318,7 +394,7 @@ class List extends React.Component {
                       type="text"
                       name="lastname"
                       placeholder="Enter your lastname"
-                      title=<i className="fas fa-envelope" />
+                      title={<i className="fas fa-envelope" />}
                       handleChange={this.handleChange}
                       value={this.state.lastname}
                     />
@@ -395,6 +471,7 @@ class List extends React.Component {
                       Log In
                     </a>
                   </p>
+
                   <p>
                     Login as{"  "}
                     <a
@@ -565,10 +642,14 @@ class List extends React.Component {
       <div className="col-12 p-0 login_page">
         {/* Navbar when user is not logged in */}
         <header className="App-header">
-          <nav className="navbar navbar-dark mx-5">
+          <nav className="navbar navbar-dark bg=dark mx-5">
             <a className="navbar-brand" href="/">
-              {" "}
-              Logo{" "}
+              <img
+                className="navbar-brand-img"
+                src={pizza_logo}
+                style={{ width: 50 }}
+              />{" "}
+              Pizza Hub
             </a>
             <a>
               {" "}
@@ -603,13 +684,14 @@ class List extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    is_admin: state.auth_r.is_admin
+    is_admin: state.auth_r.is_admin,
+    errors: state.error_r.errors
   };
 };
 
 export default withRouter(
   connect(
     mapStateToProps,
-    { loginAdmin, loginUser, resetPwd, regUser }
+    { loginAdmin, loginUser, resetPwd, registerUser, loginWithGoogle }
   )(List)
 );

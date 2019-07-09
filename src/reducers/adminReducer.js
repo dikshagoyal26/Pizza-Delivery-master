@@ -1,13 +1,10 @@
-import {
-  PRODUCT_LOADING,
-  GET_ADMINS,
-  GET_ADMIN,
-  GET_ADMIN_BY_ID
-} from "../actions/types";
+import { GET_ADMINS, GET_ADMIN, SET_FIRST_TYM } from "../actions/types";
 
 const initialState = {
   admins: null,
-  admin: null,
+  admin: {
+    isFirstTym: true
+  },
   message: null
 };
 
@@ -28,8 +25,13 @@ const AdminReducer = (state = initialState, action) => {
       console.log(action.payload);
       return {
         ...state,
-        admin: action.payload.record,
-        message: action.payload.message
+        admin: action.payload
+      };
+    }
+    case SET_FIRST_TYM: {
+      return {
+        ...state,
+        admin: { ...state.admin, isFirstTym: false }
       };
     }
     default:

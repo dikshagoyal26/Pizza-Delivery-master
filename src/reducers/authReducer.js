@@ -1,4 +1,4 @@
-import { LOGIN, SIGNUP, LOGOUT, ADMINLOGIN, USERLOGIN } from "../actions/types";
+import { LOGIN, LOGOUT, ADMINLOGIN, USERLOGIN } from "../actions/types";
 const initialState = {
   login: false,
   is_admin: false,
@@ -13,6 +13,7 @@ const authReducer = (state = initialState, action) => {
         is_admin: false
       };
     }
+
     case ADMINLOGIN: {
       return {
         ...state,
@@ -36,6 +37,8 @@ const authReducer = (state = initialState, action) => {
         is_admin: false
       };
     }
+    default:
+      return { ...state };
   }
   return state;
 };

@@ -1,30 +1,24 @@
 import React from "react";
-import Input from "./Input/Input";
-import { updatePwd } from "../../actions/userActions";
+import Input from "../user/Input/Input";
+import { updateAdmin } from "../../actions/adminActions";
 import { connect } from "react-redux";
 
-class ChangePassword extends React.Component {
+class AdminFirstTime extends React.Component {
   constructor(props) {
     super();
     this.state = {
-      oldpassword: "",
-      newpassword: "",
+      password: "",
       confirmpassword: "",
-      formErrors: { oldpassword: "", newpassword: "", confirmpassword: "" },
-      // oldpasswordValid: false,
-      // newpasswordValid: false,
-      // confirmpasswordValid: false,
+      formErrors: { password: "", confirmpassword: "" },
       formValid: false
     };
-    this.onChangePassword = this.onChangePassword.bind(this);
   }
 
   clearState = () => {
     this.setState({
-      oldpassword: "",
-      newpassword: "",
+      password: "",
       confirmpassword: "",
-      formErrors: { oldpassword: "", newpassword: "", confirmpassword: "" },
+      formErrors: { password: "", confirmpassword: "" },
       formValid: false
     });
   };
@@ -37,13 +31,12 @@ class ChangePassword extends React.Component {
     e.preventDefault();
     let isvalid = this.validate();
     this.setState({ formValid: isvalid });
-
     if (isvalid) {
-      const userData = {
-        oldpassword: this.state.oldpassword,
-        password: this.state.newpassword
+      let adminData = {
+        password: this.state.password
       };
-      this.props.updatePwd(userData, this.props.history);
+
+      this.props.updateAdmin(adminData, this.props.history);
       this.clearState();
     }
   };
@@ -51,36 +44,26 @@ class ChangePassword extends React.Component {
   validate = () => {
     console.log("Validate func");
     let pwderror = "";
-    let newpwderror = "";
     let confirmerror = "";
 
-    if (!this.state.oldpassword) {
-      pwderror = "Enter the password";
+    if (!this.state.password) {
+      pwderror = "Enter the new password";
     } else {
-      if (this.state.oldpassword.length < 6) {
+      if (this.state.password.length < 6) {
         pwderror = "Invalid password";
       }
     }
-
-    if (!this.state.newpassword) {
-      newpwderror = "Enter the new password";
-    } else {
-      if (this.state.newpassword.length < 6) {
-        newpwderror = "Invalid password";
-      }
-    }
     if (
-      this.state.newpassword != this.state.confirmpassword ||
+      this.state.password != this.state.confirmpassword ||
       !this.state.confirmpassword
     ) {
       confirmerror = "Password does not match";
     }
 
-    if (pwderror || newpwderror || confirmerror) {
+    if (pwderror || confirmerror) {
       this.setState({
         formErrors: {
-          oldpassword: pwderror,
-          newpassword: newpwderror,
+          password: pwderror,
           confirmpassword: confirmerror
         }
       });
@@ -95,31 +78,16 @@ class ChangePassword extends React.Component {
         <h2 className="text-center text-danger">CHANGE PASSWORD</h2>
         <form onSubmit={this.onSubmit} className="formGroup">
           <Input
-            name="oldpassword"
+            name="password"
             type="password"
-            placeholder="Old Password*"
+            placeholder="Password*"
             handleChange={this.onChangePassword}
-            value={this.state.oldpassword}
+            value={this.state.password}
           />
-
-          {this.state.formErrors.oldpassword ? (
+          {this.state.formErrors.password ? (
             <p className="text-danger">
               <i className="fas fa-exclamation-triangle"> </i>
-              {this.state.formErrors.oldpassword}
-            </p>
-          ) : null}
-
-          <Input
-            name="newpassword"
-            type="password"
-            placeholder="New Password*"
-            handleChange={this.onChangePassword}
-            value={this.state.newpassword}
-          />
-          {this.state.formErrors.newpassword ? (
-            <p className="text-danger">
-              <i className="fas fa-exclamation-triangle"> </i>
-              {this.state.formErrors.newpassword}
+              {this.state.formErrors.password}
             </p>
           ) : null}
 
@@ -151,5 +119,5 @@ class ChangePassword extends React.Component {
 }
 export default connect(
   null,
-  { updatePwd }
-)(ChangePassword);
+  { updateAdmin }
+)(AdminFirstTime);

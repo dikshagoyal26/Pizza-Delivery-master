@@ -2,25 +2,35 @@ import React from "react";
 import Input from "../Input/Input";
 import Select from "../Input/Select";
 import { connect } from "react-redux";
+import { editUserDetails } from "../../../actions/userActions";
 
 class EditProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      firstname: " ",
+      lastname: " ",
+      email: " ",
+      phone: " ",
+      gender: " ",
+      birthday: " ",
+      formErrors: { firstname: "", lastname: "", email: "", phone: "" }
+    };
+  }
+
+  componentDidMount = () => {
+    this.setState({
       firstname: this.props.profile.firstname,
       lastname: this.props.profile.lastname,
       email: this.props.profile.email,
       phone: this.props.profile.phone,
       gender: this.props.profile.gender,
       birthday: this.props.profile.birthday,
-
-      formErrors: { firstname: "", lastname: "", email: "", phone: "" }
-    };
-    this.onEditProfile = this.onEditProfile.bind(this);
-  }
+      formErrors: { firstname: "", lastname: "", phone: "" }
+    });
+  };
 
   validate = () => {
-    let emailError = "";
     let firstnameError = "";
     let lastnameError = "";
     let phoneError = "";
@@ -33,52 +43,47 @@ class EditProfile extends React.Component {
       lastnameError = "Required lastname";
     }
 
-    if (!this.state.email.includes("@")) {
-      if (!this.state.email) emailError = "Required Email";
-      else emailError = "Invalid Email";
-    }
+    if (!this.state.phone) {
+      phoneError = "Required Phone";
 
-    if (this.state.phone.length !== 10) {
-      if (!this.state.phone) {
-        phoneError = "Required Phone";
-      } else phoneError = "Invalid Phone";
-    }
-
-    this.setState({
-      formErrors: {
-        firstname: firstnameError,
-        lastname: lastnameError,
-        email: emailError,
-        phone: phoneError
+      if (this.state.phone.length !== 10) {
+        phoneError = "Invalid Phone";
       }
-    });
+    }
 
-    if (emailError || phoneError || firstnameError || lastnameError)
+    if (phoneError || firstnameError || lastnameError) {
+      this.setState({
+        formErrors: {
+          firstname: firstnameError,
+          lastname: lastnameError,
+          phone: phoneError
+        }
+      });
       return false;
-
+    }
     return true;
   };
 
   onEditProfile = e => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state);
   };
 
   onSubmit = e => {
     e.preventDefault();
     const isValid = this.validate();
     if (isValid) {
-      this.props.dispatch({
-        type: "SAVE_PROFILE",
-        data: {
-          firstname: this.state.firstname,
-          lastname: this.state.lastname,
-          email: this.state.email,
-          phone: this.state.phone,
-          gender: this.state.gender,
-          birthday: this.state.birthday
-        }
-      });
-      this.props.history.push("/dashboard");
+      const userData = {
+        firstname: this.state.firstname,
+        lastname: this.state.lastname,
+        phone: this.state.phone,
+        gender: this.state.gender,
+        birthday: this.state.birthday
+      };
+      this.props.editUserDetails(userData, this.props.history);
+    } else {
+      console.log("Not validated");
+      console.log(this.state);
     }
   };
 
@@ -92,7 +97,8 @@ class EditProfile extends React.Component {
               name="firstname"
               type="text"
               placeholder="First Name*"
-              label="First Name:"
+              l
+              abel="First Name:"
               value={this.state.firstname}
               handleChange={this.onEditProfile}
             />
@@ -117,22 +123,6 @@ class EditProfile extends React.Component {
               <p className="text-danger">
                 <i className="fas fa-exclamation-triangle"> </i>
                 {this.state.formErrors.lastname}
-              </p>
-            ) : null}
-
-            <Input
-              name="email"
-              type="email"
-              placeholder="Email*"
-              label="Email:"
-              value={this.state.email}
-              handleChange={this.onEditProfile}
-            />
-
-            {this.state.formErrors.email ? (
-              <p className="text-danger">
-                <i className="fas fa-exclamation-triangle"> </i>
-                {this.state.formErrors.email}
               </p>
             ) : null}
 
@@ -183,7 +173,10 @@ class EditProfile extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    profile: state.pr.profile
+    profile: state.user_r.user
   };
 };
-export default connect(mapStateToProps)(EditProfile);
+export default connect(
+  mapStateToProps,
+  { editUserDetails }
+)(EditProfile);

@@ -1,69 +1,65 @@
 import axios from "axios";
+import store from "../store";
+import { GET_USER } from "./types";
 
-// //Get all the admin list
-// export const getAllAdmins = () => dispatch => {
-//   axios
-//     .get("http://localhost:5000/admin/admins/adminlist")
-//     .then(res => {
-//       console.log(res.data);
-//       dispatch({
-//         type: GET_ADMINS,
-//         payload: res.data //adminlist
-//       });
-//     })
-//     .catch(err => {
-//       dispatch({
-//         type: GET_ADMINS,
-//         payload: null
-//       });
-//       console.log(err);
-//     });
-// };
+//Get all the admin list
+export const getUserDetails = () => dispatch => {
+  axios
+    .post("http://localhost:5000/user/findbyid", {
+      userid: store.getState().user_r.user.userid
+    })
+    .then(res => {
+      console.log(JSON.stringify(res));
+      dispatch({
+        type: GET_USER,
+        payload: res.data.record
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
-// ///Post admin
-// export const addAdmin = (adminData, history) => dispatch => {
-//   axios
-//     .post("http://localhost:5000/admin/admins/add", adminData)
-//     .then(res => {
-//       console.log("New Admin Added");
-//       dispatch(getAllAdmins());
-//     })
-//     .catch(err => {
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data
-//       });
-//     });
-// };
+//Update admin
+//Put request
+export const editUserDetails = (userData, history) => dispatch => {
+  console.log(userData);
+  axios
+    .put("http://localhost:5000/user/update", userData)
+    .then(res => {
+      console.log("USER details Updated");
+      history.push("/dashboard");
+    })
+    .catch(err => {
+      console.log("Error" + err.respose);
+      history.push("/dashboard");
+    });
+};
 
-// //Update admin
-// //Put request
-// export const updateAdmin = (adminData, history) => dispatch => {
-//   console.log(adminData);
-//   axios
-//     .put("http://localhost:5000/admin/admins/update", adminData)
-//     .then(res => {
-//       console.log("Admin Updated");
-//       dispatch(getAllAdmins());
-//     })
-//     .catch(err => {
-//       console.log("Error" + err);
-//       dispatch({
-//         type: GET_ERRORS,
-//         payload: err.response.data
-//       });
-//     });
-// };
+export const updatePwd = (userData, history) => dispatch => {
+  const uData = {
+    oldpassword: userData.oldpassword,
+    password: userData.newpassword,
+    userid: store.getState().user_r.user.userid
+  };
+  axios
+    .post("http://localhost:5000/user/changepwd", uData)
+    .then(res => {
+      console.log(JSON.stringify(res.data));
+    })
+    .catch(err => {
+      console.log("Error " + err);
+    });
+};
 
-// //Delete admin
-// export const deleteAdmin = adminData => dispatch => {
-//   console.log(adminData);
-//   axios
-//     .post("http://localhost:5000/admin/admins/delete", adminData)
-//     .then(res => {
-//       dispatch(getAllAdmins());
-//     })
-//     .catch(err => {
-//       console.log("Error " + err);
-//     });
-// };
+//Delete user
+export const deleteUser = () => dispatch => {
+  axios
+    .post("http://localhost:5000/user/deleteone", {
+      userid: store.getState().user_r.user.userid
+    })
+    .then(res => {})
+    .catch(err => {
+      console.log("Error " + err);
+    });
+};

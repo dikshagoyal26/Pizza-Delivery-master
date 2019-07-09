@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 import "./App.css";
+import PrivateRoute from "./PrivateRoute";
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import store from "./store";
+import axios from "axios";
+
+import UserLogin from "./components/user/Forms/UserLogin";
+import UserRegister from "./components/user/Forms/UserRegister";
+import AdminLogin from "./components/user/Forms/AdminLogin";
+import UserForgetPwd from "./components/user/Forms/UserForgetPwd";
+
 import NotFoundPage from "./components/NotFoundPage";
 import HomePage from "./components/HomePage";
 import Navbar from "./components/user/layout/Navbar";
@@ -27,9 +38,7 @@ import ViewSales from "./components/admin/ViewSales";
 import Admins from "./components/admin/admins/Admins";
 import ViewOrder from "./components/admin/Order/ViewOrder";
 import AdminDashboard from "./components/admin/layout/AdminDashboard";
-
-// You can use any cookie library or whatever
-// library to access your client storage.
+import AdminFirstTime from "./components/admin/AdminFirstTime";
 
 // axios.interceptors.request.use(
 //   function(config) {
@@ -44,38 +53,168 @@ import AdminDashboard from "./components/admin/layout/AdminDashboard";
 //   }
 // );
 
+if (localStorage.jwtToken) {
+  const token = localStorage.jwtToken;
+  setAuthToken(token);
+  // Check for expired token
+  // const currentTime = Date.now() / 1000; // to get in milliseconds
+  // if (decoded.exp < currentTime) {
+  //   // Logout user
+  //   store.dispatch({
+  //     type: "LOGOUT"
+  //   });
+  // Redirect to login
+  //window.location.href = "/";
+}
+
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
+        <div>
           <Navbar />
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/menu" component={List} />
-            <Route exact path="/details/:id" component={Details} />
-            <Route exact path="/cart" component={Cart} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/editprofile" component={EditProfile} />
-            <Route exact path="/changepassword" component={ChangePassword} />
-            <Route exact path="/track" component={Track} />
-            <Route exact path="/feedback" component={Feedback} />
-            <Route exact path="/checkout/order" component={Order} />
-            <Route exact path="/checkout/payment" component={Payment} />
+          <div className="App">
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/login" component={UserLogin} />
+              <Route exact path="/register" component={UserRegister} />
 
-            <Route exact path="/admin/dashboard" component={AdminDashboard} />
-            <Route exact path="/admin/admins" component={Admins} />
-            <Route exact path="/admin/feedback" component={ViewFeedback} />
-            <Route exact path="/admin/add" component={Add} />
-            <Route exact path="/admin/edit/:id" component={Edit} />
-            <Route exact path="/admin/list" component={ViewList} />
-            <Route exact path="/admin/sales" component={ViewSales} />
-            <Route exact path="/admin/order" component={ViewOrder} />
-            <Route exact path="/admin/feedback" component={ViewFeedback} />
-            <Route component={NotFoundPage} />
-          </Switch>
-          <Footer />
+              <Route exact path="/admin/login" component={AdminLogin} />
+
+              <Route exact path="/forgetpwd" component={UserForgetPwd} />
+
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/menu"
+                component={List}
+              />
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/details/:id"
+                component={Details}
+              />
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/cart"
+                component={Cart}
+              />
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/dashboard"
+                component={Dashboard}
+              />
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/profile"
+                component={Profile}
+              />
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/editprofile"
+                component={EditProfile}
+              />
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/changepassword"
+                component={ChangePassword}
+              />
+
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/track"
+                component={Track}
+              />
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/feedback"
+                component={Feedback}
+              />
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/checkout/order"
+                component={Order}
+              />
+              <PrivateRoute
+                allowed="user"
+                exact
+                path="/checkout/payment"
+                component={Payment}
+              />
+
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/firsttime"
+                component={AdminFirstTime}
+              />
+              <PrivateRoute
+                exact
+                allowed="admin"
+                path="/admin/dashboard"
+                component={AdminDashboard}
+              />
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/admins"
+                component={Admins}
+              />
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/feedback"
+                component={ViewFeedback}
+              />
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/add"
+                component={Add}
+              />
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/edit/:id"
+                component={Edit}
+              />
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/list"
+                component={ViewList}
+              />
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/sales"
+                component={ViewSales}
+              />
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/order"
+                component={ViewOrder}
+              />
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/feedback"
+                component={ViewFeedback}
+              />
+              <Route component={NotFoundPage} />
+            </Switch>
+            <Footer />
+          </div>
         </div>
       </BrowserRouter>
     );

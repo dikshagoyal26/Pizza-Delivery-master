@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import cartReducer from "./reducers/cartReducer";
-import ProfileReducer from "./reducers/profileReducer";
 import ProductReducer from "./reducers/productReducer";
 import errorReducer from "./reducers/errorReducer";
 import adminReducer from "./reducers/adminReducer";
@@ -13,15 +12,15 @@ import userReducer from "./reducers/userReducer";
 function saveToLocalStorage(state) {
   try {
     const serializedState = JSON.stringify(state);
-    sessionStorage.setItem("state", serializedState);
+    localStorage.setItem("state", serializedState);
   } catch (e) {
-    console.log(e);
+    console.log("Error" + e);
   }
 }
 
 function loadFromLocalStorage() {
   try {
-    const serializedState = sessionStorage.getItem("state");
+    const serializedState = localStorage.getItem("state");
     if (serializedState === null) return undefined;
     return JSON.parse(serializedState);
   } catch (e) {
@@ -33,7 +32,6 @@ function loadFromLocalStorage() {
 const middleware = [thunk];
 
 const reducer = combineReducers({
-  pr: ProfileReducer,
   cr: cartReducer,
   prod_r: ProductReducer,
   er: errorReducer,
@@ -41,8 +39,17 @@ const reducer = combineReducers({
   auth_r: authReducer,
   order_r: orderReducer,
   feedback_r: feedbackReducer,
-  user_r: userReducer
+  user_r: userReducer,
+  error_r: errorReducer
 });
+
+// const rootReducer = (state, action) => {
+//   if (action.type === "LOGOUT") {
+//     sessionStorage.removeItem("state");
+//     state = undefined;
+//   }
+//   return reducer(state, action);
+// };
 
 const persistedState = loadFromLocalStorage();
 

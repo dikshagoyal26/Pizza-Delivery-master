@@ -1,12 +1,6 @@
-import {
-  GET_ADMINS,
-  GET_ADMIN_BY_ID,
-  GET_ERRORS,
-  GET_ADMIN,
-  ADMINLOGIN,
-  LOGIN
-} from "./types";
+import { GET_ADMINS, GET_ERRORS, SET_FIRST_TYM } from "./types";
 import axios from "axios";
+import store from "../store";
 
 //Get all the admin list
 export const getAllAdmins = () => dispatch => {
@@ -47,11 +41,22 @@ export const addAdmin = (adminData, history) => dispatch => {
 //Update admin
 //Put request
 export const updateAdmin = (adminData, history) => dispatch => {
+  if (adminData.password) {
+    adminData = {
+      adminid: store.getState().ar.admin.adminid,
+      password: adminData.password
+    };
+  }
   console.log(adminData);
   axios
     .put("http://localhost:5000/admin/admins/update", adminData)
     .then(res => {
-      console.log("Admin Updated");
+      if (adminData.password) {
+        dispatch({
+          type: SET_FIRST_TYM
+        });
+        history.push("/admin/dashboard");
+      }
       dispatch(getAllAdmins());
     })
     .catch(err => {

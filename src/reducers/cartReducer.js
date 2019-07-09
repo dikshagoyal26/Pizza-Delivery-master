@@ -1,14 +1,4 @@
-import {
-  ADMINLOGIN,
-  ADD_TO_CART,
-  DELETE_ITEM,
-  DEC_QUANTITY,
-  INC_QUANTITY,
-  ORDER_TOTAL_PRICE,
-  ORDER_ID,
-  GET_CART,
-  GET_PRICE
-} from "../actions/types";
+import { GET_CART, GET_PRICE } from "../actions/types";
 
 const initialState = {
   total_price: 0, //cart item sub total
