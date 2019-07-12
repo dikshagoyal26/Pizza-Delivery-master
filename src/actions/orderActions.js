@@ -64,12 +64,13 @@ export const addOrder = (paymentmode, history) => dispatch => {
   axios
     .post("http://localhost:5000/orders/add", orderData)
     .then(res => {
-      console.log(res);
+      console.log(res.data);
       history.push("/track");
       dispatch(deleteAllCart());
+      alert("Order placed");
     })
     .catch(err => {
-      console.log(err);
+      console.log(err.response.data);
     });
 };
 

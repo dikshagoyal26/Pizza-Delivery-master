@@ -4,7 +4,6 @@ import PrivateRoute from "./PrivateRoute";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import store from "./store";
-import axios from "axios";
 
 import UserLogin from "./components/user/Forms/UserLogin";
 import UserRegister from "./components/user/Forms/UserRegister";
@@ -28,8 +27,6 @@ import Feedback from "./components/user/Feedback";
 import Order from "./components/user/Checkout/Order";
 import Payment from "./components/user/Checkout/Payment";
 
-import { connect } from "react-redux";
-
 import Add from "./components/admin/create-product/Add";
 import Edit from "./components/admin/create-product/Edit";
 import ViewFeedback from "./components/admin/feedback/ViewFeedback";
@@ -40,31 +37,20 @@ import ViewOrder from "./components/admin/Order/ViewOrder";
 import AdminDashboard from "./components/admin/layout/AdminDashboard";
 import AdminFirstTime from "./components/admin/AdminFirstTime";
 
-// axios.interceptors.request.use(
-//   function(config) {
-//     const token = localStorage.getItem("jwtToken");
-//     if (token != null) {
-//       config.headers["auth-token"] = token;
-//     }
-//     return config;
-//   },
-//   function(err) {
-//     return Promise.reject(err);
-//   }
-// );
-
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
   setAuthToken(token);
+  const decoded = jwt_decode(token);
   // Check for expired token
-  // const currentTime = Date.now() / 1000; // to get in milliseconds
-  // if (decoded.exp < currentTime) {
-  //   // Logout user
-  //   store.dispatch({
-  //     type: "LOGOUT"
-  //   });
-  // Redirect to login
-  //window.location.href = "/";
+  const currentTime = Date.now() / 1000; // to get in milliseconds
+  if (decoded.exp < currentTime) {
+    // Logout user
+    store.dispatch({
+      type: "LOGOUT"
+    });
+    //Redirect to login
+    //window.location.href = "/";
+  }
 }
 
 class App extends Component {
@@ -78,9 +64,7 @@ class App extends Component {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/login" component={UserLogin} />
               <Route exact path="/register" component={UserRegister} />
-
               <Route exact path="/admin/login" component={AdminLogin} />
-
               <Route exact path="/forgetpwd" component={UserForgetPwd} />
 
               <PrivateRoute
@@ -213,18 +197,12 @@ class App extends Component {
               />
               <Route component={NotFoundPage} />
             </Switch>
-            <Footer />
           </div>
+          <Footer />
         </div>
       </BrowserRouter>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    login: state.cr.login
-  };
-};
-
-export default connect(mapStateToProps)(App);
+export default App;

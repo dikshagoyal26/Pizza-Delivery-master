@@ -19,7 +19,6 @@ class PriceDetails extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="cart_price_details bg-light rounded-lg">
         <h6 className="text-center">PRICE DETAILS</h6>

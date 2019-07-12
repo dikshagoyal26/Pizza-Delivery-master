@@ -88,24 +88,16 @@ class UserForgetPwd extends Component {
 
             <p className="text-center">A mail will be sent to your userid</p>
             <form onSubmit={this.onSubmitForm}>
-              <div className="form-group">
-                <div className="md-form form-sm mb-3">
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Enter your Email"
-                    title={<i className="fas fa-envelope" />}
-                    handleChange={this.handleChange}
-                    value={this.state.email}
-                  />
-                  {this.state.formErrors.email ? (
-                    <p className="text-danger">
-                      <i className="fas fa-exclamation-triangle"> </i>\
-                      {this.state.formErrors.email}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
+              <Input
+                type="email"
+                name="email"
+                placeholder="Enter your Email"
+                title={<i className="fas fa-envelope" />}
+                handleChange={this.handleChange}
+                value={this.state.email}
+                error={this.state.formErrors.email}
+              />
+
               <div className="text-center">
                 <button
                   className="btn btn-danger"

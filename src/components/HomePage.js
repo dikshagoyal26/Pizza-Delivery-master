@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect, withRouter, Link } from "react-router-dom";
 import "./HomePage.css";
 
 class HomePage extends Component {
@@ -16,18 +16,19 @@ class HomePage extends Component {
     let HomeDisplay = (
       <div className="home_background">
         <img
-          animated
-          bounce
           width="100%"
           src="https://www.dominos.co.in/assets/header_bg.png"
           alt="CoverPage"
         />
         <div className="home_bacground_over ">
-          <p className="text-center ">
+          <p className="text-center">
             Domino's online ordering Yummy <br />
             pizza delivered fast & fresh
           </p>
-          <button className="btn btn-danger">Order Now</button>
+          <Link to="/login">
+            {" "}
+            <button className="btn btn-danger">Order Now</button>
+          </Link>
         </div>
       </div>
     );

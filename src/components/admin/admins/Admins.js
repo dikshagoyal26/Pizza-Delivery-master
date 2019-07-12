@@ -10,25 +10,54 @@ class Admins extends Component {
     this.state = {
       name: "",
       adminid: "",
-      is_add_mode: false
+      is_add_mode: false,
+      error: {
+        name: "",
+        adminid: ""
+      }
     };
-    this.onClickAdd = this.onClickAdd.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onClickAdd = () => {
-    if (this.state.is_add_mode) {
-      const adminData = {
-        name: this.state.name,
-        adminid: this.state.adminid
-      };
-      this.props.addAdmin(adminData, this.props.history);
+  validate = () => {
+    let nameError = "";
+    let adminidError = "";
+    if (!this.state.adminid) {
+      adminidError = "Enter adminid";
     }
-    this.setState({ is_add_mode: !this.state.is_add_mode });
+
+    if (!this.state.name) {
+      nameError = "Enter name";
+    }
+
+    if (nameError || adminidError) {
+      this.setState({
+        error: {
+          name: nameError,
+          adminid: adminidError
+        }
+      });
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  onClickAdd = () => {
+    let isvalid = this.validate();
+    if (isvalid) {
+      if (this.state.is_add_mode) {
+        const adminData = {
+          name: this.state.name,
+          adminid: this.state.adminid
+        };
+        this.props.addAdmin(adminData, this.props.history);
+      }
+      this.setState({ is_add_mode: !this.state.is_add_mode });
+    }
   };
 
   componentDidMount() {
@@ -62,6 +91,7 @@ class Admins extends Component {
                 placeholder="Enter Admin Name"
                 label="Name: "
                 handleChange={this.handleChange}
+                error={this.state.error.name}
               />
               <Input
                 type="text"
@@ -69,6 +99,7 @@ class Admins extends Component {
                 placeholder="Enter Admin ID (Email)"
                 label="Admin ID: "
                 handleChange={this.handleChange}
+                error={this.state.error.adminid}
               />
             </form>
           </div>

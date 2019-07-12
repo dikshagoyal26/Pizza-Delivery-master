@@ -6,14 +6,16 @@ import { deleteUser } from "../../../actions/userActions";
 class Dashboard extends React.Component {
   render() {
     return (
-      <div className="text-center">
-        <h1 className="text-center text-dark">My Dashboard</h1>
-        <div className="col-md-6 m-auto">
-          <Profile />
+      <div className="container-fluid p-5">
+        <Profile />
+        <div className="text-center">
+          <button
+            onClick={this.props.deleteUser}
+            className="btn btn-danger m-3 text-center"
+          >
+            Delete Account
+          </button>
         </div>
-        <button onClick={this.props.deleteUser} className="btn btn-danger m-3">
-          Delete Account
-        </button>
       </div>
     );
   }

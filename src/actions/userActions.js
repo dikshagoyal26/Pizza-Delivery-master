@@ -9,7 +9,6 @@ export const getUserDetails = () => dispatch => {
       userid: store.getState().user_r.user.userid
     })
     .then(res => {
-      console.log(JSON.stringify(res));
       dispatch({
         type: GET_USER,
         payload: res.data.record
@@ -23,32 +22,44 @@ export const getUserDetails = () => dispatch => {
 //Update admin
 //Put request
 export const editUserDetails = (userData, history) => dispatch => {
-  console.log(userData);
+  const Data = {
+    userid: store.getState().user_r.userid,
+    firstname: userData.firstname,
+    lastname: userData.lastname,
+    phone: userData.phone,
+    dob: userData.birthday
+  };
+  console.log(Data);
   axios
-    .put("http://localhost:5000/user/update", userData)
+    .put("http://localhost:5000/user/update", Data)
     .then(res => {
-      console.log("USER details Updated");
       history.push("/dashboard");
+      alert("User details Updated");
     })
     .catch(err => {
-      console.log("Error" + err.respose);
+      console.log("Error" + JSON.stringify(err.response));
       history.push("/dashboard");
+      alert("Error occured");
     });
 };
 
 export const updatePwd = (userData, history) => dispatch => {
   const uData = {
     oldpassword: userData.oldpassword,
-    password: userData.newpassword,
+    password: userData.password,
     userid: store.getState().user_r.user.userid
   };
   axios
-    .post("http://localhost:5000/user/changepwd", uData)
+    .put("http://localhost:5000/user/changepwd", uData)
     .then(res => {
       console.log(JSON.stringify(res.data));
     })
     .catch(err => {
       console.log("Error " + err);
+      //Old Password wrong
+      if (err.response.status === 404) {
+        alert("Wrong password!! Retry!!");
+      }
     });
 };
 

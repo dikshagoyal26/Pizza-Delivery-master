@@ -44,8 +44,12 @@ class Cart extends React.Component {
           <button className="btn btn-danger mb-3" onClick={this.emptyCart}>
             Empty Cart
           </button>
-          <CartColumn />
-          {CartComponents}
+          <table className="cart_table table table-striped table-bordered">
+            <thead>
+              <CartColumn />
+            </thead>
+            <tbody>{CartComponents}</tbody>
+          </table>
           <div>
             <p className="text-right mr-5 font-weight-bold">
               Sub Total: {this.props.total_price}
@@ -63,7 +67,7 @@ class Cart extends React.Component {
     }
 
     return (
-      <div className="container-fluid text-center">
+      <div className="container-fluid text-center p-3">
         <h1>Your Cart</h1>
         {Cart}
       </div>

@@ -49,7 +49,6 @@ class ChangePassword extends React.Component {
   };
 
   validate = () => {
-    console.log("Validate func");
     let pwderror = "";
     let newpwderror = "";
     let confirmerror = "";
@@ -93,21 +92,15 @@ class ChangePassword extends React.Component {
     return (
       <div className="bg-light  border rounded-lg col-md-6 my-3 mx-auto p-3">
         <h2 className="text-center text-danger">CHANGE PASSWORD</h2>
-        <form onSubmit={this.onSubmit} className="formGroup">
+        <form onSubmit={this.onSubmit}>
           <Input
             name="oldpassword"
             type="password"
             placeholder="Old Password*"
             handleChange={this.onChangePassword}
             value={this.state.oldpassword}
+            error={this.state.formErrors.oldpassword}
           />
-
-          {this.state.formErrors.oldpassword ? (
-            <p className="text-danger">
-              <i className="fas fa-exclamation-triangle"> </i>
-              {this.state.formErrors.oldpassword}
-            </p>
-          ) : null}
 
           <Input
             name="newpassword"
@@ -115,13 +108,8 @@ class ChangePassword extends React.Component {
             placeholder="New Password*"
             handleChange={this.onChangePassword}
             value={this.state.newpassword}
+            error={this.state.formErrors.newpassword}
           />
-          {this.state.formErrors.newpassword ? (
-            <p className="text-danger">
-              <i className="fas fa-exclamation-triangle"> </i>
-              {this.state.formErrors.newpassword}
-            </p>
-          ) : null}
 
           <Input
             name="confirmpassword"
@@ -129,13 +117,8 @@ class ChangePassword extends React.Component {
             placeholder="Confirm Password*"
             handleChange={this.onChangePassword}
             value={this.state.confirmpassword}
+            error={this.state.formErrors.confirmpassword}
           />
-          {this.state.formErrors.confirmpassword ? (
-            <p className="text-danger">
-              <i className="fas fa-exclamation-triangle"> </i>
-              {this.state.formErrors.confirmpassword}
-            </p>
-          ) : null}
 
           <div className="text-center">
             <a href=" ">

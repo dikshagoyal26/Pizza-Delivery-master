@@ -2,21 +2,26 @@ import { GET_CART } from "../actions/types";
 import store from "../store";
 import axios from "axios";
 
-export const addToCart = (cartData, history) => dispatch => {
+export const addToCart = (cartData, history, quantity) => dispatch => {
   const cart_items = store.getState().cr.cart;
-  console.log(cartData);
+
   let should_update = true;
   if (cart_items != null) {
     cart_items.products.forEach(product => {
       if (product.productid === cartData.productid) {
+        //Increase by one
         if (cartData.operation === "+1") {
-          cartData.qty = product.qty + 1;
-          console.log(cartData);
+          cartData.qty = parseInt(
+            parseInt(product.qty) + parseInt(cartData.qty)
+          );
+          //Decrease
         } else if (cartData.operation === "-1") {
+          //on decreasing by one quantity becomes zero
           if (product.qty <= 1) {
             dispatch(deleteCartProduct(cartData));
             should_update = false;
           } else {
+            //Deceased by one
             cartData.qty = product.qty - 1;
           }
         }
@@ -46,6 +51,7 @@ export const addToCart = (cartData, history) => dispatch => {
       .then(res => {
         console.log(JSON.stringify(res.data));
         dispatch(getCart());
+        history.push("/cart");
       })
       .catch(err => {
         console.log(err);

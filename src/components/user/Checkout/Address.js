@@ -21,36 +21,42 @@ class Address extends React.Component {
             type="text"
             handleChange={this.props.handleChange}
             placeholder="Flat/House No.*"
+            error={this.props.error.houseNo}
           />{" "}
           <Input
             name="society"
             type="text"
             handleChange={this.props.handleChange}
             placeholder="Societ Name*"
+            error={this.props.error.society}
           />
           <Input
             name="street"
             type="text"
             handleChange={this.props.handleChange}
             placeholder="Street*"
+            error={this.props.error.street}
           />
           <Input
             name="town"
             type="text"
             handleChange={this.props.handleChange}
             placeholder="Locality / Town*"
+            error={this.props.error.town}
           />
           <Input
             name="state"
             type="text"
             handleChange={this.props.handleChange}
             placeholder="State*"
+            error={this.props.error.state}
           />
           <Input
             name="pin"
             type="text"
             handleChange={this.props.handleChange}
             placeholder="Pin*"
+            error={this.props.error.pin}
           />
         </form>
       </div>

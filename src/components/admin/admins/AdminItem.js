@@ -12,11 +12,12 @@ class AdminItem extends React.Component {
       adminid: this.props.admin.adminid,
       is_edit_mode: false,
       is_changed: false,
-      oldadminid: this.props.admin.adminid
+      oldadminid: this.props.admin.adminid,
+      error: {
+        name: "",
+        adminid: ""
+      }
     };
-    this.deleteAdmin = this.deleteAdmin.bind(this);
-    this.onClickEdit = this.onClickEdit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillReceiveProps = nextProps => {
@@ -39,8 +40,33 @@ class AdminItem extends React.Component {
     this.props.deleteAdmin(adminData);
   };
 
+  validate = () => {
+    let nameError = "";
+    let adminidError = "";
+    if (!this.state.adminid) {
+      adminidError = "Enter adminid";
+    }
+
+    if (!this.state.name) {
+      nameError = "Enter name";
+    }
+
+    if (nameError || adminidError) {
+      this.setState({
+        error: {
+          name: nameError,
+          adminid: adminidError
+        }
+      });
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   onClickEdit = () => {
-    if (this.state.is_edit_mode && this.state.is_changed) {
+    let isvalid = this.validate();
+    if (this.state.is_edit_mode && this.state.is_changed && isvalid) {
       const adminData = {
         name: this.state.name,
         newadminid: this.state.adminid,
@@ -69,6 +95,7 @@ class AdminItem extends React.Component {
                 label="Name: "
                 value={this.state.name}
                 handleChange={this.handleChange}
+                error={this.state.error.name}
               />
               <Input
                 type="text"
@@ -77,6 +104,7 @@ class AdminItem extends React.Component {
                 label="Admin ID: "
                 value={this.state.adminid}
                 handleChange={this.handleChange}
+                error={this.state.error.adminid}
               />
             </form>
           </div>

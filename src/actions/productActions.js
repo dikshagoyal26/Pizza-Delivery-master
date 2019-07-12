@@ -6,10 +6,12 @@ export const getAllProducts = () => dispatch => {
   axios
     .get("http://localhost:5000/product/menu")
     .then(res => {
-      dispatch({
-        type: GET_PRODUCTS,
-        payload: res.data
-      });
+      if (res.data) {
+        dispatch({
+          type: GET_PRODUCTS,
+          payload: res.data
+        });
+      }
     })
     .catch(err => {
       //console.log(err.response);
@@ -21,22 +23,27 @@ export const getAllProducts = () => dispatch => {
 };
 
 //Get product by ID
-export const getProductByID = id => dispatch => {
+export const getProductByID = (id, history) => dispatch => {
   axios
     .get(`http://localhost:5000/product/details/${id}`)
     .then(res => {
-      dispatch({
-        type: GET_PRODUCT_BY_ID,
-        payload: res.data
-      });
-      console.log(res.data);
+      if (res.data.product) {
+        dispatch({
+          type: GET_PRODUCT_BY_ID,
+          payload: res.data
+        });
+      }
     })
     .catch(err => {
+      if (err.response.status === 404) {
+        //No Product Found
+        console.log("err.response.msg");
+        history.push("/pagenotfount");
+      }
       dispatch({
         type: GET_PRODUCT_BY_ID,
         payload: null
       });
-      console.log(err);
     });
 };
 
