@@ -6,7 +6,6 @@ import {
   deleteFeedback,
   updateFeedback
 } from "../../actions/feedbackActions";
-import Input from "./Input/Input";
 
 class Feedback extends React.Component {
   constructor(props) {
@@ -68,7 +67,7 @@ class Feedback extends React.Component {
     //Send req only if form data is valid
     if (isvalid) {
       //ADDING new feedback
-      if (this.state.edit_mode == false) {
+      if (this.state.edit_mode === false) {
         const feedbackData = {
           description: this.state.feedback
         };
@@ -105,10 +104,8 @@ class Feedback extends React.Component {
     if (this.props.feedbacks) {
       // FEEDBACK List
       Feedbacks = this.props.feedbacks.map(feedback => {
-        if (this.state.feedbackid != feedback.feedbackid) {
-          {
-            /** return FEEDBACK ITEM if feedback is not on edit mode*/
-          }
+        if (this.state.feedbackid !== feedback.feedbackid) {
+          /** return FEEDBACK ITEM if feedback is not on edit mode*/
           return (
             <div key={feedback._id}>
               <div className="row bg-light my-3 mx-1 p-3 border border-primary rounded-lg">
@@ -158,7 +155,11 @@ class Feedback extends React.Component {
               />{" "}
               {/** ERROR message */}
               {this.state.feedbackerror ? (
-                <p className="text-danger">{this.state.feedbackerror}</p>
+                <small className="text-danger">
+                  {" "}
+                  <i className="fas fa-exclamation-triangle"> </i>
+                  {this.state.feedbackerror}
+                </small>
               ) : null}
               <div className="text-center">
                 <button

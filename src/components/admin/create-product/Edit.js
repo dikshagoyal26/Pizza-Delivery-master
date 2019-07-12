@@ -15,10 +15,16 @@ class Edit extends React.Component {
       category: "",
       toppings: "",
       description: "",
-      errors: {}
+      errors: {
+        productid: "",
+        name: "",
+        price: " ",
+        ingredients: "",
+        category: "",
+        toppings: "",
+        description: ""
+      }
     };
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
   componentDidMount() {
     this.props.getProductByID(this.props.match.params.id);
@@ -36,29 +42,105 @@ class Edit extends React.Component {
         ingredients: nextProps.product[0].ingredients,
         category: nextProps.product[0].category,
         toppings: nextProps.product[0].toppings,
-        description: nextProps.product[0].description
+        description: nextProps.product[0].description,
+        errors: {
+          productid: "",
+          name: "",
+          price: " ",
+          ingredients: "",
+          category: "",
+          toppings: "",
+          description: ""
+        }
       });
     }
   }
 
+  validate = () => {
+    let productidError = "";
+    let nameError = "";
+    let priceError = "";
+    let ingredientsError = "";
+    let categoryError = "";
+    let toppingsError = "";
+    let descriptionError = "";
+
+    if (!this.state.productid) {
+      productidError = "Enter the product id";
+    }
+
+    if (!this.state.name) {
+      nameError = "Enter the name";
+    }
+
+    if (!this.state.price) {
+      priceError = "Enter the price";
+    }
+
+    if (!this.state.ingredients) {
+      ingredientsError = "Enter the ingredients";
+    }
+
+    if (!this.state.category) {
+      categoryError = "Enter the category";
+    }
+
+    if (!this.state.toppings) {
+      toppingsError = "Enter the Toppings";
+    }
+
+    if (!this.state.description) {
+      descriptionError = "Enter the Description";
+    }
+
+    if (
+      productidError ||
+      nameError ||
+      priceError ||
+      ingredientsError ||
+      categoryError ||
+      toppingsError ||
+      descriptionError
+    ) {
+      this.setState({
+        errors: {
+          productid: productidError,
+          name: nameError,
+          price: priceError,
+          ingredients: ingredientsError,
+          category: categoryError,
+          toppings: toppingsError,
+          description: descriptionError
+        }
+      });
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   onSubmit = e => {
     e.preventDefault();
-    const productData = {
-      productid: this.state.productid,
-      name: this.state.name,
-      price: this.state.price,
-      ingredients: this.state.ingredients,
-      category: this.state.category,
-      toppings: this.state.toppings,
-      description: this.state.description
-    };
+    let isvalid = this.validate();
+    if (isvalid) {
+      const productData = {
+        productid: this.state.productid,
+        name: this.state.name,
+        price: this.state.price,
+        ingredients: this.state.ingredients,
+        category: this.state.category,
+        toppings: this.state.toppings,
+        description: this.state.description
+      };
 
-    this.props.updateProduct(
-      productData,
-      this.props.history,
-      this.props.match.params.id
-    );
+      this.props.updateProduct(
+        productData,
+        this.props.history,
+        this.props.match.params.id
+      );
+    }
   };
+
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -78,6 +160,7 @@ class Edit extends React.Component {
               handleChange={this.onChange}
               value={this.state.productid}
               placeholder="Enter Product ID"
+              error={this.state.errors.productid}
             />
 
             <Input
@@ -89,6 +172,7 @@ class Edit extends React.Component {
               handleChange={this.onChange}
               value={this.state.name}
               placeholder="Enter Product name"
+              error={this.state.errors.name}
             />
 
             <Input
@@ -100,6 +184,7 @@ class Edit extends React.Component {
               handleChange={this.onChange}
               value={this.state.price}
               placeholder="Enter Product Price"
+              error={this.state.errors.price}
             />
 
             <Input
@@ -111,7 +196,9 @@ class Edit extends React.Component {
               value={this.state.ingredients}
               handleChange={this.onChange}
               placeholder="Enter Product Ingredients"
+              error={this.state.errors.ingredients}
             />
+
             <Select
               options={["veg", "non veg"]}
               name="category"
@@ -119,6 +206,7 @@ class Edit extends React.Component {
               label="Category: "
               value={this.state.category}
               handleChange={this.onChange}
+              error={this.state.errors.category}
             />
             <Input
               type="text"
@@ -129,6 +217,7 @@ class Edit extends React.Component {
               handleChange={this.onChange}
               value={this.state.toppings}
               placeholder="Enter Product toppings"
+              error={this.state.errors.toppings}
             />
             <Input
               type="text"
@@ -139,8 +228,8 @@ class Edit extends React.Component {
               value={this.state.description}
               handleChange={this.onChange}
               placeholder="Enter Product description"
+              error={this.state.errors.description}
             />
-
             <button className="btn btn-primary btn-block" type="submit">
               Submit
             </button>

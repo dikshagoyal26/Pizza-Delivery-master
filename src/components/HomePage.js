@@ -16,8 +16,6 @@ class HomePage extends Component {
     let HomeDisplay = (
       <div className="home_background">
         <img
-          animated
-          bounce
           width="100%"
           src="https://www.dominos.co.in/assets/header_bg.png"
           alt="CoverPage"

@@ -98,12 +98,9 @@ export const loginAdmin = (adminData, history) => dispatch => {
   axios
     .post("http://localhost:5000/admin/login", adminData)
     .then(res => {
-      const { token } = res.data.token;
+      const token = res.data.token;
       localStorage.setItem("jwtToken", token);
       // Set token to Auth header
-      console.log(
-        "Here is my token after login " + localStorage.getItem("jwtToken")
-      );
       setAuthToken(token);
 
       dispatch({

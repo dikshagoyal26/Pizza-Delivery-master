@@ -2,9 +2,13 @@ import React from "react";
 
 const Input = props => {
   return (
-    <div className="form-group">
-      <div className="input-group">
-        <label className="mr-2">{props.label}</label>
+    <div className="form-group ">
+      <div
+        className={
+          "input-group " + (props.error ? " has-error" : "has-success")
+        }
+      >
+        <label className="mr-2 form-label control-label">{props.label}</label>
 
         {props.title ? (
           <div className="input-group-prepend">
@@ -27,8 +31,15 @@ const Input = props => {
           required={props.required}
           pattern={props.pattern}
         />
-        <span>{props.error}</span>
       </div>
+      {props.error ? (
+        <small className="text-danger px-2 text-small">
+          {" "}
+          <i className="fas fa-exclamation-triangle"> </i>
+          {"  "}
+          {props.error}
+        </small>
+      ) : null}
     </div>
   );
 };

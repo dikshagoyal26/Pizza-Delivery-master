@@ -94,14 +94,8 @@ class EditProfile extends React.Component {
               label="First Name:"
               value={this.state.firstname}
               handleChange={this.onEditProfile}
+              error={this.state.formErrors.firstname}
             />
-
-            {this.state.formErrors.firstname ? (
-              <p className="text-danger">
-                <i className="fas fa-exclamation-triangle"> </i>
-                {this.state.formErrors.firstname}
-              </p>
-            ) : null}
 
             <Input
               name="lastname"
@@ -110,14 +104,8 @@ class EditProfile extends React.Component {
               label="Last Name:"
               value={this.state.lastname}
               handleChange={this.onEditProfile}
+              error={this.state.formErrors.lastname}
             />
-
-            {this.state.formErrors.lastname ? (
-              <p className="text-danger">
-                <i className="fas fa-exclamation-triangle"> </i>
-                {this.state.formErrors.lastname}
-              </p>
-            ) : null}
 
             <Input
               name="phone"
@@ -126,14 +114,8 @@ class EditProfile extends React.Component {
               label="Phone:"
               value={this.state.phone}
               handleChange={this.onEditProfile}
+              error={this.state.formErrors.phone}
             />
-
-            {this.state.formErrors.phone ? (
-              <p className="text-danger">
-                <i className="fas fa-exclamation-triangle"> </i>
-                {this.state.formErrors.phone}
-              </p>
-            ) : null}
 
             <Input
               name="birthday"

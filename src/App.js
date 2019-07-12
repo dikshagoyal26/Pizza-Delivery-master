@@ -40,9 +40,7 @@ import AdminFirstTime from "./components/admin/AdminFirstTime";
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
   setAuthToken(token);
-  console.log("token" + token);
   const decoded = jwt_decode(token);
-  console.log(decoded);
   // Check for expired token
   const currentTime = Date.now() / 1000; // to get in milliseconds
   if (decoded.exp < currentTime) {

@@ -13,8 +13,7 @@ class AdminLogin extends Component {
       formErrors: {
         email: "",
         password: ""
-      },
-      isValid: false
+      }
     };
   }
 
@@ -47,16 +46,13 @@ class AdminLogin extends Component {
     e.preventDefault();
 
     let isValid = this.validate();
-    this.setState({ isValid: isValid });
 
     if (isValid) {
       const adminData = {
         adminid: this.state.email,
         password: this.state.password
       };
-
       this.props.loginAdmin(adminData, this.props.history);
-
       this.setState({
         formErrors: {
           email: "",
@@ -107,48 +103,27 @@ class AdminLogin extends Component {
           <div className="form ">
             <h4 className="text-center">Log in as Admin</h4>
 
-            {/* {this.props.errors ? (
-                  <p className="text-danger text-center">
-                    <i className="fas fa-exclamation-triangle" />
-                    {this.props.errors}
-                  </p>
-                ) : null} */}
-
             <form onSubmit={this.onSubmitForm}>
-              <div className="form-group">
-                <div className="md-form form-sm mb-3">
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Enter your Email"
-                    title={<i className="fas fa-envelope" />}
-                    handleChange={this.handleChange}
-                    value={this.state.email}
-                  />
-                  {this.state.formErrors.email ? (
-                    <p className="text-danger">
-                      <i className="fas fa-exclamation-triangle"> </i>\
-                      {this.state.formErrors.email}
-                    </p>
-                  ) : null}
-                </div>
-                <div className="md-form form-sm mb-3">
-                  <Input
-                    type="password"
-                    name="password"
-                    placeholder="Enter your password"
-                    title={<i className="fas fa-lock prefix" />}
-                    handleChange={this.handleChange}
-                    value={this.state.password}
-                  />
-                  {this.state.formErrors.password ? (
-                    <p className="text-danger">
-                      <i className="fas fa-exclamation-triangle"> </i>
-                      {this.state.formErrors.password}
-                    </p>
-                  ) : null}
-                </div>
-              </div>
+              <Input
+                type="email"
+                name="email"
+                placeholder="Enter your Email"
+                title={<i className="fas fa-envelope" />}
+                handleChange={this.handleChange}
+                value={this.state.email}
+                error={this.state.formErrors.email}
+              />
+
+              <Input
+                type="password"
+                name="password"
+                placeholder="Enter your password"
+                title={<i className="fas fa-lock prefix" />}
+                handleChange={this.handleChange}
+                value={this.state.password}
+                error={this.state.formErrors.password}
+              />
+
               <div className="text-center">
                 <button className="btn btn-danger" type="submit">
                   Log in

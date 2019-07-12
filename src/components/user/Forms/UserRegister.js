@@ -145,96 +145,57 @@ class UserRegister extends Component {
         </div>
         <div className="">
           <div className="form ">
-            <h4 className="text-center">Log in</h4>
-
-            {/* {this.props.errors ? (
-                  <p className="text-danger text-center">
-                    <i className="fas fa-exclamation-triangle" />
-                    {this.props.errors}
-                  </p>
-                ) : null} */}
+            <h4 className="text-center">Register</h4>
 
             <form onSubmit={this.onSubmitForm}>
-              <div className="md-form form-sm mb-3">
-                <Input
-                  type="text"
-                  name="firstname"
-                  placeholder="Enter your firstname"
-                  title={<i className="fas fa-envelope" />}
-                  handleChange={this.handleChange}
-                  value={this.state.firstname}
-                  error={this.state.formErrors.firstname}
-                />
-                {this.state.formErrors.firstname ? (
-                  <span className="text-danger">
-                    <i className="fas fa-exclamation-triangle"> </i>
-                    {this.state.formErrors.firstname}
-                  </span>
-                ) : null}
-              </div>
-              <div className="md-form form-sm mb-3">
-                <Input
-                  type="text"
-                  name="lastname"
-                  placeholder="Enter your lastname"
-                  title={<i className="fas fa-envelope" />}
-                  handleChange={this.handleChange}
-                  value={this.state.lastname}
-                />
-                {this.state.formErrors.lastname ? (
-                  <p className="text-danger">
-                    <i className="fas fa-exclamation-triangle"> </i>
-                    {this.state.formErrors.lastname}
-                  </p>
-                ) : null}
-              </div>
-              <div className="md-form form-sm mb-3">
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Enter a valid Email"
-                  title={<i className="fas fa-envelope" />}
-                  handleChange={this.handleChange}
-                  value={this.state.email}
-                />
-                {this.state.formErrors.email ? (
-                  <p className="text-danger">
-                    <i className="fas fa-exclamation-triangle"> </i>
-                    {this.state.formErrors.email}
-                  </p>
-                ) : null}
-              </div>
-              <div className="md-form form-sm mb-3">
-                <Input
-                  type="password"
-                  name="password"
-                  placeholder="Enter Password"
-                  title={<i className="fas fa-lock prefix" />}
-                  handleChange={this.handleChange}
-                  value={this.state.password}
-                />
-                {this.state.formErrors.password ? (
-                  <p className="text-danger">
-                    <i className="fas fa-exclamation-triangle"> </i>
-                    {this.state.formErrors.password}
-                  </p>
-                ) : null}
-              </div>
-              <div className="md-form form-sm mb-3">
-                <Input
-                  type="password"
-                  name="confirmpassword"
-                  placeholder="Confirm Password"
-                  title={<i className="fas fa-lock prefix" />}
-                  handleChange={this.handleChange}
-                />
-                {this.state.formErrors.confirmpassword ? (
-                  <p className="text-danger">
-                    <i className="fas fa-exclamation-triangle"> </i>
-                    {this.state.formErrors.confirmpassword}
-                  </p>
-                ) : null}
-              </div>
+              <Input
+                type="text"
+                name="firstname"
+                placeholder="Enter your firstname"
+                title={<i className="fas fa-envelope" />}
+                handleChange={this.handleChange}
+                value={this.state.firstname}
+                error={this.state.formErrors.firstname}
+              />
+              <Input
+                type="text"
+                name="lastname"
+                placeholder="Enter your lastname"
+                title={<i className="fas fa-envelope" />}
+                handleChange={this.handleChange}
+                value={this.state.lastname}
+                error={this.state.formErrors.lastname}
+              />
+
+              <Input
+                type="email"
+                name="email"
+                placeholder="Enter a valid Email"
+                title={<i className="fas fa-envelope" />}
+                handleChange={this.handleChange}
+                value={this.state.email}
+                error={this.state.formErrors.email}
+              />
+
+              <Input
+                type="password"
+                name="password"
+                placeholder="Enter Password"
+                title={<i className="fas fa-lock prefix" />}
+                handleChange={this.handleChange}
+                value={this.state.password}
+                error={this.state.formErrors.password}
+              />
+
+              <Input
+                type="password"
+                name="confirmpassword"
+                placeholder="Confirm Password"
+                title={<i className="fas fa-lock prefix" />}
+                handleChange={this.handleChange}
+                error={this.state.formErrors.confirmpassword}
+              />
+
               <div className="text-center form-sm mt-2">
                 <button className="btn btn-info">
                   Sign up <i className="fas fa-sign-in ml-1" />

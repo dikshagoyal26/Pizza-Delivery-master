@@ -83,13 +83,8 @@ class AdminFirstTime extends React.Component {
             placeholder="Password*"
             handleChange={this.onChangePassword}
             value={this.state.password}
+            error={this.state.formErrors.password}
           />
-          {this.state.formErrors.password ? (
-            <p className="text-danger">
-              <i className="fas fa-exclamation-triangle"> </i>
-              {this.state.formErrors.password}
-            </p>
-          ) : null}
 
           <Input
             name="confirmpassword"
@@ -97,13 +92,8 @@ class AdminFirstTime extends React.Component {
             placeholder="Confirm Password*"
             handleChange={this.onChangePassword}
             value={this.state.confirmpassword}
+            error={this.state.formErrors.confirmpassword}
           />
-          {this.state.formErrors.confirmpassword ? (
-            <p className="text-danger">
-              <i className="fas fa-exclamation-triangle"> </i>
-              {this.state.formErrors.confirmpassword}
-            </p>
-          ) : null}
 
           <div className="text-center">
             <a href=" ">

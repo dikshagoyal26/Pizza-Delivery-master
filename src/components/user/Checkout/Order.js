@@ -16,7 +16,14 @@ class Order extends React.Component {
       society: "",
       state: "",
       pin: "",
-      error: ""
+      error: {
+        houseNo: "",
+        street: "",
+        town: "",
+        society: "",
+        state: "",
+        pin: ""
+      }
     };
   }
 
@@ -25,15 +32,53 @@ class Order extends React.Component {
   };
 
   validate = () => {
+    let houseNoerror = "";
+    let streeterror = "";
+    let townerror = "";
+    let societyerror = "";
+    let stateerror = "";
+    let pinerror = "";
+
+    if (!this.state.houseNo) {
+      houseNoerror = "Enter house no.";
+    }
+    if (!this.state.street) {
+      streeterror = "Enter Street Name";
+    }
+    if (!this.state.town) {
+      townerror = "Enter Town";
+    }
+    if (!this.state.society) {
+      societyerror = "Enter Society Name";
+    }
+    if (!this.state.street) {
+      streeterror = "Enter Street Name";
+    }
+    if (!this.state.state) {
+      stateerror = "Enter State";
+    }
+    if (!this.state.pin) {
+      pinerror = "Enter Pin";
+    }
+
     if (
-      !this.state.houseNo ||
-      !!this.state.street ||
-      !this.state.town ||
-      !this.state.society ||
-      !this.state.state ||
-      !this.state.pin
+      houseNoerror ||
+      streeterror ||
+      townerror ||
+      societyerror ||
+      stateerror ||
+      pinerror
     ) {
-      this.setState({ error: "Enter full address" });
+      this.setState({
+        error: {
+          houseNo: houseNoerror,
+          street: streeterror,
+          town: townerror,
+          society: societyerror,
+          state: stateerror,
+          pin: pinerror
+        }
+      });
       return false;
     } else {
       return true;
@@ -52,9 +97,16 @@ class Order extends React.Component {
         society: "",
         state: "",
         pin: "",
-        error: ""
+        error: {
+          houseNo: "",
+          street: "",
+          town: "",
+          society: "",
+          state: "",
+          pin: ""
+        }
       });
-      this.props.history("/checkout/payment");
+      // this.props.history("/checkout/payment");
     }
   };
 
@@ -64,10 +116,10 @@ class Order extends React.Component {
         <h5 className="text-uppercase text-center font-weight-bold">Order</h5>
         <div className="row">
           <div className="col-md-6 col-sm-12">
-            <Address handleChange={this.handleChange} />
-            {this.state.error ? (
-              <p className="text-danger text-center">{this.state.error}</p>
-            ) : null}
+            <Address
+              handleChange={this.handleChange}
+              error={this.state.error}
+            />
           </div>
 
           <div className=" col-md-6 col-sm-12 text-center">
