@@ -48,47 +48,39 @@ class CartItem extends React.Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-10 mx-auto col-lg-2">
-            <p className="text-uppercase">{this.props.name}</p>
-          </div>
-          <div className="col-10 mx-auto col-lg-2">
-            <p className="text-uppercase">{this.props.price}</p>
-          </div>
-          <div className="col-10 mx-auto col-lg-2">
-            <p>Toppings</p>
-          </div>
+      <tr>
+        <td>
+          <p className="text-uppercase">{this.props.name}</p>
+        </td>
+        <td>
+          <p className="text-uppercase">{this.props.price}</p>
+        </td>
+        <td>
+          <p>Toppings</p>
+        </td>
 
-          <div className="col-10 mx-auto col-lg-2">
-            <div className="row ">
-              <div className="col">
-                <button className="btn-primary btn" onClick={this.onMinus}>
-                  <i className="fas fa-minus" />
-                </button>
-              </div>
-              <div className="col">
-                <p> {this.props.qty} </p>
-              </div>
-              <div className="col">
-                <button className="btn-primary btn" onClick={this.onPlus}>
-                  <i className="fas fa-plus" />
-                </button>
-              </div>
-            </div>
-          </div>
+        <td>
+          <button className="btn-secondary btn btn-sm" onClick={this.onMinus}>
+            <i className="fas fa-minus" />
+          </button>
+          <span>
+            {"  "} {this.props.qty}
+            {"  "}
+          </span>
+          <button className="btn-secondary btn btn-sm" onClick={this.onPlus}>
+            <i className="fas fa-plus" />
+          </button>
+        </td>
 
-          <div className="col-10 mx-auto col-lg-2">
-            <p className="text-uppercase" onClick={this.onDelete}>
-              <i className="fas fa-trash-alt" />
-            </p>
-          </div>
-
-          <div className="col-10 mx-auto col-lg-2">
-            <p className="text-uppercase">{this.props.total}</p>
-          </div>
-        </div>
-      </div>
+        <td>
+          <p className="text-uppercase">{this.props.total}</p>
+        </td>
+        <td>
+          <p className="text-uppercase" onClick={this.onDelete}>
+            <i className="fas fa-trash-alt" />
+          </p>
+        </td>
+      </tr>
     );
   }
 }

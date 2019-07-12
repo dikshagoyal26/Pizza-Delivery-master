@@ -3,6 +3,7 @@ import Input from "../Input/Input";
 import Select from "../Input/Select";
 import { connect } from "react-redux";
 import { editUserDetails } from "../../../actions/userActions";
+import { Link } from "react-router-dom";
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -10,9 +11,7 @@ class EditProfile extends React.Component {
     this.state = {
       firstname: " ",
       lastname: " ",
-      email: " ",
-      phone: " ",
-      gender: " ",
+      phone: 0,
       birthday: " ",
       formErrors: { firstname: "", lastname: "", email: "", phone: "" }
     };
@@ -22,10 +21,8 @@ class EditProfile extends React.Component {
     this.setState({
       firstname: this.props.profile.firstname,
       lastname: this.props.profile.lastname,
-      email: this.props.profile.email,
       phone: this.props.profile.phone,
-      gender: this.props.profile.gender,
-      birthday: this.props.profile.birthday,
+      birthday: this.props.profile.dob,
       formErrors: { firstname: "", lastname: "", phone: "" }
     });
   };
@@ -45,8 +42,8 @@ class EditProfile extends React.Component {
 
     if (!this.state.phone) {
       phoneError = "Required Phone";
-
-      if (this.state.phone.length !== 10) {
+    } else {
+      if (this.state.phone.toString().length != 10) {
         phoneError = "Invalid Phone";
       }
     }
@@ -60,16 +57,17 @@ class EditProfile extends React.Component {
         }
       });
       return false;
+    } else {
+      return true;
     }
-    return true;
   };
 
   onEditProfile = e => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   };
 
   onSubmit = e => {
+    console.log(this.state);
     e.preventDefault();
     const isValid = this.validate();
     if (isValid) {
@@ -77,28 +75,23 @@ class EditProfile extends React.Component {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
         phone: this.state.phone,
-        gender: this.state.gender,
         birthday: this.state.birthday
       };
       this.props.editUserDetails(userData, this.props.history);
-    } else {
-      console.log("Not validated");
-      console.log(this.state);
     }
   };
 
   render() {
     return (
-      <div className="col-md-6 my-3 mx-auto p-3 bg-light border rounded-lg">
-        <div>
+      <div className="container-fluid p-5">
+        <div className="bg-light border rounded-lg p-3">
           <h2 className="text-center text-danger">EDIT PROFILE</h2>
           <form onSubmit={this.onSubmit} className="formGroup">
             <Input
               name="firstname"
               type="text"
               placeholder="First Name*"
-              l
-              abel="First Name:"
+              label="First Name:"
               value={this.state.firstname}
               handleChange={this.onEditProfile}
             />
@@ -142,28 +135,24 @@ class EditProfile extends React.Component {
               </p>
             ) : null}
 
-            <Select
-              name="gender"
-              handleChange={this.onEditProfile}
-              placeholder="Gender"
-              label="Gender:"
-              value={this.state.gender}
-              options={["Male", "Female", "Other"]}
-            />
-
             <Input
               name="birthday"
               type="date"
-              placeholder="Birthda*"
+              placeholder="Birthday*"
               label="Birthday(Optional):"
               value={this.state.birthday}
               handleChange={this.onEditProfile}
             />
 
             <div className="text-center mt-3">
-              <button type="submit" className="btn btn-danger">
+              <button type="submit" className="btn btn-primary m-3">
                 Save
               </button>
+              <Link to="/dashboard">
+                <button type="submit" className="btn btn-primary m-3 ">
+                  Cancel
+                </button>
+              </Link>
             </div>
           </form>
         </div>

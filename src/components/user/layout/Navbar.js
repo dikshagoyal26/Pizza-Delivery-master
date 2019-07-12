@@ -5,7 +5,9 @@ import Login from "./Login";
 import pizza_logo from "../../../img/pizza_logo.png";
 
 class Navbar extends React.Component {
-  handleClick = () => this.props.dispatch({ type: "LOGOUT" });
+  handleClick = () => {
+    this.props.dispatch({ type: "LOGOUT" });
+  };
   componentWillUnmount() {
     console.log("Navbar Component Unmounted");
   }
@@ -27,19 +29,16 @@ class Navbar extends React.Component {
                 style={{ width: 50 }}
               />{" "}
               Pizza Hub
-            </a>
-            <a>
-              {" "}
-              <Link to="/login">
-                <button
-                  data-toggle="modal"
-                  data-target="#LoginForm"
-                  className="btn btn-danger"
-                >
-                  Login
-                </button>
-              </Link>
-            </a>
+            </a>{" "}
+            <Link to="/login">
+              <button
+                data-toggle="modal"
+                data-target="#LoginForm"
+                className="btn btn-danger"
+              >
+                Login
+              </button>
+            </Link>
           </nav>
         </header>
       );
@@ -52,7 +51,7 @@ class Navbar extends React.Component {
                 <a className="navbar-brand" href="/menu">
                   {" "}
                   <img className="navbar-brand-img" src={pizza_logo} />
-                  Logo
+                  Pizza Hub
                 </a>
 
                 <button
@@ -108,20 +107,20 @@ class Navbar extends React.Component {
                       className="dropdown-menu dropdown-menu-right"
                       aria-labelledby="navbarDropdown"
                     >
-                      <a href="/dashboard" className="dropdown-item">
-                        My Dashboard
-                      </a>
-                      <a href="/changepassword" className="dropdown-item">
+                      <Link to="/dashboard" className="dropdown-item">
+                        My Profile
+                      </Link>
+                      <Link to="/changepassword" className="dropdown-item">
                         Change Password
-                      </a>
+                      </Link>
                       <div className="dropdown-divider" />
-                      <a
-                        href="/"
+                      <Link
+                        to="/"
                         className="dropdown-item"
                         onClick={this.handleClick}
                       >
                         Logout
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -140,7 +139,7 @@ class Navbar extends React.Component {
                   <a className="navbar-brand" href="/admin/dashboard">
                     {" "}
                     <img className="navbar-brand-img" src={pizza_logo} />
-                    Logo{" "}
+                    Pizza Hub{" "}
                   </a>
 
                   <button
@@ -195,17 +194,17 @@ class Navbar extends React.Component {
                         className="dropdown-menu dropdown-menu-right"
                         aria-labelledby="navbarDropdown"
                       >
-                        <a href="/changepassword" className="dropdown-item">
+                        <Link to="/changepassword" className="dropdown-item">
                           Change Password
-                        </a>
+                        </Link>
                         <div className="dropdown-divider" />
-                        <a
-                          href="/"
+                        <Link
+                          to="/"
                           className="dropdown-item"
                           onClick={this.handleClick}
                         >
                           Logout
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

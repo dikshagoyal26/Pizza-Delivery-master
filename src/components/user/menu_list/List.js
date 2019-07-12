@@ -34,7 +34,7 @@ class List extends Component {
     }
 
     return (
-      <div className="menuList">
+      <div className="menuList container-fluid py-3 px-5">
         <h2>Menu</h2>
         <div className="row">{ItemComponents}</div>
       </div>

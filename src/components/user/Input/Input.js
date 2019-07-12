@@ -27,6 +27,7 @@ const Input = props => {
           required={props.required}
           pattern={props.pattern}
         />
+        <span>{props.error}</span>
       </div>
     </div>
   );

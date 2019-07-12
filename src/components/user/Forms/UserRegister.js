@@ -163,12 +163,13 @@ class UserRegister extends Component {
                   title={<i className="fas fa-envelope" />}
                   handleChange={this.handleChange}
                   value={this.state.firstname}
+                  error={this.state.formErrors.firstname}
                 />
                 {this.state.formErrors.firstname ? (
-                  <p className="text-danger">
+                  <span className="text-danger">
                     <i className="fas fa-exclamation-triangle"> </i>
                     {this.state.formErrors.firstname}
-                  </p>
+                  </span>
                 ) : null}
               </div>
               <div className="md-form form-sm mb-3">

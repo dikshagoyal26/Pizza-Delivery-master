@@ -26,7 +26,7 @@ class Order extends React.Component{
 
 	render(){
 		return(
-			<div className="payment container-fluid px-5">
+			<div className="payment container-fluid p-5">
 				<h5 className="text-uppercase text-center font-weight-bold">Payment</h5>				
 				<div className="row">	
 					<div className="col-3">

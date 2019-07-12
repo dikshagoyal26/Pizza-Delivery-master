@@ -1,35 +1,30 @@
-import React from 'react';
+import React from "react";
 
-class CartColumn extends React.Component{
+class CartColumn extends React.Component {
+  render() {
+    return (
+      <tr>
+        <td>
+          <h6 className="text-uppercase">Name</h6>
+        </td>
+        <td>
+          <h6 className="text-uppercase">Price</h6>
+        </td>
+        <td>
+          <h6 className="text-uppercase">Topppings</h6>
+        </td>
+        <td>
+          <h6 className="text-uppercase">Quantity</h6>
+        </td>
 
-	render(){
-		return(
-				<div className="container-fluid d-none text-center d-lg-block">
-					<div className="row">
-
-						<div className="col-10 mx-auto col-lg-2">
-							<h6 className="text-uppercase">Name</h6>
-						</div>	
-						
-						<div className="col-10 mx-auto col-lg-2">
-							<h6 className="text-uppercase">Price</h6>
-						</div>	
-						<div className="col-10 mx-auto col-lg-2">
-							<h6 className="text-uppercase">Topppings</h6>
-						</div>	
-						<div className="col-10 mx-auto col-lg-2">
-							<h6 className="text-uppercase">Quantity</h6>
-						</div>	
-						<div className="col-10 mx-auto col-lg-2">
-							<h6 className="text-uppercase">Remove</h6>
-						</div>	
-						<div className="col-10 mx-auto col-lg-2">
-							<h6 className="text-uppercase">Total</h6>
-						</div>	
-					</div>	
-				</div>
-			)
-	}
-
+        <td>
+          <h6 className="text-uppercase">Total</h6>
+        </td>
+        <td>
+          <h6 className="text-uppercase">Remove</h6>
+        </td>
+      </tr>
+    );
+  }
 }
 export default CartColumn;

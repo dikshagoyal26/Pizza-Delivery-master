@@ -49,7 +49,6 @@ class ChangePassword extends React.Component {
   };
 
   validate = () => {
-    console.log("Validate func");
     let pwderror = "";
     let newpwderror = "";
     let confirmerror = "";

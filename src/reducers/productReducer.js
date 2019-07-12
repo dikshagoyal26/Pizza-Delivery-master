@@ -33,14 +33,14 @@ const ProductReducer = (state = initialState, action) => {
         return {
           ...state,
           product: action.payload.product,
-          loading: false,
-          message: action.payload.msg
+          loading: false
         };
       }
       break;
     default:
-      return state;
+      return { ...state };
   }
+  return state;
 };
 
 export default ProductReducer;
