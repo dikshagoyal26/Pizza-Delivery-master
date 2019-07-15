@@ -18,7 +18,8 @@ class ListItem extends React.Component {
 
   render() {
     return (
-      <div className="col-lg-4 col-sm-6 col-md-4 ">
+      // <div className="col-lg-4 col-sm-6 col-md-4 ">
+      <div className="col-lg-3 col-sm-6 col-md-3 ">
         <div className="product-item">
           <div className="product-item-image ">
             <img alt="" src={this.props.imgUrl} />

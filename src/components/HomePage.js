@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import header_bg from "../img/header_bg.png";
+
 import { Redirect, withRouter, Link } from "react-router-dom";
 import "./HomePage.css";
 
 class HomePage extends Component {
-  componentWillReceiveProps = nextProps => {
+  componentWillReceiveProps = (nextProps) => {
     console.log("Home component received Props" + nextProps.is_login);
   };
 
@@ -15,14 +17,10 @@ class HomePage extends Component {
   render() {
     let HomeDisplay = (
       <div className="home_background">
-        <img
-          width="100%"
-          src="https://www.dominos.co.in/assets/header_bg.png"
-          alt="CoverPage"
-        />
+        <img width="100%" src={header_bg} alt="CoverPage" />
         <div className="home_bacground_over ">
           <p className="text-center">
-            Domino's online ordering Yummy <br />
+            Pizza Hub's online ordering Yummy <br />
             pizza delivered fast & fresh
           </p>
           <Link to="/login">
@@ -43,11 +41,11 @@ class HomePage extends Component {
         }
       }
     }
-    return <div>{HomeDisplay};</div>;
+    return <div>{HomeDisplay}</div>;
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     is_login: state.auth_r.login,
     is_admin: state.auth_r.is_admin,

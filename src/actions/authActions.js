@@ -132,18 +132,3 @@ export const loginAdmin = (adminData, history) => dispatch => {
       // }
     });
 };
-
-//   localStorage.setItem("jwtToken", res.data.token);
-//   history.push("/admin/dashboard");
-// })
-//
-
-//   localStorage.setItem("jwtToken", res.data.token);
-// })
-// .catch(err => {
-//   console.log("errrrr" + err);
-//   dispatch({
-//     type: GET_ERRORS,
-//     payload: err.response.data
-//   });
-// });

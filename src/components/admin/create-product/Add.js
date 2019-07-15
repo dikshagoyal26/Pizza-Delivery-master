@@ -13,7 +13,7 @@ class Add extends React.Component {
       name: "",
       price: 0,
       ingredients: "",
-      category: "",
+      category: "veg",
       toppings: "",
       description: "",
       errors: {
@@ -97,7 +97,7 @@ class Add extends React.Component {
     }
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     let isvalid = this.validate();
     if (isvalid) {
@@ -113,93 +113,98 @@ class Add extends React.Component {
       this.props.addProduct(productData, this.props.history);
     }
   };
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
     return (
-      <div className="container-fluid text-center">
-        <h1>Add Pizza</h1>
-        <p>Enter the pizza information</p>
-        <div className="product_form">
+      <div id="addProduct">
+        <div className="container text-center">
+          <h1>Add Pizza</h1>
+          <p>Enter the pizza information</p>
           <form onSubmit={this.onSubmit}>
             <Input
               type="text"
+              placeholder="XXX"
               name="productid"
-              label="Product ID: "
               handleChange={this.onChange}
-              placeholder="Enter Product ID"
               error={this.state.errors.productid}
+              label={" Product Id :"}
             />
+
             <Input
-              type="text"
-              className="form-control ml-2"
+              className="form-control"
               name="name"
-              label="Name: "
-              handleChange={this.onChange}
-              placeholder="Enter Product name"
-              error={this.state.errors.name}
-            />
-            <Input
-              type="number"
-              className="form-control ml-2"
-              name="price"
-              label="Price: "
-              handleChange={this.onChange}
-              placeholder="Enter Product Price"
-              error={this.state.errors.price}
-            />
-            <Input
               type="text"
-              className="form-control ml-2"
+              placeholder="Pizza Mania"
+              handleChange={this.onChange}
+              error={this.state.errors.name}
+              label={"Product Name :"}
+            />
+
+            <Input
+              name="price"
+              handleChange={this.onChange}
+              error={this.state.errors.price}
+              className="form-control"
+              type="number"
+              placeholder="Ex: 99"
+              label={"Price :"}
+            />
+
+            <Input
               name="ingredients"
-              placeholder="Enter Product Ingerdients"
-              label="Ingredients: "
               handleChange={this.onChange}
               error={this.state.errors.ingredients}
+              className="form-control"
+              type="text"
+              placeholder="Ex: Pan Sauce"
+              label={"Ingredients :"}
             />
 
             <Select
               options={["veg", "non veg"]}
               name="category"
-              placeholder="Category"
-              label="Category: "
               value={this.state.category}
               handleChange={this.onChange}
-              error={this.state.errors.category}
+              className="form-control"
+              label={"Category :"}
             />
 
             <Input
-              type="text"
-              className="form-control ml-2"
               name="toppings"
-              label="Toppings: "
               handleChange={this.onChange}
-              placeholder="Enter Product toppings"
               error={this.state.errors.toppings}
+              className="form-control"
+              type="text"
+              placeholder="Ex: Tomato, Onion."
+              label={" Toppings :"}
             />
 
             <Input
-              type="text"
-              className="form-control ml-2"
               name="description"
-              label="Description: "
               handleChange={this.onChange}
-              placeholder="Enter Product description"
               error={this.state.errors.description}
+              className="form-control"
+              type="text"
+              placeholder="A delectable combination of cheese and juicy tomato
+"
+              label={"   Description :"}
             />
 
-            <button className="btn btn-primary btn-block" type="submit">
+            <button className="btn btn-primary my-2" type="submit">
               Submit
             </button>
+            <button className="btn btn-danger my-2">Cancel</button>
           </form>
         </div>
       </div>
     );
   }
 }
-const mapStateToProps = state => ({
+
+const mapStateToProps = (state) => ({
   errors: state.er.errors,
   msg: state.er.msg
 });

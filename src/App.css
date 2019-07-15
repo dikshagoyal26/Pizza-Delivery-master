@@ -27,7 +27,7 @@
 
 .App {
   margin: 75px 0 0 0;
-  min-height: 90vh;
+  min-height: 81vh;
 }
 
 .App-header {
@@ -57,18 +57,22 @@
   background: #205792;
   position: relative;
 }
-
+.home_background img {
+  height: 81vh;
+}
 .home_bacground_over {
-  color: black;
-  font-size: 26px;
-  background: rgba(225, 225, 225, 0.8);
-  padding: 10px;
-  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 500;
   text-align: center;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 55%;
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  color: white;
+}
+.home_bacground_over p {
+  margin-bottom: 35px;
 }
 .menuList {
   text-align: center;
@@ -96,14 +100,27 @@
   background: white;
   cursor: pointer;
 }
+#addProduct,
+#editproduct {
+  padding: 10px;
+}
+#addProduct button,
+#editproduct button {
+  margin: 0 10px;
+}
+#addProduct select,
+#editproduct select {
+  margin-left: 5px;
+}
 .product-item {
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.5);
-  padding: 5%;
-  margin: 1%;
+  padding: 10px;
+  margin: 10px 0;
   font-family: arial;
   cursor: pointer;
-  background: white;
+  background: #e9ecef66;
   width: 100%;
+  height: 600px;
 }
 .product-item img {
   height: 75%;
@@ -111,8 +128,17 @@
 }
 .product-item-info {
   text-align: left;
+  padding: 10px;
+}
+.product-item-info h4 {
+  text-transform: capitalize;
 }
 
+.form-group small {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+}
 .product-item p {
   margin: 5px;
 }
@@ -217,7 +243,33 @@
   position: sticky;
   top: 200px;
 }
+#feedback {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
+#feedback td,
+#feedback th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#feedback tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#feedback tr:hover {
+  background-color: #ddd;
+}
+
+#feedback th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #c82333;
+  color: white;
+}
 .OrderItem {
   box-shadow: 0px 10px 10px 0px rgba(201, 137, 137, 0.5);
   font-family: arial;
@@ -230,6 +282,9 @@
   clear: both;
   display: table;
 }
+#footer {
+  width: 100%;
+}
 .footer {
   background: #181818;
   color: white;
@@ -240,4 +295,11 @@
   -webkit-animation-duration: 200ms;
   -moz-animation-duration: 200ms;
   animation-duration: 200ms;
+}
+#dashboard .cards .card-img {
+  width: 40px;
+}
+#dashboard .cards .card-left,
+#dashboard .cards .card-left {
+  display: inline;
 }

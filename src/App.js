@@ -36,6 +36,7 @@ import Admins from "./components/admin/admins/Admins";
 import ViewOrder from "./components/admin/Order/ViewOrder";
 import AdminDashboard from "./components/admin/layout/AdminDashboard";
 import AdminFirstTime from "./components/admin/AdminFirstTime";
+import ChangePwd from "./components/admin/ChangePwd";
 
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
@@ -140,6 +141,12 @@ class App extends Component {
                 exact
                 path="/admin/firsttime"
                 component={AdminFirstTime}
+              />
+              <PrivateRoute
+                allowed="admin"
+                exact
+                path="/admin/changepassword"
+                component={ChangePwd}
               />
               <PrivateRoute
                 exact

@@ -194,7 +194,10 @@ class Navbar extends React.Component {
                         className="dropdown-menu dropdown-menu-right"
                         aria-labelledby="navbarDropdown"
                       >
-                        <Link to="/changepassword" className="dropdown-item">
+                        <Link
+                          to="/admin/changepassword"
+                          className="dropdown-item"
+                        >
                           Change Password
                         </Link>
                         <div className="dropdown-divider" />
@@ -219,7 +222,7 @@ class Navbar extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     is_login: state.auth_r.login,
     is_admin: state.auth_r.is_admin,

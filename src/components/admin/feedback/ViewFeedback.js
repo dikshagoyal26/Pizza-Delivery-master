@@ -14,34 +14,50 @@ class ViewFeedback extends React.Component {
     if (this.props.feedbacks == null) {
       FeedbackList = <p>No feedbacks present.</p>;
     } else {
-      FeedbackList = this.props.feedbacks.map(feedback => {
+      FeedbackList = this.props.feedbacks.map((feedback) => {
         return (
-          <div className="FeedbackItem">
-            <p>
-              <b>User:</b> {feedback.userid}
-            </p>
-            <p>
-              <b>Feedback: </b>
-              {feedback.description}
-            </p>
-            <p>
-              <b>Date: </b>
-              {feedback.date}
-            </p>
-          </div>
+          <tr>
+            {/* <td>{feedback.firstname}</td> */}
+            <td>{feedback.userid}</td>
+            <td>{feedback.description}</td>
+            <td>{feedback.date.substring(0, 10)}</td>
+            <td>{feedback.date.substring(11, 15)}</td>
+          </tr>
+          // <div className="FeedbackItem">
+          //   <p>
+          //     <b>User:</b> {feedback.userid}
+          //   </p>
+          //   <p>
+          //     <b>Feedback: </b>
+          //     {feedback.description}
+          //   </p>
+          //   <p>
+          //     <b>Date: </b>
+          //     {feedback.date}
+          //   </p>
+          // </div>
         );
       });
     }
     return (
-      <div className="container-fluid px-5">
+      <div className="container py-5">
         <h1 className="text-center">Feedbacks</h1>
-        {FeedbackList}
+        <table id="feedback" className="p-5">
+          <tr>
+            {/* <th>Name</th> */}
+            <th>Email Address</th>
+            <th>Comment</th>
+            <th>Reported Date</th>
+            <th>Reported Time</th>
+          </tr>
+          {FeedbackList}
+        </table>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     feedbacks: state.feedback_r.feedbacks
   };

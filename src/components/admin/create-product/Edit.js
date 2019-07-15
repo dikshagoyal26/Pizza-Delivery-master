@@ -18,7 +18,7 @@ class Edit extends React.Component {
       errors: {
         productid: "",
         name: "",
-        price: " ",
+        price: "",
         ingredients: "",
         category: "",
         toppings: "",
@@ -46,7 +46,7 @@ class Edit extends React.Component {
         errors: {
           productid: "",
           name: "",
-          price: " ",
+          price: "",
           ingredients: "",
           category: "",
           toppings: "",
@@ -119,7 +119,7 @@ class Edit extends React.Component {
     }
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     let isvalid = this.validate();
     if (isvalid) {
@@ -141,105 +141,108 @@ class Edit extends React.Component {
     }
   };
 
-  onChange = e => {
+  onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
     return (
-      <div className="container-fluid text-center">
-        <h1>Edit Pizza</h1>
-        <p>Enter the pizza information</p>
-        <div className="product_form">
-          <form onSubmit={this.onSubmit}>
-            <Input
-              type="text"
-              name="productid"
-              label="Product ID: "
-              required="required"
-              handleChange={this.onChange}
-              value={this.state.productid}
-              placeholder="Enter Product ID"
-              error={this.state.errors.productid}
-            />
+      <div id="editproduct">
+        <div className="container-fluid text-center">
+          <h1>Edit Pizza</h1>
+          <p>Enter the pizza information</p>
+          <div className="product_form">
+            <form onSubmit={this.onSubmit}>
+              <Input
+                type="text"
+                name="productid"
+                label="Product ID: "
+                required="required"
+                handleChange={this.onChange}
+                value={this.state.productid}
+                placeholder="Enter Product ID"
+                error={this.state.errors.productid}
+              />
 
-            <Input
-              type="text"
-              className="form-control ml-2"
-              name="name"
-              required="required"
-              label="Name: "
-              handleChange={this.onChange}
-              value={this.state.name}
-              placeholder="Enter Product name"
-              error={this.state.errors.name}
-            />
+              <Input
+                type="text"
+                className="form-control ml-2"
+                name="name"
+                required="required"
+                label="Name: "
+                handleChange={this.onChange}
+                value={this.state.name}
+                placeholder="Enter Product name"
+                error={this.state.errors.name}
+              />
 
-            <Input
-              type="number"
-              className="form-control ml-2"
-              name="price"
-              label="Price: "
-              required="required"
-              handleChange={this.onChange}
-              value={this.state.price}
-              placeholder="Enter Product Price"
-              error={this.state.errors.price}
-            />
+              <Input
+                type="number"
+                className="form-control ml-2"
+                name="price"
+                label="Price: "
+                required="required"
+                handleChange={this.onChange}
+                value={this.state.price}
+                placeholder="Enter Product Price"
+                error={this.state.errors.price}
+              />
 
-            <Input
-              type="text"
-              className="form-control ml-2"
-              name="ingredients"
-              required="required"
-              label="Ingredients: "
-              value={this.state.ingredients}
-              handleChange={this.onChange}
-              placeholder="Enter Product Ingredients"
-              error={this.state.errors.ingredients}
-            />
+              <Input
+                type="text"
+                className="form-control ml-2"
+                name="ingredients"
+                required="required"
+                label="Ingredients: "
+                value={this.state.ingredients}
+                handleChange={this.onChange}
+                placeholder="Enter Product Ingredients"
+                error={this.state.errors.ingredients}
+              />
 
-            <Select
-              options={["veg", "non veg"]}
-              name="category"
-              placeholder="Category"
-              label="Category: "
-              value={this.state.category}
-              handleChange={this.onChange}
-              error={this.state.errors.category}
-            />
-            <Input
-              type="text"
-              className="form-control ml-2"
-              name="toppings"
-              required="required"
-              label="Toppings: "
-              handleChange={this.onChange}
-              value={this.state.toppings}
-              placeholder="Enter Product toppings"
-              error={this.state.errors.toppings}
-            />
-            <Input
-              type="text"
-              className="form-control ml-2"
-              name="description"
-              required="required"
-              label="Description: "
-              value={this.state.description}
-              handleChange={this.onChange}
-              placeholder="Enter Product description"
-              error={this.state.errors.description}
-            />
-            <button className="btn btn-primary btn-block" type="submit">
-              Submit
-            </button>
-          </form>
+              <Select
+                options={["veg", "non veg"]}
+                name="category"
+                placeholder="Category"
+                label="Category: "
+                value={this.state.category}
+                handleChange={this.onChange}
+                error={this.state.errors.category}
+              />
+              <Input
+                type="text"
+                className="form-control ml-2"
+                name="toppings"
+                required="required"
+                label="Toppings: "
+                handleChange={this.onChange}
+                value={this.state.toppings}
+                placeholder="Enter Product toppings"
+                error={this.state.errors.toppings}
+              />
+              <Input
+                type="text"
+                className="form-control ml-2"
+                name="description"
+                required="required"
+                label="Description: "
+                value={this.state.description}
+                handleChange={this.onChange}
+                placeholder="Enter Product description"
+                error={this.state.errors.description}
+              />
+              <button className="btn btn-primary " type="submit">
+                Submit
+              </button>
+              <button className="btn btn-danger my-2">Cancel</button>
+            </form>
+          </div>
         </div>
       </div>
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     product: state.prod_r.product
   };

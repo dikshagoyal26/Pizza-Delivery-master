@@ -6,16 +6,16 @@ class ViewOrder extends React.Component {
   componentDidMount() {
     this.props.getAllOrders();
   }
-  onClickDelivered = order => {
+  onClickDelivered = (order) => {
     this.props.updateadminOrder(order);
   };
 
   render() {
     let OrderItems = <p>No previous Orders</p>;
     if (this.props.orders) {
-      OrderItems = this.props.orders.map(order => {
+      OrderItems = this.props.orders.map((order) => {
         return (
-          <div className="OrderItem">
+          <div className="OrderItem" key={order.orderid}>
             <p>
               <b>User:</b> {order.userid}
             </p>
@@ -27,7 +27,7 @@ class ViewOrder extends React.Component {
             </p>
             <p>
               <b>Products: </b>{" "}
-              {order.products.map(product => {
+              {order.products.map((product) => {
                 return (
                   <div>
                     <p>
@@ -65,7 +65,7 @@ class ViewOrder extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     orders: state.order_r.orders
   };

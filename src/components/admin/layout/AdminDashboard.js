@@ -10,7 +10,7 @@ class AdminDashboard extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div id="dashboard">
         <div className="container-fluid text-center">
           <h1>Admin Dashboard</h1>
           <Link to="/admin/add">

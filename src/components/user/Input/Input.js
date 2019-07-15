@@ -1,22 +1,27 @@
 import React from "react";
 
-const Input = props => {
+const Input = (props) => {
   return (
-    <div className="form-group ">
+    <div className={"form-group " + (props.label ? "row" : " ")}>
       <div
         className={
           "input-group " + (props.error ? " has-error" : "has-success")
         }
       >
-        <label className="mr-2 form-label control-label">{props.label}</label>
+        {props.label ? (
+          <label className="mr-2 form-label control-label col-sm-2 col-form-label">
+            {props.label}
+          </label>
+        ) : null}
 
         {props.title ? (
           <div className="input-group-prepend">
             <span className="input-group-text">{props.title}</span>
           </div>
         ) : null}
+
         <input
-          className="form-control"
+          className={"form-control " + (props.label ? "col-sm-10" : "")}
           id={props.name}
           name={props.name}
           type={props.type}
@@ -32,8 +37,9 @@ const Input = props => {
           pattern={props.pattern}
         />
       </div>
+
       {props.error ? (
-        <small className="text-danger px-2 text-small">
+        <small className="text-danger px-2 text-small ">
           {" "}
           <i className="fas fa-exclamation-triangle"> </i>
           {"  "}

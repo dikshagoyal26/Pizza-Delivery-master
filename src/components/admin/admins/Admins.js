@@ -18,13 +18,14 @@ class Admins extends Component {
     };
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   validate = () => {
     let nameError = "";
     let adminidError = "";
+
     if (!this.state.adminid) {
       adminidError = "Enter adminid";
     }
@@ -47,15 +48,17 @@ class Admins extends Component {
   };
 
   onClickAdd = () => {
-    let isvalid = this.validate();
-    if (isvalid) {
-      if (this.state.is_add_mode) {
+    if (this.state.is_add_mode) {
+      let isvalid = this.validate();
+      if (isvalid) {
         const adminData = {
           name: this.state.name,
           adminid: this.state.adminid
         };
         this.props.addAdmin(adminData, this.props.history);
+        this.setState({ is_add_mode: !this.state.is_add_mode });
       }
+    } else {
       this.setState({ is_add_mode: !this.state.is_add_mode });
     }
   };
@@ -70,7 +73,7 @@ class Admins extends Component {
       AdminComponents = <p>Loading...</p>;
     } else {
       if (this.props.admins.length > 0) {
-        AdminComponents = this.props.admins.map(admin => {
+        AdminComponents = this.props.admins.map((admin) => {
           return <AdminItem key={admin.adminid} admin={admin} />;
         });
       } else {
@@ -115,7 +118,7 @@ class Admins extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     admins: state.ar.admins
   };
