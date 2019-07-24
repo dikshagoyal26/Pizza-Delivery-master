@@ -186,7 +186,7 @@ class ViewOrder extends React.Component {
     }
     return (
       <div className="container-fluid">
-        <h5>Orders</h5>
+        <h5 className="text-center">Orders</h5>
         {OrderItems}{" "}
       </div>
     );

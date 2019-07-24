@@ -9,14 +9,13 @@ export const getUserDetails = () => (dispatch) => {
       userid: store.getState().user_r.user.userid
     })
     .then((res) => {
-      console.log(res.data.record);
       dispatch({
         type: GET_USER,
         payload: res.data.record
       });
     })
     .catch((err) => {
-      console.log(err);
+      alert("Error occured!!");
     });
 };
 
@@ -31,7 +30,6 @@ export const editUserDetails = (userData, history) => (dispatch) => {
     dob: userData.birthday,
     address: userData.address
   };
-  console.log(Data);
   axios
     .put("https://pizza-hub.herokuapp.com/user/update", Data)
     .then((res) => {
@@ -39,7 +37,6 @@ export const editUserDetails = (userData, history) => (dispatch) => {
       alert("User details Updated");
     })
     .catch((err) => {
-      console.log("Error" + JSON.stringify(err.response));
       history.push("/dashboard");
       alert("Error occured");
     });
@@ -54,10 +51,9 @@ export const updatePwd = (userData, history) => (dispatch) => {
   axios
     .put("https://pizza-hub.herokuapp.com/user/changepwd", uData)
     .then((res) => {
-      console.log(JSON.stringify(res.data));
+      alert("Password Updated");
     })
     .catch((err) => {
-      console.log("Error " + err);
       //Old Password wrong
       if (err.response.status === 404) {
         alert("Wrong password!! Retry!!");
@@ -73,6 +69,6 @@ export const deleteUser = () => (dispatch) => {
     })
     .then((res) => {})
     .catch((err) => {
-      console.log("Error " + err);
+      alert("Error in deletion");
     });
 };

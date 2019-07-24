@@ -50,7 +50,6 @@ export const loginWithGoogle = (userData, history) => (dispatch) => {
 };
 
 export const loginUser = (userData, history) => (dispatch) => {
-  console.log(userData);
   axios
     .post("https://pizza-hub.herokuapp.com/user/login", userData)
     .then((res) => {

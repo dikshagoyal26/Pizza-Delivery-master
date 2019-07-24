@@ -38,8 +38,10 @@ class Details extends React.Component {
     if (
       !this.props.product[0] ||
       !this.props.product ||
-      this.props.product[0] == null ||
-      this.props.product[0] == undefined
+      this.props.product === null ||
+      this.props.product === undefined ||
+      this.props.product[0] === null ||
+      this.props.product[0] === undefined
     ) {
       return <p>Error occured . Please try again.</p>;
     } else {

@@ -23,11 +23,11 @@ class AdminFirstTime extends React.Component {
     });
   };
 
-  onChangePassword = e => {
+  onChangePassword = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     let isvalid = this.validate();
     this.setState({ formValid: isvalid });
@@ -42,7 +42,6 @@ class AdminFirstTime extends React.Component {
   };
 
   validate = () => {
-    console.log("Validate func");
     let pwderror = "";
     let confirmerror = "";
 

@@ -24,11 +24,11 @@ class AdminDashboard extends React.Component {
       type: "line",
       data: {
         //Bring in data
-        labels: this.props.product_sales.map(d => d.productid),
+        labels: this.props.product_sales.map((d) => d.productid),
         datasets: [
           {
             label: "Sales according to product id",
-            data: this.props.product_sales.map(d => d.qty),
+            data: this.props.product_sales.map((d) => d.qty),
             fill: false,
             borderColor: "#6610f2"
           }
@@ -91,13 +91,6 @@ class AdminDashboard extends React.Component {
   }
 
   render() {
-    console.log(this.props.monthly_sales);
-    console.log(this.props.product_sales);
-    console.log(this.props.product_count);
-    console.log(this.props.user_count);
-    console.log(this.props.sales_count);
-    console.log(this.props.earnings_count);
-
     return (
       <div className="container-fluid admin_dashboard">
         <main className="main ">
@@ -139,7 +132,7 @@ class AdminDashboard extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     sales_count: state.sales_r.sales_count,
     earnings_count: state.sales_r.earnings_count,

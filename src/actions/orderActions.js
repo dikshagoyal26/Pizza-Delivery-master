@@ -60,8 +60,6 @@ export const addOrder = (paymentmode, history) => (dispatch) => {
     status: "Pending" //cancel or Delievered
   };
 
-  console.log(orderData);
-
   axios
     .post("https://pizza-hub.herokuapp.com/orders/add", orderData)
     .then((res) => {

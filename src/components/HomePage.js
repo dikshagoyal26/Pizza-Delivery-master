@@ -6,14 +6,6 @@ import { Redirect, withRouter, Link } from "react-router-dom";
 import "./HomePage.css";
 
 class HomePage extends Component {
-  componentWillReceiveProps = (nextProps) => {
-    console.log("Home component received Props" + nextProps.is_login);
-  };
-
-  componentWillUnmount() {
-    console.log("Component Unmounted");
-  }
-
   render() {
     let HomeDisplay = (
       <div className="home_background">

@@ -122,7 +122,7 @@ export const deleteAllCart = (productid) => (dispatch) => {
   axios
     .post("https://pizza-hub.herokuapp.com/cart/deleteAll", deleteData)
     .then((res) => {
-      alert(res.data.message);
+      alert("Error in deletion");
       dispatch(getCart());
     })
     .catch((err) => {

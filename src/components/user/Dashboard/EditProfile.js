@@ -89,12 +89,11 @@ class EditProfile extends React.Component {
     }
   };
 
-  onEditProfile = e => {
+  onEditProfile = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = e => {
-    console.log(this.state);
+  onSubmit = (e) => {
     e.preventDefault();
     const isValid = this.validate();
     if (isValid) {
@@ -119,7 +118,6 @@ class EditProfile extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="container-fluid p-5">
         <div className="bg-light border rounded-lg p-3">
@@ -192,7 +190,7 @@ class EditProfile extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     profile: state.user_r.user
   };

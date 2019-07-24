@@ -38,10 +38,7 @@ export const getProductByID = (id, history) => (dispatch) => {
         //No Product Found
         history.push("/pagenotfound");
       }
-      dispatch({
-        type: GET_PRODUCT_BY_ID,
-        payload: null
-      });
+      alert("Some Error occured! Please try again later.");
     });
 };
 

@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Input from "../Input/Input";
-import { loginUser, loginWithGoogle } from "../../../actions/authActions";
-import google from "../../../img/google.png";
+import { loginUser } from "../../../actions/authActions";
 
 class UserLogin extends Component {
   constructor(props) {
@@ -36,15 +35,11 @@ class UserLogin extends Component {
     });
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  loginWithGoogle = () => {
-    this.props.loginWithGoogle();
-  };
-
-  onSubmitForm = e => {
+  onSubmitForm = (e) => {
     e.preventDefault();
 
     let isValid = this.validate();
@@ -144,13 +139,6 @@ class UserLogin extends Component {
                 </button>
               </div>
             </form>
-            <div className="text-center p-2">
-              <button className="btn btn-danger" onClick={this.loginWithGoogle}>
-                <img src={google} style={{ width: 30 }} alt="G" /> Log in with
-                Google
-                <i className="fas fa-sign-in ml-1" />
-              </button>
-            </div>
 
             <div className="form_footer">
               <div>
@@ -180,5 +168,5 @@ class UserLogin extends Component {
 }
 export default connect(
   null,
-  { loginUser, loginWithGoogle }
+  { loginUser }
 )(UserLogin);

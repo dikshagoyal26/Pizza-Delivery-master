@@ -30,7 +30,6 @@ class Profile extends React.Component {
               this.props.profile.address[0].state +
               " " +
               this.props.profile.address[0].pin}{" "}
-            }
           </h6>
           <div className="text-center">
             <Link
