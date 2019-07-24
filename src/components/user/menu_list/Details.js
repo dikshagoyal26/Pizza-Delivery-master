@@ -35,7 +35,7 @@ class Details extends React.Component {
   };
 
   render() {
-    if (!this.props.product[0]) {
+    if (!this.props.product[0] || this.props.product[0] == null || this.props.product[0] == undefined) {
       return <p>Error occured . Please try again.</p>;
     } else {
       let Item = this.props.product[0];
