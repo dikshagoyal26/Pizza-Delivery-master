@@ -35,6 +35,8 @@ export const addToCart = (cartData, history, quantity) => dispatch => {
       name: store.getState().user_r.user.name,
       products: [
         {
+          product_id: cartData._id,
+          _id: cartData._id,
           productid: cartData.productid,
           name: cartData.name,
           price: cartData.price,
@@ -44,17 +46,14 @@ export const addToCart = (cartData, history, quantity) => dispatch => {
         }
       ]
     };
-    console.log(cart);
-
     axios
       .post("http://localhost:5000/cart/add", cart)
       .then(res => {
-        console.log(JSON.stringify(res.data));
         dispatch(getCart());
-        history.push("/cart");
+        // history.push("/cart");
       })
       .catch(err => {
-        console.log(err);
+        alert("Some error has occured. Please try again later!!" + err);
       });
   }
 };
@@ -75,7 +74,6 @@ export const getCart = cartData => dispatch => {
       dispatch(getPriceDetails());
     })
     .catch(err => {
-      console.log("ERROR:" + err);
       dispatch({
         type: GET_CART,
         payload: null //cartList
@@ -108,11 +106,11 @@ export const deleteCartProduct = cartData => dispatch => {
   axios
     .post("http://localhost:5000/cart/deleteOne", deleteCartData)
     .then(res => {
-      console.log("Product deleted from Cart");
+      alert("Product deleted from Cart");
       dispatch(getCart());
     })
     .catch(err => {
-      console.log("errrrrror " + err);
+      alert("Error in deletion. Please try again later!!");
     });
 };
 
@@ -124,10 +122,10 @@ export const deleteAllCart = productid => dispatch => {
   axios
     .post("http://localhost:5000/cart/deleteAll", deleteData)
     .then(res => {
-      console.log(res.data.message);
+      alert(res.data.message);
       dispatch(getCart());
     })
     .catch(err => {
-      console.log("errrrrror " + err);
+      alert("Error in deletion! Please try again later");
     });
 };

@@ -130,9 +130,8 @@ class Feedback extends React.Component {
               </div>
             </div>
           );
-        } else {
-          return;
         }
+        return "";
       });
     }
     return (

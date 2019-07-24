@@ -1,14 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getUserOrders, updateOrder } from "../../actions/orderActions";
+import { getAllOrders, updateadminOrder } from "../../actions/orderActions";
 
-class Track extends React.Component {
-  componentDidMount = () => {
-    this.props.getUserOrders();
-  };
-
-  onClickCancel = order => {
-    this.props.updateOrder(order);
+class ViewOrder extends React.Component {
+  componentDidMount() {
+    this.props.getAllOrders();
+  }
+  onClickDelivered = order => {
+    this.props.updateadminOrder(order);
   };
 
   render() {
@@ -190,13 +189,14 @@ class Track extends React.Component {
       });
     }
     return (
-      <div className=" container-fluid px-5 py-3">
-        <h1 className="text-center">Your Orders</h1>
-        {OrderItems}
+      <div className="container-fluid">
+        <h5>Orders</h5>
+        {OrderItems}{" "}
       </div>
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     orders: state.order_r.orders
@@ -205,5 +205,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getUserOrders, updateOrder }
-)(Track);
+  { getAllOrders, updateadminOrder }
+)(ViewOrder);

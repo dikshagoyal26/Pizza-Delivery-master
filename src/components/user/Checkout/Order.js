@@ -2,14 +2,13 @@ import React from "react";
 import Address from "./Address";
 import PriceDetails from "../cart/PriceDetails";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { saveOrderAddress } from "../../../actions/orderActions";
 
 class Order extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: "Home",
+      addtype: "Home",
       houseNo: "",
       street: "",
       town: "",
@@ -88,9 +87,18 @@ class Order extends React.Component {
   onSaveAddress = () => {
     let isvalid = this.validate();
     if (isvalid) {
-      this.props.saveOrderAddress(this.state);
+      let addressData = {
+        addtype: this.state.addtype,
+        houseNo: this.state.houseNo,
+        street: this.state.street,
+        town: this.state.town,
+        society: this.state.society,
+        state: this.state.state,
+        pin: this.state.pin
+      };
+      this.props.saveOrderAddress(addressData);
       this.setState({
-        type: "Home",
+        addtype: "Home",
         houseNo: "",
         street: "",
         town: "",
@@ -106,7 +114,7 @@ class Order extends React.Component {
           pin: ""
         }
       });
-      // this.props.history("/checkout/payment");
+      this.props.history.push("/checkout/payment");
     }
   };
 
@@ -119,6 +127,15 @@ class Order extends React.Component {
             <Address
               handleChange={this.handleChange}
               error={this.state.error}
+              value={{
+                addtype: this.state.addtype,
+                houseNo: this.state.houseNo,
+                street: this.state.street,
+                town: this.state.town,
+                society: this.state.society,
+                state: this.state.state,
+                pin: this.state.pin
+              }}
             />
           </div>
 

@@ -69,7 +69,7 @@ class ChangePassword extends React.Component {
       }
     }
     if (
-      this.state.newpassword != this.state.confirmpassword ||
+      this.state.newpassword !== this.state.confirmpassword ||
       !this.state.confirmpassword
     ) {
       confirmerror = "Password does not match";

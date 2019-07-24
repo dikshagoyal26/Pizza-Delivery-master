@@ -32,14 +32,14 @@ const authReducer = (state = initialState, action) => {
     }
     case LOGOUT: {
       return {
-        ...state,
         login: false,
-        is_admin: false
+        is_admin: false,
+        token: null
       };
     }
     default:
-      return { ...state };
   }
-  return state;
+
+  return { ...state };
 };
 export default authReducer;

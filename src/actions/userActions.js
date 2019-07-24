@@ -9,6 +9,7 @@ export const getUserDetails = () => dispatch => {
       userid: store.getState().user_r.user.userid
     })
     .then(res => {
+      console.log(res.data.record);
       dispatch({
         type: GET_USER,
         payload: res.data.record
@@ -27,7 +28,8 @@ export const editUserDetails = (userData, history) => dispatch => {
     firstname: userData.firstname,
     lastname: userData.lastname,
     phone: userData.phone,
-    dob: userData.birthday
+    dob: userData.birthday,
+    address: userData.address
   };
   console.log(Data);
   axios

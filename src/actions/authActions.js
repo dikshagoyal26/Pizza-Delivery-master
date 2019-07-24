@@ -1,37 +1,29 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
-import jwt_decode from "jwt-decode";
-import {
-  ADMINLOGIN,
-  GET_ADMIN,
-  GET_ERRORS,
-  USERLOGIN,
-  GET_USER
-} from "./types";
+import { ADMINLOGIN, GET_ADMIN, USERLOGIN, GET_USER } from "./types";
 
 export const registerUser = (userData, history) => dispatch => {
-  console.log(userData);
   axios
     .post("http://localhost:5000/user/register", userData)
     .then(res => {
-      console.log(res.data.message);
       history.push("/login");
     })
     .catch(err => {
-      console.log("Error " + err);
-      if (err.response.status == 500) {
+      if (err.response.status === 500) {
         // Email already exists
+        alert("Email already exists");
+      } else if (err.response.status === 404) {
+        alert("Email already exists");
+      } else {
+        alert("Some error has occured. Please try again later");
       }
     });
 };
 
 export const loginWithGoogle = (userData, history) => dispatch => {
-  //console.log(userData);
-  console.log("Login with GOOGLE::::");
   axios
     .get("http://localhost:5000/auth/google")
     .then(res => {
-      console.log(res.data);
       // const token = res.data.token;
       // localStorage.setItem("jwtToken", token);
       // // Set token to Auth header
@@ -48,13 +40,17 @@ export const loginWithGoogle = (userData, history) => dispatch => {
       // history.push("/menu");
     })
     .catch(err => {
-      console.log("Error " + err);
+      if (err.response.status === 500) {
+        // Email already exists
+        alert("Email already exists");
+      } else {
+        alert("Some error has occured. Please try again later");
+      }
     });
 };
 
 export const loginUser = (userData, history) => dispatch => {
-  //console.log(userData);
-
+  console.log(userData);
   axios
     .post("http://localhost:5000/user/login", userData)
     .then(res => {
@@ -62,12 +58,12 @@ export const loginUser = (userData, history) => dispatch => {
       localStorage.setItem("jwtToken", token);
       // Set token to Auth header
       setAuthToken(token);
-
       // Set current user
       dispatch({
         type: USERLOGIN,
         payload: res.data.record
       });
+
       dispatch({
         type: GET_USER,
         payload: res.data.record
@@ -75,7 +71,14 @@ export const loginUser = (userData, history) => dispatch => {
       history.push("/menu");
     })
     .catch(err => {
-      console.log("Error " + err);
+      if (err.response.status === 500) {
+        // Email already exists
+        alert("Either email or password is wrong");
+      } else if (err.response.status === 404) {
+        alert("Either email or password is wrong");
+      } else {
+        alert("Some error has occured. Please try again later");
+      }
     });
 };
 
@@ -85,16 +88,20 @@ export const resetPwd = email => dispatch => {
   };
   axios
     .post("http://localhost:5000/user/findbyid", userData)
-    .then(res => {
-      console.log("Email sent to user" + JSON.stringify(res.data));
-    })
+    .then(res => {})
     .catch(err => {
-      console.log("Error " + err);
+      if (err.response.status === 500) {
+        // Email already exists
+        alert("Email wrong");
+      } else if (err.response.status === 404) {
+        alert("Please enter a valid email");
+      } else {
+        alert("Some error has occured. Please try again later");
+      }
     });
 };
 
 export const loginAdmin = (adminData, history) => dispatch => {
-  console.log(adminData);
   axios
     .post("http://localhost:5000/admin/login", adminData)
     .then(res => {
@@ -118,17 +125,11 @@ export const loginAdmin = (adminData, history) => dispatch => {
       }
     })
     .catch(err => {
-      console.log("Error: " + JSON.stringify(err));
-      // if (err.response.status === 404) {
-      //   dispatch({
-      //     type: GET_ERRORS,
-      //     payload: "Either email id or password is wrong"
-      //   });
-      // } else {
-      //   dispatch({
-      //     type: GET_ERRORS,
-      //     payload: null
-      //   });
-      // }
+      if (err.response.status === 500 || err.response.status === 404) {
+        // Email already exists
+        alert("Either email or password is wrong");
+      } else {
+        alert("Some error has occured. Please try again later");
+      }
     });
 };

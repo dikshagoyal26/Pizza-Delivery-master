@@ -7,7 +7,6 @@ export const getAllFeedbacks = () => dispatch => {
   axios
     .get("http://localhost:5000/admin/feedback/search")
     .then(res => {
-      console.log(res.data);
       dispatch({
         type: GET_FEEDBACKS,
         payload: res.data.record
@@ -18,7 +17,6 @@ export const getAllFeedbacks = () => dispatch => {
         type: GET_FEEDBACKS,
         payload: null
       });
-      console.log(err);
     });
 };
 
@@ -31,7 +29,6 @@ export const getUserFeedbacks = () => dispatch => {
       }
     })
     .then(res => {
-      console.log(res.data);
       dispatch({
         type: GET_USER_FEEDBACKS,
         payload: res.data //adminlist
@@ -42,7 +39,6 @@ export const getUserFeedbacks = () => dispatch => {
         type: GET_USER_FEEDBACKS,
         payload: null
       });
-      console.log(err);
     });
 };
 
@@ -59,23 +55,21 @@ export const addFeedback = feedback => dispatch => {
       dispatch(getUserFeedbacks());
     })
     .catch(err => {
-      console.log(err.response.message);
+      alert(err.response.message);
     });
 };
 
 //Update Feedback
 //Put request
 export const updateFeedback = feedbackData => dispatch => {
-  console.log(feedbackData);
-
   axios
     .put("http://localhost:5000/feedback/update", feedbackData)
     .then(res => {
-      console.log(res.data.message);
+      alert(res.data.message);
       dispatch(getUserFeedbacks());
     })
     .catch(err => {
-      console.log("Error" + err.response.message);
+      alert(err.response.message);
     });
 };
 
@@ -86,10 +80,10 @@ export const deleteFeedback = feedbackid => dispatch => {
       feedbackid: feedbackid
     })
     .then(res => {
-      console.log(res.data.message);
+      alert(res.data.message);
       dispatch(getUserFeedbacks());
     })
     .catch(err => {
-      console.log("Error " + err.response.message);
+      alert(err.response.message);
     });
 };

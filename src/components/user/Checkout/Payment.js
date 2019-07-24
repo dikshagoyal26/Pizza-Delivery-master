@@ -32,19 +32,19 @@ class Order extends React.Component{
 					<div className="col-3">
 						<ul className="nav flex-column mr-auto text-center"> 
 			                <li className="nav-item">   
-			                  <a className="nav-link " href="#" name='card' onClick={this.handleClick}>CREDIT/DEBIT CARD </a>
+			                  <span className="nav-link " href="#" name='card' onClick={this.handleClick}>CREDIT/DEBIT CARD </span>
 			                </li>
 			                <li className="nav-item active">   
-			                  <a className="nav-link " href="#" name='ondelivey' onClick={this.handleClick}>CASH/CARD ON DELIVERY</a>
+			                  <span className="nav-link " href="#" name='ondelivey' onClick={this.handleClick}>CASH/CARD ON DELIVERY</span>
 			                </li>
 			                <li className="nav-item">   
-			                  <a className="nav-link" href="#" name='phonepay' onClick={this.handleClick}>PHONEPAY</a>
+			                  <span className="nav-link" href="#" name='phonepay' onClick={this.handleClick}>PHONEPAY</span>
 			                </li>
 			                <li className="nav-item">   
-			                  <a className="nav-link" href="#" name='paytm' onClick={this.handleClick}>PAYTM</a>
+			                  <span className="nav-link" href="#" name='paytm' onClick={this.handleClick}>PAYTM</span>
 			                </li>
 			                <li className="nav-item">   
-			                  <a className="nav-link" href="#" name='netbanking' onClick={this.handleClick}>NET BANKING</a>
+			                  <span className="nav-link" href="#" name='netbanking' onClick={this.handleClick}>NET BANKING</span>
 			                </li>
 			              </ul>
 			          
@@ -56,7 +56,7 @@ class Order extends React.Component{
 												<div className="paymentmode">
 													<h5 className="text-center mt-1">CREDIT/DEBIT CARD</h5>
 													<div className="col">
-												        <form role="form">
+												        <form >
 											                <div className="row">
 													            <div className="col-12">	
 													            	<Input 
@@ -138,9 +138,15 @@ class Order extends React.Component{
 																		</Link>
 																		
 																</div>
-															</div>)}
+															</div>)
+															
+														default:
+														
+														}
 
-							})()
+							})
+							
+							()
 						}
 						
 					</div>

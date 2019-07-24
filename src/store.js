@@ -8,6 +8,7 @@ import authReducer from "./reducers/authReducer";
 import orderReducer from "./reducers/orderReducer";
 import feedbackReducer from "./reducers/feedbackReducer";
 import userReducer from "./reducers/userReducer";
+import salesReducer from "./reducers/salesReducer";
 
 function saveToLocalStorage(state) {
   try {
@@ -40,6 +41,7 @@ const reducer = combineReducers({
   order_r: orderReducer,
   feedback_r: feedbackReducer,
   user_r: userReducer,
+  sales_r: salesReducer,
   error_r: errorReducer
 });
 
