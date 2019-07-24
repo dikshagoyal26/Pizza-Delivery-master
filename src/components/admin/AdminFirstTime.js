@@ -54,7 +54,7 @@ class AdminFirstTime extends React.Component {
       }
     }
     if (
-      this.state.password != this.state.confirmpassword ||
+      this.state.password !== this.state.confirmpassword ||
       !this.state.confirmpassword
     ) {
       confirmerror = "Password does not match";

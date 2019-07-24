@@ -103,7 +103,7 @@ class UserRegister extends Component {
     }
 
     if (
-      this.state.password != this.state.confirmpassword ||
+      this.state.password !== this.state.confirmpassword ||
       !this.state.confirmpassword
     ) {
       if (!this.state.confirmpassword)

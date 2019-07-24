@@ -1,9 +1,9 @@
 import React from "react";
 import Input from "../Input/Input";
-import Select from "../Input/Select";
 import { connect } from "react-redux";
 import { editUserDetails } from "../../../actions/userActions";
 import { Link } from "react-router-dom";
+import Address from "../Checkout/Address";
 
 class EditProfile extends React.Component {
   constructor(props) {
@@ -13,7 +13,18 @@ class EditProfile extends React.Component {
       lastname: " ",
       phone: 0,
       birthday: " ",
-      formErrors: { firstname: "", lastname: "", email: "", phone: "" }
+      houseNo: "",
+      street: "",
+      town: "",
+      society: "",
+      state: "",
+      pin: "",
+      formErrors: {
+        firstname: "",
+        lastname: "",
+        email: "",
+        phone: ""
+      }
     };
   }
 
@@ -23,7 +34,23 @@ class EditProfile extends React.Component {
       lastname: this.props.profile.lastname,
       phone: this.props.profile.phone,
       birthday: this.props.profile.dob,
-      formErrors: { firstname: "", lastname: "", phone: "" }
+      houseNo: this.props.profile.address[0].houseNo,
+      street: this.props.profile.address[0].street,
+      town: this.props.profile.address[0].town,
+      society: this.props.profile.address[0].society,
+      state: this.props.profile.address[0].state,
+      pin: this.props.profile.address[0].pin,
+      formErrors: {
+        firstname: "",
+        lastname: "",
+        phone: "",
+        houseNo: "",
+        street: "",
+        town: "",
+        society: "",
+        state: "",
+        pin: ""
+      }
     });
   };
 
@@ -43,7 +70,7 @@ class EditProfile extends React.Component {
     if (!this.state.phone) {
       phoneError = "Required Phone";
     } else {
-      if (this.state.phone.toString().length != 10) {
+      if (this.state.phone.toString().length !== 10) {
         phoneError = "Invalid Phone";
       }
     }
@@ -75,13 +102,24 @@ class EditProfile extends React.Component {
         firstname: this.state.firstname,
         lastname: this.state.lastname,
         phone: this.state.phone,
-        birthday: this.state.birthday
+        birthday: this.state.birthday,
+        address: [
+          {
+            houseNo: this.state.houseNo,
+            street: this.state.street,
+            town: this.state.town,
+            society: this.state.society,
+            state: this.state.state,
+            pin: this.state.pin
+          }
+        ]
       };
       this.props.editUserDetails(userData, this.props.history);
     }
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="container-fluid p-5">
         <div className="bg-light border rounded-lg p-3">
@@ -124,6 +162,18 @@ class EditProfile extends React.Component {
               label="Birthday(Optional):"
               value={this.state.birthday}
               handleChange={this.onEditProfile}
+            />
+
+            <Address
+              handleChange={this.onEditProfile}
+              value={{
+                houseNo: this.state.houseNo,
+                street: this.state.street,
+                town: this.state.town,
+                society: this.state.society,
+                state: this.state.state,
+                pin: this.state.pin
+              }}
             />
 
             <div className="text-center mt-3">

@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { deleteAdmin, updateAdmin } from "../../../actions/adminActions";
 import Input from "../../user/Input/Input";
 
@@ -149,7 +148,6 @@ class AdminItem extends React.Component {
         </div>
       );
     }
-    console.log(this.props.admin);
     return (
       <div className="col-12 text-sm-center">
         <div className="admin-item m-1 py-2 px-4">{Item}</div>

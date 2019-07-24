@@ -8,7 +8,6 @@ export const getAllOrders = () => dispatch => {
   axios
     .get("http://localhost:5000/admin/order/search")
     .then(res => {
-      console.log(res.data);
       dispatch({
         type: GET_ORDERS,
         payload: res.data //adminlist
@@ -19,7 +18,6 @@ export const getAllOrders = () => dispatch => {
         type: GET_ORDERS,
         payload: null
       });
-      console.log(err);
     });
 };
 
@@ -34,7 +32,6 @@ export const getUserOrders = () => dispatch => {
       }
     })
     .then(res => {
-      console.log(res.data);
       dispatch({
         type: GET_ORDERS,
         payload: res.data //adminlist
@@ -45,7 +42,6 @@ export const getUserOrders = () => dispatch => {
         type: GET_ORDERS,
         payload: null
       });
-      console.log(err);
     });
 };
 
@@ -54,23 +50,27 @@ export const addOrder = (paymentmode, history) => dispatch => {
   const orderData = {
     products: store.getState().cr.cart.products,
     userid: store.getState().cr.cart.userid,
-    name: store.getState().cr.cart.name,
+    name:
+      store.getState().user_r.firstname +
+      " " +
+      store.getState().user_r.lastname,
     paymentmode: paymentmode,
     address: store.getState().order_r.order_address,
     total: store.getState().cr.total_price,
     status: "Pending" //cancel or Delievered
   };
 
+  console.log(orderData);
+
   axios
     .post("http://localhost:5000/orders/add", orderData)
     .then(res => {
-      console.log(res.data);
       history.push("/track");
       dispatch(deleteAllCart());
       alert("Order placed");
     })
     .catch(err => {
-      console.log(err.response.data);
+      alert("Some error has occured please try again later" + err);
     });
 };
 
@@ -85,15 +85,14 @@ export const saveOrderAddress = address => dispatch => {
 //Put request
 export const updateOrder = orderData => dispatch => {
   orderData.status = "Cancelled";
-  console.log(orderData);
   axios
     .put("http://localhost:5000/orders/update", orderData)
     .then(res => {
-      console.log("Order Updated" + res.data);
+      alert("Order Updated");
       dispatch(getUserOrders());
     })
     .catch(err => {
-      console.log("Error" + JSON.stringify(err.response));
+      alert("Some error has occured. Please try again later!!");
     });
 };
 
@@ -105,10 +104,10 @@ export const updateadminOrder = (orderData, history) => dispatch => {
   axios
     .put("http://localhost:5000/admin/order/update", orderData)
     .then(res => {
-      console.log("Order Updated" + res.data);
+      alert("Order Updated");
       dispatch(getAllOrders());
     })
     .catch(err => {
-      console.log("Error" + err);
+      alert("Some error has occured. Please try again later");
     });
 };

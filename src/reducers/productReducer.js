@@ -37,6 +37,7 @@ const ProductReducer = (state = initialState, action) => {
         };
       }
       break;
+
     default:
       return { ...state };
   }

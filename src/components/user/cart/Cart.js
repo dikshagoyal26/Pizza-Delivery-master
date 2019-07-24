@@ -30,6 +30,7 @@ class Cart extends React.Component {
           <CartItem
             key={item.productid}
             id={item.productid}
+            _id={item._id}
             name={item.name}
             qty={item.qty}
             price={item.price}

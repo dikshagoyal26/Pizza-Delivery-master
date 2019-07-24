@@ -1,20 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
-import Login from "./Login";
 import pizza_logo from "../../../img/pizza_logo.png";
 
 class Navbar extends React.Component {
   handleClick = () => {
     this.props.dispatch({ type: "LOGOUT" });
   };
-  componentWillUnmount() {
-    console.log("Navbar Component Unmounted");
-  }
-
-  componentWillMount() {
-    console.log("Navbar Component Mounted");
-  }
 
   render() {
     let Navbar = <p>Some error occured. Please try again later</p>;
@@ -22,14 +14,15 @@ class Navbar extends React.Component {
       Navbar = (
         <header className="App-header">
           <nav className="navbar navbar-dark bg=dark mx-5">
-            <a className="navbar-brand" href="/">
+            <Link className="navbar-brand" to="/">
               <img
                 className="navbar-brand-img"
                 src={pizza_logo}
+                alt="Logo"
                 style={{ width: 50 }}
               />{" "}
               Pizza Hub
-            </a>{" "}
+            </Link>{" "}
             <Link to="/login">
               <button
                 data-toggle="modal"
@@ -48,11 +41,15 @@ class Navbar extends React.Component {
           <div>
             <header className="App-header text-center">
               <nav className="navbar navbar-expand-md navbar-dark mx-5">
-                <a className="navbar-brand" href="/menu">
+                <Link className="navbar-brand" to="/menu">
                   {" "}
-                  <img className="navbar-brand-img" src={pizza_logo} />
+                  <img
+                    className="navbar-brand-img"
+                    src={pizza_logo}
+                    alt="Logo"
+                  />
                   Pizza Hub
-                </a>
+                </Link>
 
                 <button
                   className="navbar-toggler "
@@ -92,7 +89,7 @@ class Navbar extends React.Component {
                   </ul>
 
                   <div className="dropdown">
-                    <a
+                    <span
                       className="dropdown-toggle"
                       id="navbarDropdown"
                       role="button"
@@ -100,7 +97,7 @@ class Navbar extends React.Component {
                       aria-expanded="false"
                     >
                       <i className="fas fa-user-circle fa-2x" />
-                    </a>
+                    </span>
 
                     <div
                       style={{ width: "100%" }}
@@ -136,11 +133,15 @@ class Navbar extends React.Component {
             <div>
               <header className="App-header text-center">
                 <nav className="navbar navbar-expand-md navbar-dark mx-5">
-                  <a className="navbar-brand" href="/admin/dashboard">
+                  <Link className="navbar-brand" to="/admin/dashboard">
                     {" "}
-                    <img className="navbar-brand-img" src={pizza_logo} />
+                    <img
+                      className="navbar-brand-img"
+                      src={pizza_logo}
+                      alt="Logo"
+                    />
                     Pizza Hub{" "}
-                  </a>
+                  </Link>
 
                   <button
                     className="navbar-toggler "
@@ -171,15 +172,11 @@ class Navbar extends React.Component {
                           Admins
                         </Link>
                       </li>
-                      <li className="nav-item">
-                        <Link to="/admin/feedback" className="nav-link">
-                          View Feedback
-                        </Link>
-                      </li>
                     </ul>
 
                     <div className="dropdown">
-                      <a
+                      <span
+                        href=""
                         className="dropdown-toggle"
                         id="navbarDropdown"
                         role="button"
@@ -187,7 +184,7 @@ class Navbar extends React.Component {
                         aria-expanded="false"
                       >
                         <i className="fas fa-user-circle fa-2x" />
-                      </a>
+                      </span>
 
                       <div
                         style={{ width: "100%" }}
@@ -222,7 +219,7 @@ class Navbar extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     is_login: state.auth_r.login,
     is_admin: state.auth_r.is_admin,

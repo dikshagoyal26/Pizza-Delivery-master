@@ -146,7 +146,8 @@ class UserLogin extends Component {
             </form>
             <div className="text-center p-2">
               <button className="btn btn-danger" onClick={this.loginWithGoogle}>
-                <img src={google} style={{ width: 30 }} /> Log in with Google
+                <img src={google} style={{ width: 30 }} alt="G" /> Log in with
+                Google
                 <i className="fas fa-sign-in ml-1" />
               </button>
             </div>

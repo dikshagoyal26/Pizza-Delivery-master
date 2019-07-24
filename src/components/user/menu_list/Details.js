@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getProductByID } from "../../../actions/productActions";
 import { addToCart } from "../../../actions/cartActions";
+import { withRouter } from "react-router-dom";
 
 class Details extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class Details extends React.Component {
 
   handleClick = () => {
     const cartData = {
+      _id: this.props.product[0]._id,
       productid: this.props.product[0].productid,
       name: this.props.product[0].name,
       price: this.props.product[0].price,
@@ -24,8 +26,8 @@ class Details extends React.Component {
       qty: this.state.quantity,
       operation: "+1"
     };
-
-    this.props.addToCart(cartData, this.props.history);
+    this.props.addToCart(cartData);
+    this.props.history.push("/cart");
   };
 
   setQuantity = e => {
@@ -121,7 +123,9 @@ const mapStateToProps = state => {
     loading: state.prod_r.loading
   };
 };
-export default connect(
-  mapStateToProps,
-  { getProductByID, addToCart }
-)(Details);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getProductByID, addToCart }
+  )(Details)
+);

@@ -33,11 +33,11 @@ class ChangePwd extends React.Component {
     });
   };
 
-  onChangePassword = (e) => {
+  onChangePassword = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onSubmit = (e) => {
+  onSubmit = e => {
     e.preventDefault();
     let isvalid = this.validate();
     this.setState({ formValid: isvalid });
@@ -73,7 +73,7 @@ class ChangePwd extends React.Component {
     }
 
     if (
-      this.state.password != this.state.confirmpassword ||
+      this.state.password !== this.state.confirmpassword ||
       !this.state.confirmpassword
     ) {
       confirmerror = "Password does not match";

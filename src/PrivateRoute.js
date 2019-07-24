@@ -1,12 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-const PrivateRoute = ({
-  component: Component,
-  auth,
-  allowed: allowed,
-  ...rest
-}) => (
+const PrivateRoute = ({ component: Component, auth, allowed, ...rest }) => (
   <Route
     {...rest}
     render={

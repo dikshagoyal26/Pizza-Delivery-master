@@ -14,7 +14,6 @@ export const getAllProducts = () => dispatch => {
       }
     })
     .catch(err => {
-      //console.log(err.response);
       dispatch({
         type: GET_PRODUCTS,
         payload: null
@@ -37,8 +36,7 @@ export const getProductByID = (id, history) => dispatch => {
     .catch(err => {
       if (err.response.status === 404) {
         //No Product Found
-        console.log("err.response.msg");
-        history.push("/pagenotfount");
+        history.push("/pagenotfound");
       }
       dispatch({
         type: GET_PRODUCT_BY_ID,
@@ -66,7 +64,6 @@ export const addProduct = (productData, history) => dispatch => {
 //Update product
 //Put request
 export const updateProduct = (productData, history) => dispatch => {
-  console.log(productData);
   axios
     .put("http://localhost:5000/product/update", productData)
     .then(res => {
@@ -74,6 +71,7 @@ export const updateProduct = (productData, history) => dispatch => {
       history.push("/admin/list");
     })
     .catch(err => {
+      alert("Error in updation");
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
@@ -83,14 +81,12 @@ export const updateProduct = (productData, history) => dispatch => {
 
 //Delete product
 export const deleteProduct = (productData, history) => dispatch => {
-  console.log({ productid: productData.productid });
   axios
     .post("http://localhost:5000/product/delete", productData)
     .then(res => {
-      console.log(res.data.message);
       dispatch(getAllProducts());
     })
     .catch(err => {
-      console.log("ERROR" + err);
+      alert("Error in deletion");
     });
 };

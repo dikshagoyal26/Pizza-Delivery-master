@@ -12,6 +12,7 @@ class CartItem extends React.Component {
   }
   onMinus = () => {
     const cartData = {
+      _id: this.props._id,
       productid: this.props.id,
       name: this.props.name,
       price: this.props.price,
@@ -24,6 +25,7 @@ class CartItem extends React.Component {
 
   onPlus = () => {
     const cartData = {
+      _id: this.props._id,
       productid: this.props.id,
       name: this.props.name,
       price: this.props.price,

@@ -1,8 +1,4 @@
-import {
-  GET_ORDERS,
-  SAVE_ORDER_ADDRESS,
-  GET_USER_ORDERS
-} from "../actions/types";
+import { GET_ORDERS, SAVE_ORDER_ADDRESS } from "../actions/types";
 
 const initialState = {
   orders: null,

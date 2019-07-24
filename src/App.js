@@ -29,29 +29,30 @@ import Payment from "./components/user/Checkout/Payment";
 
 import Add from "./components/admin/create-product/Add";
 import Edit from "./components/admin/create-product/Edit";
-import ViewFeedback from "./components/admin/feedback/ViewFeedback";
 import ViewList from "./components/admin/ViewList";
-import ViewSales from "./components/admin/ViewSales";
 import Admins from "./components/admin/admins/Admins";
-import ViewOrder from "./components/admin/Order/ViewOrder";
 import AdminDashboard from "./components/admin/layout/AdminDashboard";
 import AdminFirstTime from "./components/admin/AdminFirstTime";
 import ChangePwd from "./components/admin/ChangePwd";
 
-if (localStorage.jwtToken) {
+if (localStorage.jwtToken && localStorage.jwtToken !== "undefined") {
   const token = localStorage.jwtToken;
-  setAuthToken(token);
   const decoded = jwt_decode(token);
+  setAuthToken(token);
+
   // Check for expired token
   const currentTime = Date.now() / 1000; // to get in milliseconds
   if (decoded.exp < currentTime) {
-    // Logout user
     store.dispatch({
       type: "LOGOUT"
     });
     //Redirect to login
     //window.location.href = "/";
   }
+} else {
+  store.dispatch({
+    type: "LOGOUT"
+  });
 }
 
 class App extends Component {
@@ -160,12 +161,7 @@ class App extends Component {
                 path="/admin/admins"
                 component={Admins}
               />
-              <PrivateRoute
-                allowed="admin"
-                exact
-                path="/admin/feedback"
-                component={ViewFeedback}
-              />
+
               <PrivateRoute
                 allowed="admin"
                 exact
@@ -184,24 +180,7 @@ class App extends Component {
                 path="/admin/list"
                 component={ViewList}
               />
-              <PrivateRoute
-                allowed="admin"
-                exact
-                path="/admin/sales"
-                component={ViewSales}
-              />
-              <PrivateRoute
-                allowed="admin"
-                exact
-                path="/admin/order"
-                component={ViewOrder}
-              />
-              <PrivateRoute
-                allowed="admin"
-                exact
-                path="/admin/feedback"
-                component={ViewFeedback}
-              />
+
               <Route component={NotFoundPage} />
             </Switch>
           </div>

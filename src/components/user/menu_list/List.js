@@ -18,6 +18,7 @@ class List extends Component {
           return (
             <Item
               key={item._id}
+              _id={item._id}
               id={item.productid}
               name={item.name}
               ingredients={item.ingredients}
@@ -25,6 +26,7 @@ class List extends Component {
               imgUrl="https://api-content.prod.pizzahutaustralia.com.au//umbraco/api/Image/Get2?path=assets/products/menu/Meat-Super-Supreme-Pizza-3250-menu.jpg"
               category={item.category}
               toppings={item.toppings}
+              history={this.props.history}
             />
           );
         });

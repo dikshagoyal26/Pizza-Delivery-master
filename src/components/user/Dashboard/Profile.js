@@ -17,6 +17,9 @@ class Profile extends React.Component {
           <h6 className="p-2">
             Birthday: {this.props.profile.dob.substring(0, 10)}
           </h6>
+          <h6 className="p-2">
+            Address: {JSON.stringify(this.props.profile.address)}
+          </h6>
           <div className="text-center">
             <Link
               to="/editprofile"

@@ -6,6 +6,7 @@ import { addToCart } from "../../../actions/cartActions";
 class Item extends React.Component {
   add_to_cart = () => {
     const cartData = {
+      _id: this.props._id,
       productid: this.props.id,
       name: this.props.name,
       price: this.props.price,
@@ -13,7 +14,7 @@ class Item extends React.Component {
       qty: 1,
       operation: "+1"
     };
-    this.props.addToCart(cartData);
+    this.props.addToCart(cartData, this.props.history);
   };
 
   render() {
