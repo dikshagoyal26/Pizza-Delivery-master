@@ -7,14 +7,14 @@ class Track extends React.Component {
     this.props.getUserOrders();
   };
 
-  onClickCancel = order => {
+  onClickCancel = (order) => {
     this.props.updateOrder(order);
   };
 
   render() {
     let OrderItems = <p>No previous Orders</p>;
     if (this.props.orders) {
-      OrderItems = this.props.orders.map(order => {
+      OrderItems = this.props.orders.map((order) => {
         return (
           <div key={order.orderid}>
             <div className="row">
@@ -102,15 +102,11 @@ class Track extends React.Component {
                                 " " +
                                 order.address[0].town +
                                 " " +
+                                order.address[0].society +
+                                " " +
                                 order.address[0].state +
                                 " " +
-                                order.address[0].pin +
-                                " " +
-                                order.address[0].houseNo +
-                                " " +
-                                order.address[0].houseNo +
-                                " " +
-                                order.address[0].houseNo}{" "}
+                                order.address[0].pin}{" "}
                             </span>
                           </div>
                         </div>
@@ -137,7 +133,7 @@ class Track extends React.Component {
                     >
                       <div className="_9xEZF">
                         <div className="_1_7YY">ITEMS</div>{" "}
-                        {order.productarr.map(product => {
+                        {order.productarr.map((product) => {
                           return (
                             <div className="LunMQ">
                               <div className="_3ix93">
@@ -197,7 +193,7 @@ class Track extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     orders: state.order_r.orders
   };

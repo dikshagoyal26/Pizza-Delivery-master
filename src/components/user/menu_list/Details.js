@@ -30,12 +30,17 @@ class Details extends React.Component {
     this.props.history.push("/cart");
   };
 
-  setQuantity = e => {
+  setQuantity = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
-    if (!this.props.product[0] || this.props.product[0] == null || this.props.product[0] == undefined) {
+    if (
+      !this.props.product[0] ||
+      !this.props.product ||
+      this.props.product[0] == null ||
+      this.props.product[0] == undefined
+    ) {
       return <p>Error occured . Please try again.</p>;
     } else {
       let Item = this.props.product[0];
@@ -117,7 +122,7 @@ class Details extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     product: state.prod_r.product,
     loading: state.prod_r.loading

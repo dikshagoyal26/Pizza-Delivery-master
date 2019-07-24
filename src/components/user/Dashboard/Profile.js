@@ -18,7 +18,19 @@ class Profile extends React.Component {
             Birthday: {this.props.profile.dob.substring(0, 10)}
           </h6>
           <h6 className="p-2">
-            Address: {JSON.stringify(this.props.profile.address)}
+            Address:{" "}
+            {this.props.profile.address[0].houseNo +
+              " " +
+              this.props.profile.address[0].street +
+              " " +
+              this.props.profile.address[0].town +
+              " " +
+              this.props.profile.address[0].society +
+              " " +
+              this.props.profile.address[0].state +
+              " " +
+              this.props.profile.address[0].pin}{" "}
+            }
           </h6>
           <div className="text-center">
             <Link
@@ -41,7 +53,7 @@ class Profile extends React.Component {
     );
   }
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     profile: state.user_r.user
   };
