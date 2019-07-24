@@ -2,12 +2,12 @@ import { GET_CART } from "../actions/types";
 import store from "../store";
 import axios from "axios";
 
-export const addToCart = (cartData, history, quantity) => dispatch => {
+export const addToCart = (cartData, history, quantity) => (dispatch) => {
   const cart_items = store.getState().cr.cart;
 
   let should_update = true;
   if (cart_items != null) {
-    cart_items.products.forEach(product => {
+    cart_items.products.forEach((product) => {
       if (product.productid === cartData.productid) {
         //Increase by one
         if (cartData.operation === "+1") {
@@ -47,33 +47,33 @@ export const addToCart = (cartData, history, quantity) => dispatch => {
       ]
     };
     axios
-      .post("http://localhost:5000/cart/add", cart)
-      .then(res => {
+      .post("https://pizza-hub.herokuapp.com/cart/add", cart)
+      .then((res) => {
         dispatch(getCart());
         // history.push("/cart");
       })
-      .catch(err => {
+      .catch((err) => {
         alert("Some error has occured. Please try again later!!" + err);
       });
   }
 };
 
-export const getCart = cartData => dispatch => {
+export const getCart = (cartData) => (dispatch) => {
   const userid = store.getState().user_r.user.userid;
   axios
-    .get("http://localhost:5000/cart/search", {
+    .get("https://pizza-hub.herokuapp.com/cart/search", {
       params: {
         userid: userid
       }
     })
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: GET_CART,
         payload: res.data.record[0] //cartList
       });
       dispatch(getPriceDetails());
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: GET_CART,
         payload: null //cartList
@@ -81,14 +81,14 @@ export const getCart = cartData => dispatch => {
     });
 };
 
-export const getPriceDetails = productid => dispatch => {
+export const getPriceDetails = (productid) => (dispatch) => {
   dispatch({
     type: "GET_PRICE"
   });
 };
 
 //Delete product
-export const deleteCartProduct = cartData => dispatch => {
+export const deleteCartProduct = (cartData) => (dispatch) => {
   const deleteCartData = {
     userid: store.getState().user_r.user.userid,
     name: store.getState().user_r.user.name,
@@ -104,28 +104,28 @@ export const deleteCartProduct = cartData => dispatch => {
     ]
   };
   axios
-    .post("http://localhost:5000/cart/deleteOne", deleteCartData)
-    .then(res => {
+    .post("https://pizza-hub.herokuapp.com/cart/deleteOne", deleteCartData)
+    .then((res) => {
       alert("Product deleted from Cart");
       dispatch(getCart());
     })
-    .catch(err => {
+    .catch((err) => {
       alert("Error in deletion. Please try again later!!");
     });
 };
 
 //Delete products in cart
-export const deleteAllCart = productid => dispatch => {
+export const deleteAllCart = (productid) => (dispatch) => {
   const deleteData = {
     userid: store.getState().user_r.user.userid
   };
   axios
-    .post("http://localhost:5000/cart/deleteAll", deleteData)
-    .then(res => {
+    .post("https://pizza-hub.herokuapp.com/cart/deleteAll", deleteData)
+    .then((res) => {
       alert(res.data.message);
       dispatch(getCart());
     })
-    .catch(err => {
+    .catch((err) => {
       alert("Error in deletion! Please try again later");
     });
 };

@@ -3,26 +3,26 @@ import store from "../store";
 import { GET_USER } from "./types";
 
 //Get all the admin list
-export const getUserDetails = () => dispatch => {
+export const getUserDetails = () => (dispatch) => {
   axios
-    .post("http://localhost:5000/user/findbyid", {
+    .post("https://pizza-hub.herokuapp.com/user/findbyid", {
       userid: store.getState().user_r.user.userid
     })
-    .then(res => {
+    .then((res) => {
       console.log(res.data.record);
       dispatch({
         type: GET_USER,
         payload: res.data.record
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
     });
 };
 
 //Update admin
 //Put request
-export const editUserDetails = (userData, history) => dispatch => {
+export const editUserDetails = (userData, history) => (dispatch) => {
   const Data = {
     userid: store.getState().user_r.userid,
     firstname: userData.firstname,
@@ -33,30 +33,30 @@ export const editUserDetails = (userData, history) => dispatch => {
   };
   console.log(Data);
   axios
-    .put("http://localhost:5000/user/update", Data)
-    .then(res => {
+    .put("https://pizza-hub.herokuapp.com/user/update", Data)
+    .then((res) => {
       history.push("/dashboard");
       alert("User details Updated");
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("Error" + JSON.stringify(err.response));
       history.push("/dashboard");
       alert("Error occured");
     });
 };
 
-export const updatePwd = (userData, history) => dispatch => {
+export const updatePwd = (userData, history) => (dispatch) => {
   const uData = {
     oldpassword: userData.oldpassword,
     password: userData.password,
     userid: store.getState().user_r.user.userid
   };
   axios
-    .put("http://localhost:5000/user/changepwd", uData)
-    .then(res => {
+    .put("https://pizza-hub.herokuapp.com/user/changepwd", uData)
+    .then((res) => {
       console.log(JSON.stringify(res.data));
     })
-    .catch(err => {
+    .catch((err) => {
       console.log("Error " + err);
       //Old Password wrong
       if (err.response.status === 404) {
@@ -66,13 +66,13 @@ export const updatePwd = (userData, history) => dispatch => {
 };
 
 //Delete user
-export const deleteUser = () => dispatch => {
+export const deleteUser = () => (dispatch) => {
   axios
-    .post("http://localhost:5000/user/deleteone", {
+    .post("https://pizza-hub.herokuapp.com/user/deleteone", {
       userid: store.getState().user_r.user.userid
     })
-    .then(res => {})
-    .catch(err => {
+    .then((res) => {})
+    .catch((err) => {
       console.log("Error " + err);
     });
 };

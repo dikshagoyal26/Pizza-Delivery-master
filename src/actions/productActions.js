@@ -2,10 +2,10 @@ import { GET_PRODUCTS, GET_PRODUCT_BY_ID, GET_ERRORS } from "./types";
 import axios from "axios";
 
 //Get all the product list
-export const getAllProducts = () => dispatch => {
+export const getAllProducts = () => (dispatch) => {
   axios
-    .get("http://localhost:5000/product/menu")
-    .then(res => {
+    .get("https://pizza-hub.herokuapp.com/product/menu")
+    .then((res) => {
       if (res.data) {
         dispatch({
           type: GET_PRODUCTS,
@@ -13,7 +13,7 @@ export const getAllProducts = () => dispatch => {
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: GET_PRODUCTS,
         payload: null
@@ -22,10 +22,10 @@ export const getAllProducts = () => dispatch => {
 };
 
 //Get product by ID
-export const getProductByID = (id, history) => dispatch => {
+export const getProductByID = (id, history) => (dispatch) => {
   axios
-    .get(`http://localhost:5000/product/details/${id}`)
-    .then(res => {
+    .get(`https://pizza-hub.herokuapp.com/product/details/${id}`)
+    .then((res) => {
       if (res.data.product) {
         dispatch({
           type: GET_PRODUCT_BY_ID,
@@ -33,7 +33,7 @@ export const getProductByID = (id, history) => dispatch => {
         });
       }
     })
-    .catch(err => {
+    .catch((err) => {
       if (err.response.status === 404) {
         //No Product Found
         history.push("/pagenotfound");
@@ -46,14 +46,14 @@ export const getProductByID = (id, history) => dispatch => {
 };
 
 //Post product
-export const addProduct = (productData, history) => dispatch => {
+export const addProduct = (productData, history) => (dispatch) => {
   axios
-    .post("http://localhost:5000/product/add", productData)
-    .then(res => {
+    .post("https://pizza-hub.herokuapp.com/product/add", productData)
+    .then((res) => {
       alert("Product Added");
       history.push("/admin/list");
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
@@ -63,14 +63,14 @@ export const addProduct = (productData, history) => dispatch => {
 
 //Update product
 //Put request
-export const updateProduct = (productData, history) => dispatch => {
+export const updateProduct = (productData, history) => (dispatch) => {
   axios
-    .put("http://localhost:5000/product/update", productData)
-    .then(res => {
+    .put("https://pizza-hub.herokuapp.com/product/update", productData)
+    .then((res) => {
       alert("Product Updated");
       history.push("/admin/list");
     })
-    .catch(err => {
+    .catch((err) => {
       alert("Error in updation");
       dispatch({
         type: GET_ERRORS,
@@ -80,13 +80,13 @@ export const updateProduct = (productData, history) => dispatch => {
 };
 
 //Delete product
-export const deleteProduct = (productData, history) => dispatch => {
+export const deleteProduct = (productData, history) => (dispatch) => {
   axios
-    .post("http://localhost:5000/product/delete", productData)
-    .then(res => {
+    .post("https://pizza-hub.herokuapp.com/product/delete", productData)
+    .then((res) => {
       dispatch(getAllProducts());
     })
-    .catch(err => {
+    .catch((err) => {
       alert("Error in deletion");
     });
 };

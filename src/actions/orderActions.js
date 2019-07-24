@@ -4,16 +4,16 @@ import { deleteAllCart } from "./cartActions";
 import store from "../store";
 
 //Get all the admin list
-export const getAllOrders = () => dispatch => {
+export const getAllOrders = () => (dispatch) => {
   axios
-    .get("http://localhost:5000/admin/order/search")
-    .then(res => {
+    .get("https://pizza-hub.herokuapp.com/admin/order/search")
+    .then((res) => {
       dispatch({
         type: GET_ORDERS,
         payload: res.data //adminlist
       });
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: GET_ORDERS,
         payload: null
@@ -22,22 +22,22 @@ export const getAllOrders = () => dispatch => {
 };
 
 //Get all the admin list
-export const getUserOrders = () => dispatch => {
+export const getUserOrders = () => (dispatch) => {
   const userid = store.getState().user_r.user.userid;
 
   axios
-    .get("http://localhost:5000/orders/search", {
+    .get("https://pizza-hub.herokuapp.com/orders/search", {
       params: {
         userid: userid
       }
     })
-    .then(res => {
+    .then((res) => {
       dispatch({
         type: GET_ORDERS,
         payload: res.data //adminlist
       });
     })
-    .catch(err => {
+    .catch((err) => {
       dispatch({
         type: GET_ORDERS,
         payload: null
@@ -46,7 +46,7 @@ export const getUserOrders = () => dispatch => {
 };
 
 //Post order
-export const addOrder = (paymentmode, history) => dispatch => {
+export const addOrder = (paymentmode, history) => (dispatch) => {
   const orderData = {
     products: store.getState().cr.cart.products,
     userid: store.getState().cr.cart.userid,
@@ -63,18 +63,18 @@ export const addOrder = (paymentmode, history) => dispatch => {
   console.log(orderData);
 
   axios
-    .post("http://localhost:5000/orders/add", orderData)
-    .then(res => {
+    .post("https://pizza-hub.herokuapp.com/orders/add", orderData)
+    .then((res) => {
       history.push("/track");
       dispatch(deleteAllCart());
       alert("Order placed");
     })
-    .catch(err => {
+    .catch((err) => {
       alert("Some error has occured please try again later" + err);
     });
 };
 
-export const saveOrderAddress = address => dispatch => {
+export const saveOrderAddress = (address) => (dispatch) => {
   dispatch({
     type: SAVE_ORDER_ADDRESS,
     payload: address
@@ -83,31 +83,31 @@ export const saveOrderAddress = address => dispatch => {
 
 //Update admin
 //Put request
-export const updateOrder = orderData => dispatch => {
+export const updateOrder = (orderData) => (dispatch) => {
   orderData.status = "Cancelled";
   axios
-    .put("http://localhost:5000/orders/update", orderData)
-    .then(res => {
+    .put("https://pizza-hub.herokuapp.com/orders/update", orderData)
+    .then((res) => {
       alert("Order Updated");
       dispatch(getUserOrders());
     })
-    .catch(err => {
+    .catch((err) => {
       alert("Some error has occured. Please try again later!!");
     });
 };
 
 //Update admin
 //Put request
-export const updateadminOrder = (orderData, history) => dispatch => {
+export const updateadminOrder = (orderData, history) => (dispatch) => {
   orderData.status = "Delivered";
 
   axios
-    .put("http://localhost:5000/admin/order/update", orderData)
-    .then(res => {
+    .put("https://pizza-hub.herokuapp.com/admin/order/update", orderData)
+    .then((res) => {
       alert("Order Updated");
       dispatch(getAllOrders());
     })
-    .catch(err => {
+    .catch((err) => {
       alert("Some error has occured. Please try again later");
     });
 };
