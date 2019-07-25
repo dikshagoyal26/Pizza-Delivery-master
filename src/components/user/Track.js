@@ -13,7 +13,25 @@ class Track extends React.Component {
 
   render() {
     let OrderItems = <p>No previous Orders</p>;
-    if (this.props.orders) {
+    if (
+      this.props.orders == null ||
+      !this.props.orders ||
+      this.props.orders == undefined
+    ) {
+      OrderItems = (
+        <div
+          className="spinner-border text-center m-5"
+          style="width: 3rem; height: 3rem;"
+          role="status"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+      );
+    } else if (
+      this.props.orders &&
+      this.props.orders != undefined &&
+      this.props.orders != null
+    ) {
       OrderItems = this.props.orders.map((order) => {
         return (
           <div key={order.orderid}>
