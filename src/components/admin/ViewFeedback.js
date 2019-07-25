@@ -11,7 +11,11 @@ class ViewFeedback extends React.Component {
     let FeedbackList;
 
     if (this.props.feedbacks == null) {
-      FeedbackList = <p>No feedbacks present.</p>;
+      FeedbackList = (
+        <tr>
+          <td>No feedbacks present.</td>
+        </tr>
+      );
     } else {
       FeedbackList = this.props.feedbacks.map(feedback => {
         return (

@@ -7,32 +7,34 @@ class Track extends React.Component {
     this.props.getUserOrders();
   };
 
-  onClickCancel = (order) => {
+  onClickCancel = order => {
     this.props.updateOrder(order);
   };
 
   render() {
     let OrderItems = <p>No previous Orders</p>;
     if (
-      this.props.orders == null ||
+      this.props.orders === null ||
       !this.props.orders ||
-      this.props.orders == undefined
+      this.props.orders === undefined
     ) {
       OrderItems = (
-        <div
-          className="spinner-border text-center m-5"
-          style="width: 3rem; height: 3rem;"
-          role="status"
-        >
-          <span class="sr-only">Loading...</span>
+        <div className="text-center m-5">
+          <div
+            className="spinner-border"
+            style={{ width: 30, height: 30 }}
+            role="status"
+          >
+            <span className="sr-only">Loading...</span>
+          </div>
         </div>
       );
     } else if (
       this.props.orders &&
-      this.props.orders != undefined &&
-      this.props.orders != null
+      this.props.orders !== undefined &&
+      this.props.orders !== null
     ) {
-      OrderItems = this.props.orders.map((order) => {
+      OrderItems = this.props.orders.map(order => {
         return (
           <div key={order.orderid}>
             <div className="row">
@@ -151,7 +153,7 @@ class Track extends React.Component {
                     >
                       <div className="_9xEZF">
                         <div className="_1_7YY">ITEMS</div>{" "}
-                        {order.productarr.map((product) => {
+                        {order.productarr.map(product => {
                           return (
                             <div className="LunMQ">
                               <div className="_3ix93">
@@ -211,7 +213,7 @@ class Track extends React.Component {
     );
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     orders: state.order_r.orders
   };

@@ -3,16 +3,16 @@ import axios from "axios";
 import store from "../store";
 
 //Get all the admin list
-export const getAllFeedbacks = () => (dispatch) => {
+export const getAllFeedbacks = () => dispatch => {
   axios
     .get("https://pizza-hub.herokuapp.com/admin/feedback/search")
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: GET_FEEDBACKS,
         payload: res.data.record
       });
     })
-    .catch((err) => {
+    .catch(err => {
       dispatch({
         type: GET_FEEDBACKS,
         payload: null
@@ -21,20 +21,20 @@ export const getAllFeedbacks = () => (dispatch) => {
 };
 
 //Get all the admin list
-export const getUserFeedbacks = () => (dispatch) => {
+export const getUserFeedbacks = () => dispatch => {
   axios
     .get("https://pizza-hub.herokuapp.com/feedback/search", {
       params: {
         userid: store.getState().user_r.user.userid
       }
     })
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: GET_USER_FEEDBACKS,
         payload: res.data //adminlist
       });
     })
-    .catch((err) => {
+    .catch(err => {
       dispatch({
         type: GET_USER_FEEDBACKS,
         payload: null
@@ -43,7 +43,7 @@ export const getUserFeedbacks = () => (dispatch) => {
 };
 
 ///Post feedback
-export const addFeedback = (feedback) => (dispatch) => {
+export const addFeedback = feedback => dispatch => {
   const feedbackData = {
     description: feedback.description,
     userid: store.getState().user_r.user.userid
@@ -51,39 +51,39 @@ export const addFeedback = (feedback) => (dispatch) => {
 
   axios
     .post("https://pizza-hub.herokuapp.com/feedback/add", feedbackData)
-    .then((res) => {
+    .then(res => {
       dispatch(getUserFeedbacks());
     })
-    .catch((err) => {
-      alert(err.response.message);
+    .catch(err => {
+      alert("Some error occured");
     });
 };
 
 //Update Feedback
 //Put request
-export const updateFeedback = (feedbackData) => (dispatch) => {
+export const updateFeedback = feedbackData => dispatch => {
   axios
     .put("https://pizza-hub.herokuapp.com/feedback/update", feedbackData)
-    .then((res) => {
-      alert(res.data.message);
+    .then(res => {
+      alert("Feedback updated");
       dispatch(getUserFeedbacks());
     })
-    .catch((err) => {
-      alert(err.response.message);
+    .catch(err => {
+      alert("Error in updating feedback! Please try again later.");
     });
 };
 
 //Delete feedback
-export const deleteFeedback = (feedbackid) => (dispatch) => {
+export const deleteFeedback = feedbackid => dispatch => {
   axios
     .post("https://pizza-hub.herokuapp.com/feedback/delete", {
       feedbackid: feedbackid
     })
-    .then((res) => {
-      alert(res.data.message);
+    .then(res => {
+      alert("Feedback Deleted");
       dispatch(getUserFeedbacks());
     })
-    .catch((err) => {
-      alert(err.response.message);
+    .catch(err => {
+      alert("Error in Feedback Deletion! Try again later.");
     });
 };
