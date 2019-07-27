@@ -18,26 +18,26 @@ class AdminDashboard extends React.Component {
   }
 
   buildChart = () => {
-    const myChartRef = this.chartRef.current.getContext("2d");
-    //if (typeof myLineChart !== "undefined") myLineChart.destroy();
-    new Chart(myChartRef, {
-      type: "line",
-      data: {
-        //Bring in data
-        labels: this.props.product_sales.map((d) => d.productid),
-        datasets: [
-          {
-            label: "Sales according to product id",
-            data: this.props.product_sales.map((d) => d.qty),
-            fill: false,
-            borderColor: "#6610f2"
-          }
-        ]
-      },
-      options: {
-        //Customize chart options
-      }
-    });
+    // const myChartRef = this.chartRef.current.getContext("2d");
+    // //if (typeof myLineChart !== "undefined") myLineChart.destroy();
+    // new Chart(myChartRef, {
+    //   type: "line",
+    //   data: {
+    //     //Bring in data
+    //     labels: this.props.product_sales.map(d => d.productid),
+    //     datasets: [
+    //       {
+    //         label: "Sales according to product id",
+    //         data: this.props.product_sales.map(d => d.qty),
+    //         fill: false,
+    //         borderColor: "#6610f2"
+    //       }
+    //     ]
+    //   },
+    //   options: {
+    //     //Customize chart options
+    //   }
+    // });
 
     const mymonthChartRef = this.monthchartRef.current.getContext("2d");
 
@@ -121,9 +121,9 @@ class AdminDashboard extends React.Component {
             <div className="card">
               <canvas ref={this.monthchartRef} />;
             </div>
-            <div className="card">
+            {/* <div className="card">
               <canvas ref={this.chartRef} />;
-            </div>
+            </div> */}
           </div>
           <ViewFeedback />
           <ViewOrder />
@@ -132,7 +132,7 @@ class AdminDashboard extends React.Component {
     );
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     sales_count: state.sales_r.sales_count,
     earnings_count: state.sales_r.earnings_count,

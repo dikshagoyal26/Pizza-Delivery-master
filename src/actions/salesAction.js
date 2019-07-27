@@ -8,10 +8,10 @@ import {
 } from "./types";
 import axios from "axios";
 
-export const getMonthlySales = () => (dispatch) => {
+export const getMonthlySales = () => dispatch => {
   axios
     .get("https://pizza-hub.herokuapp.com/admin/sales/month")
-    .then((res) => {
+    .then(res => {
       if (res.data) {
         dispatch({
           type: GET_MONTHLY_SALES,
@@ -19,14 +19,14 @@ export const getMonthlySales = () => (dispatch) => {
         });
       }
     })
-    .catch((err) => {});
+    .catch(err => {});
 };
 
 //Get all the product list
-export const getProductWiseSales = () => (dispatch) => {
+export const getProductWiseSales = () => dispatch => {
   axios
     .get("https://pizza-hub.herokuapp.com/admin/sales/product")
-    .then((res) => {
+    .then(res => {
       if (res.data) {
         dispatch({
           type: GET_PRODUCT_WISE_SALES,
@@ -44,13 +44,13 @@ export const getProductWiseSales = () => (dispatch) => {
         });
       }
     })
-    .catch((err) => {});
+    .catch(err => {});
 };
 
-export const getUserCount = () => (dispatch) => {
+export const getUserCount = () => dispatch => {
   axios
     .get("https://pizza-hub.herokuapp.com/admin/sales/countusers")
-    .then((res) => {
+    .then(res => {
       if (res.data) {
         dispatch({
           type: GET_USER_COUNT,
@@ -58,7 +58,7 @@ export const getUserCount = () => (dispatch) => {
         });
       }
     })
-    .catch((err) => {
+    .catch(err => {
       dispatch({
         type: GET_USER_COUNT,
         payload: 0
@@ -66,10 +66,10 @@ export const getUserCount = () => (dispatch) => {
     });
 };
 
-export const getProductCount = () => (dispatch) => {
+export const getProductCount = () => dispatch => {
   axios
     .get("https://pizza-hub.herokuapp.com/admin/sales/countproducts")
-    .then((res) => {
+    .then(res => {
       if (res.data) {
         dispatch({
           type: GET_PRODUCT_COUNT,
@@ -77,7 +77,7 @@ export const getProductCount = () => (dispatch) => {
         });
       }
     })
-    .catch((err) => {
+    .catch(err => {
       dispatch({
         type: GET_PRODUCT_COUNT,
         payload: 0
