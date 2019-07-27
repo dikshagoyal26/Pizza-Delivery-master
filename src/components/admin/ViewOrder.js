@@ -6,14 +6,14 @@ class ViewOrder extends React.Component {
   componentDidMount() {
     this.props.getAllOrders();
   }
-  onClickDelivered = (order) => {
+  onClickDelivered = order => {
     this.props.updateadminOrder(order);
   };
 
   render() {
     let OrderItems = <p>No previous Orders</p>;
     if (this.props.orders) {
-      OrderItems = this.props.orders.map((order) => {
+      OrderItems = this.props.orders.map(order => {
         return (
           <div key={order.orderid}>
             <div className="row">
@@ -23,9 +23,7 @@ class ViewOrder extends React.Component {
                     <div className="_2XWVq">
                       <div className="_3h4gz">{order.name}</div>
 
-                      <div className="_2uT6l">
-                        ORDERID: {order.orderid}| {order.date}
-                      </div>
+                      <div className="_2uT6l">ORDERID: {order.orderid}</div>
                       <div
                         className="_1ziWV"
                         data-toggle="modal"
@@ -132,14 +130,16 @@ class ViewOrder extends React.Component {
                     >
                       <div className="_9xEZF">
                         <div className="_1_7YY">ITEMS</div>{" "}
-                        {order.productarr.map((product) => {
+                        {order.products.map(product => {
                           return (
-                            <div className="LunMQ">
+                            <div className="LunMQ" key={product.product_id._id}>
                               <div className="_3ix93">
                                 <span className="icon-foodSymbol _3NEcG _1zonf" />
-                                {product.name} X {product.qty}
+                                {product.product_id.name} X {product.qty}
                               </div>
-                              <div className="_1k5de">{product.price}</div>
+                              <div className="_1k5de">
+                                {product.product_id.price}
+                              </div>
                             </div>
                           );
                         })}
@@ -193,7 +193,7 @@ class ViewOrder extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     orders: state.order_r.orders
   };

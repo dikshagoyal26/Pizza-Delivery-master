@@ -46,10 +46,6 @@ class UserRegister extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  logInWIthGoogle = () => {
-    this.props.logInWIthGoogle();
-  };
-
   onSubmitForm = e => {
     e.preventDefault();
 
@@ -202,12 +198,6 @@ class UserRegister extends Component {
                 </button>
               </div>
             </form>
-            <div className="text-center p-2">
-              <button className="btn btn-danger" onClick={this.logInWIthGoogle}>
-                Signup with Google
-                <i className="fas fa-sign-in ml-1" />
-              </button>
-            </div>
 
             <div className="form_footer">
               <div>

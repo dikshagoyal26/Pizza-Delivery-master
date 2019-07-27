@@ -44,9 +44,8 @@ class Track extends React.Component {
                     <div className="_2XWVq">
                       <div className="_3h4gz">{order.name}</div>
 
-                      <div className="_2uT6l">
-                        ORDERID: {order.orderid}| {order.date}
-                      </div>
+                      <div className="_2uT6l">ORDERID: {order.orderid}</div>
+                      <div className="_2uT6l">Amount Paid :{order.total}</div>
                       <div
                         className="_1ziWV"
                         data-toggle="modal"
@@ -67,10 +66,10 @@ class Track extends React.Component {
                           <br />
                           {order.status === "Pending" ? (
                             <button
-                              className="btn btn-success"
-                              onClick={() => this.onClickDelivered(order)}
+                              className="btn btn-danger"
+                              onClick={() => this.onClickCancel(order)}
                             >
-                              Delivered <i className="fas fa-check" />
+                              Cancel <i className="fas fa-check" />
                             </button>
                           ) : null}
                         </span>
@@ -153,14 +152,16 @@ class Track extends React.Component {
                     >
                       <div className="_9xEZF">
                         <div className="_1_7YY">ITEMS</div>{" "}
-                        {order.productarr.map(product => {
+                        {order.products.map(product => {
                           return (
                             <div className="LunMQ">
                               <div className="_3ix93">
                                 <span className="icon-foodSymbol _3NEcG _1zonf" />
-                                {product.name} X {product.qty}
+                                {product.product_id.name} X {product.qty}
                               </div>
-                              <div className="_1k5de">{product.price}</div>
+                              <div className="_1k5de">
+                                {product.product_id.price}
+                              </div>
                             </div>
                           );
                         })}
