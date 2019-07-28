@@ -93,7 +93,7 @@ class UserRegister extends Component {
       emailError = "Required email";
     }
 
-    if (this.state.password.length < 6) {
+    if (this.state.password.length <= 5) {
       if (!this.state.password) passwordError = "Required Password";
       else passwordError = "Min length of password should be 6";
     }
